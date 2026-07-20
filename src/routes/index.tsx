@@ -7,7 +7,6 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookingEnquiry } from "@/components/BookingEnquiry";
 import { InstagramReels } from "@/components/InstagramReels";
 import { FAQ } from "@/components/FAQ";
-import { WicklowGallery } from "@/components/WicklowGallery";
 
 
 export const Route = createFileRoute("/")({
