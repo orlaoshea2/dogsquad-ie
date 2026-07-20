@@ -15,7 +15,8 @@ export function Hero() {
           width={2040}
           height={1148}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ocean/70 via-ocean/50 to-ocean/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ocean/85 via-ocean/65 to-ocean/85" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Content */}
