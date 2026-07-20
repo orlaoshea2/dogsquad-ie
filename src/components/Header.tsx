@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, PawPrint } from "lucide-react";
+import { Menu, X, PawPrint, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
