@@ -14,6 +14,7 @@ const bookingSchema = z.object({
   durationMinutes: z.number().int().min(30).max(180).default(60),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
+  userId: z.string().uuid().optional(),
 });
 
 function createSupabaseFetch(supabaseKey: string): typeof fetch {
