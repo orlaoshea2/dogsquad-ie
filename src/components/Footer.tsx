@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { PawPrint, Mail, Phone, MapPin } from "lucide-react";
+import { PawPrint, Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
