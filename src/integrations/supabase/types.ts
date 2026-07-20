@@ -28,6 +28,7 @@ export type Database = {
           payment_status: string
           phone: string | null
           status: string
+          user_id: string | null
           walk_date: string
           walk_time: string
         }
@@ -44,6 +45,7 @@ export type Database = {
           payment_status?: string
           phone?: string | null
           status?: string
+          user_id?: string | null
           walk_date: string
           walk_time: string
         }
@@ -60,6 +62,7 @@ export type Database = {
           payment_status?: string
           phone?: string | null
           status?: string
+          user_id?: string | null
           walk_date?: string
           walk_time?: string
         }
@@ -118,6 +121,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_booked_slots: {
+        Args: { p_date: string }
+        Returns: {
+          walk_time: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

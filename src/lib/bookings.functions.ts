@@ -14,6 +14,7 @@ const bookingSchema = z.object({
   durationMinutes: z.number().int().min(30).max(180).default(60),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
+  userId: z.string().uuid().optional(),
 });
 
 function createSupabaseFetch(supabaseKey: string): typeof fetch {
@@ -58,6 +59,7 @@ export const createBooking = createServerFn({ method: "POST" })
         notes: data.notes || null,
         payment_method: data.paymentMethod,
         payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",
+        user_id: data.userId || null,
       })
       .select("id")
       .single();
@@ -84,11 +86,9 @@ export const getAvailableSlots = createServerFn({ method: "POST" })
       global: { fetch: createSupabaseFetch(key) },
     });
 
-    const { data: bookings, error } = await supabase
-      .from("bookings")
-      .select("walk_time")
-      .eq("walk_date", data.date)
-      .neq("status", "cancelled");
+    const { data: bookedRows, error } = await supabase.rpc("get_booked_slots", {
+      p_date: data.date,
+    });
 
     if (error) {
       console.error("Slot query error:", error);
@@ -99,6 +99,8 @@ export const getAvailableSlots = createServerFn({ method: "POST" })
       "08:00", "10:00", "12:00", "14:00", "16:00", "18:00",
     ];
 
-    const booked = new Set(bookings?.map((b) => b.walk_time) ?? []);
+    const booked = new Set(
+      (bookedRows ?? []).map((row: { walk_time: string }) => row.walk_time)
+    );
     return allSlots.map((time) => ({ time, available: !booked.has(time) }));
   });
