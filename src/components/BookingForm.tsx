@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn, CreditCard, Banknote } from "lucide-react";
 import { createBooking } from "@/lib/bookings.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { getRevolutPaymentLink, getBookingPrice, type PaymentMethod } from "@/config/payments";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -22,6 +24,7 @@ const bookingFormSchema = z.object({
   dogName: z.string().min(1, "Dog name is required"),
   dogBreed: z.string().optional(),
   notes: z.string().optional(),
+  paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
 });
 
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
@@ -37,6 +40,7 @@ interface BookingFormProps {
 export function BookingForm({ serviceType = "walk", date, time, duration, onBack }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("pay_later");
   const submitBooking = useServerFn(createBooking);
   const { user, profile } = useAuth();
 
@@ -49,6 +53,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
       dogName: "",
       dogBreed: "",
       notes: "",
+      paymentMethod: "pay_later",
     },
   });
 
@@ -61,11 +66,15 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
     }
   }, [user, profile, form]);
 
+  const price = getBookingPrice(serviceType, duration);
+  const revolutLink = getRevolutPaymentLink(serviceType, duration);
+
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
     try {
       const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
       const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
+      const method = values.paymentMethod;
       await submitBooking({
         data: {
           ...values,
@@ -73,6 +82,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           walkDate: format(date, "yyyy-MM-dd"),
           walkTime: time,
           durationMinutes: duration,
+          paymentMethod: method,
         },
       });
 
@@ -86,8 +96,14 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
         });
       }
 
+      setPaymentMethod(method);
       setSuccess(true);
       form.reset();
+
+      // Redirect to Revolut payment link if selected
+      if (method === "revolut" && revolutLink) {
+        window.location.href = revolutLink;
+      }
     } catch (err) {
       console.error("Booking failed:", err);
       form.setError("root", { message: "Failed to submit booking. Please try again." });
@@ -97,6 +113,25 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
   };
 
   if (success) {
+    if (paymentMethod === "revolut") {
+      return (
+        <Card className="border-teal/30 bg-card">
+          <CardContent className="flex flex-col items-center py-12 text-center">
+            <Loader2 className="h-12 w-12 animate-spin text-teal" />
+            <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Redirecting to Revolut…</h3>
+            <p className="mt-2 max-w-md text-muted-foreground">
+              Your booking for {format(date, "EEEE, MMMM do")} at {time} is saved. If you are not redirected, click the button below.
+            </p>
+            <Button asChild className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
+              <a href={revolutLink} target="_blank" rel="noreferrer">
+                <CreditCard className="mr-2 h-4 w-4" /> Pay €{price} now
+              </a>
+            </Button>
+          </CardContent>
+        </Card>
+      );
+    }
+
     return (
       <Card className="border-teal/30 bg-card">
         <CardContent className="flex flex-col items-center py-12 text-center">
@@ -193,6 +228,52 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
             />
           </div>
 
+          <div className="space-y-3 sm:col-span-2">
+            <Label>Payment option</Label>
+            <RadioGroup
+              defaultValue="pay_later"
+              value={form.watch("paymentMethod")}
+              onValueChange={(value) => form.setValue("paymentMethod", value as PaymentMethod)}
+              className="grid gap-3 sm:grid-cols-2"
+            >
+              <label
+                htmlFor="pay-later"
+                className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                  form.watch("paymentMethod") === "pay_later"
+                    ? "border-ocean bg-ocean/5"
+                    : "border-border bg-background hover:border-ocean/50"
+                }`}
+              >
+                <RadioGroupItem value="pay_later" id="pay-later" />
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 font-medium text-foreground">
+                    <Banknote className="h-4 w-4 text-teal" />
+                    Pay later
+                  </div>
+                  <p className="text-sm text-muted-foreground">Pay cash or bank transfer on the day.</p>
+                </div>
+              </label>
+
+              <label
+                htmlFor="revolut"
+                className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                  form.watch("paymentMethod") === "revolut"
+                    ? "border-ocean bg-ocean/5"
+                    : "border-border bg-background hover:border-ocean/50"
+                }`}
+              >
+                <RadioGroupItem value="revolut" id="revolut" />
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 font-medium text-foreground">
+                    <CreditCard className="h-4 w-4 text-teal" />
+                    Pay with Revolut
+                  </div>
+                  <p className="text-sm text-muted-foreground">Pay €{price} now via Revolut.</p>
+                </div>
+              </label>
+            </RadioGroup>
+          </div>
+
           {form.formState.errors.root && (
             <p className="text-sm text-destructive sm:col-span-2">{form.formState.errors.root.message}</p>
           )}
@@ -208,7 +289,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
                 </>
               ) : (
-                "Confirm booking"
+                `Confirm booking — ${form.watch("paymentMethod") === "revolut" ? `Pay €${price} with Revolut` : "Pay later"}`
               )}
             </Button>
           </div>
