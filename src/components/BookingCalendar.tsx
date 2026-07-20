@@ -3,15 +3,21 @@ import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Loader2, Clock, CalendarDays } from "lucide-react";
+import { Loader2, Clock, CalendarDays, PawPrint, Home } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm } from "./BookingForm";
 import { cn } from "@/lib/utils";
 
-const DURATIONS = [30, 60, 90];
+type ServiceType = "walk" | "visit";
+
+const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
+  walk: [30, 60, 90],
+  visit: [30, 60],
+};
 
 export function BookingCalendar() {
+  const [serviceType, setServiceType] = useState<ServiceType>("walk");
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<number>(60);
@@ -50,11 +56,36 @@ export function BookingCalendar() {
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online</p>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Pick a date and time
+            Pick a service, date and time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Choose your preferred walk date and slot. We'll confirm your booking within minutes.
+            Choose a dog walk or a home visit, pick your slot, and we'll confirm within minutes.
           </p>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-md gap-2 rounded-lg border border-border/60 bg-card p-1">
+          {([
+            { id: "walk", label: "Dog walk", Icon: PawPrint },
+            { id: "visit", label: "Home visit", Icon: Home },
+          ] as const).map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              onClick={() => {
+                setServiceType(id);
+                const durations = DURATIONS_BY_SERVICE[id];
+                if (!durations.includes(selectedDuration)) setSelectedDuration(durations[0]);
+              }}
+              className={cn(
+                "flex flex-1 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                serviceType === id
+                  ? "bg-ocean text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <Icon className="h-4 w-4" />
+              {label}
+            </button>
+          ))}
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -126,9 +157,11 @@ export function BookingCalendar() {
                   </div>
 
                   <div className="pt-4">
-                    <p className="mb-2 text-sm font-medium text-foreground">Walk duration</p>
+                    <p className="mb-2 text-sm font-medium text-foreground">
+                      {serviceType === "walk" ? "Walk" : "Visit"} duration
+                    </p>
                     <div className="flex gap-2">
-                      {DURATIONS.map((d) => (
+                      {DURATIONS_BY_SERVICE[serviceType].map((d) => (
                         <button
                           key={d}
                           onClick={() => setSelectedDuration(d)}
@@ -153,6 +186,7 @@ export function BookingCalendar() {
         {showForm && date && selectedTime && (
           <div className="mt-8">
             <BookingForm
+              serviceType={serviceType}
               date={date}
               time={selectedTime}
               duration={selectedDuration}

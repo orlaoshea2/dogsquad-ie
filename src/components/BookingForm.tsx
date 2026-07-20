@@ -24,13 +24,14 @@ const bookingFormSchema = z.object({
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 interface BookingFormProps {
+  serviceType?: "walk" | "visit";
   date: Date;
   time: string;
   duration: number;
   onBack?: () => void;
 }
 
-export function BookingForm({ date, time, duration, onBack }: BookingFormProps) {
+export function BookingForm({ serviceType = "walk", date, time, duration, onBack }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const submitBooking = useServerFn(createBooking);
@@ -50,9 +51,12 @@ export function BookingForm({ date, time, duration, onBack }: BookingFormProps) 
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
     try {
+      const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
+      const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
       await submitBooking({
         data: {
           ...values,
+          notes: mergedNotes,
           walkDate: format(date, "yyyy-MM-dd"),
           walkTime: time,
           durationMinutes: duration,
@@ -97,7 +101,7 @@ export function BookingForm({ date, time, duration, onBack }: BookingFormProps) 
           <div>
             <h3 className="font-display text-xl font-semibold text-foreground">Complete your booking</h3>
             <p className="text-sm text-muted-foreground">
-              {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes
+              {serviceType === "visit" ? "Home visit" : "Dog walk"} · {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes
             </p>
           </div>
         </div>
