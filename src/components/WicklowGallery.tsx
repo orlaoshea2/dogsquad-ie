@@ -1,6 +1,9 @@
 import beachImage from "@/assets/dogs-greystones-beach.jpg";
+import coastalImage from "@/assets/dogs-greystones-coastal.jpg";
 import cliffImage from "@/assets/dogs-cliff-walk.jpg";
+import delganyImage from "@/assets/dogs-delgany-park.jpg";
 import fieldsImage from "@/assets/dogs-kilcoole-fields.jpg";
+import laneImage from "@/assets/dogs-kilcoole-lane.jpg";
 
 const photos = [
   {
@@ -9,14 +12,29 @@ const photos = [
     caption: "Greystones beach adventures",
   },
   {
+    src: coastalImage,
+    alt: "Happy pack of dogs on a group walk along the Greystones coastline",
+    caption: "Coastal group walks",
+  },
+  {
     src: cliffImage,
     alt: "Pack of dogs on the coastal cliff walk between Greystones and Bray",
     caption: "Cliff walks with sea views",
   },
   {
+    src: delganyImage,
+    alt: "Joyful dogs playing together in a park in Delgany, Wicklow",
+    caption: "Delgany park playtime",
+  },
+  {
     src: fieldsImage,
     alt: "Dogs resting on a grassy trail in Kilcoole, County Wicklow",
     caption: "Kilcoole countryside trails",
+  },
+  {
+    src: laneImage,
+    alt: "Three happy dogs sitting on a country lane near Kilcoole, Wicklow",
+    caption: "Kilcoole country lanes",
   },
 ];
 
