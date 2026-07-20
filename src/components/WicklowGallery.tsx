@@ -1,41 +1,17 @@
-import beachImage from "@/assets/dogs-greystones-beach.jpg";
-import coastalImage from "@/assets/dogs-greystones-coastal.jpg";
-import cliffImage from "@/assets/dogs-cliff-walk.jpg";
-import delganyImage from "@/assets/dogs-delgany-park.jpg";
-import fieldsImage from "@/assets/dogs-kilcoole-fields.jpg";
-import laneImage from "@/assets/dogs-kilcoole-lane.jpg";
+import ds1 from "@/assets/ds-1.jpg";
+import ds2 from "@/assets/ds-2.jpg";
+import ds3 from "@/assets/ds-3.jpg";
+import ds4 from "@/assets/ds-4.jpg";
+import ds5 from "@/assets/ds-5.jpg";
+import ds6 from "@/assets/ds-6.jpg";
 
 const photos = [
-  {
-    src: beachImage,
-    alt: "Group of happy dogs playing on Greystones beach, Wicklow",
-    caption: "Greystones beach adventures",
-  },
-  {
-    src: coastalImage,
-    alt: "Happy pack of dogs on a group walk along the Greystones coastline",
-    caption: "Coastal group walks",
-  },
-  {
-    src: cliffImage,
-    alt: "Pack of dogs on the coastal cliff walk between Greystones and Bray",
-    caption: "Cliff walks with sea views",
-  },
-  {
-    src: delganyImage,
-    alt: "Joyful dogs playing together in a park in Delgany, Wicklow",
-    caption: "Delgany park playtime",
-  },
-  {
-    src: fieldsImage,
-    alt: "Dogs resting on a grassy trail in Kilcoole, County Wicklow",
-    caption: "Kilcoole countryside trails",
-  },
-  {
-    src: laneImage,
-    alt: "Three happy dogs sitting on a country lane near Kilcoole, Wicklow",
-    caption: "Kilcoole country lanes",
-  },
+  { src: ds1, alt: "Dog Squad pack on a Wicklow adventure", caption: "Out on the trails" },
+  { src: ds2, alt: "Happy dogs on a group walk in Wicklow", caption: "Group walks" },
+  { src: ds3, alt: "Dogs enjoying a coastal Wicklow walk", caption: "Coastal adventures" },
+  { src: ds4, alt: "Dog Squad walker with the pack", caption: "With the squad" },
+  { src: ds5, alt: "Happy dog on a Wicklow walk", caption: "Tails wagging" },
+  { src: ds6, alt: "Dogs exploring the Wicklow countryside", caption: "Wicklow countryside" },
 ];
 
 export function WicklowGallery() {
@@ -50,7 +26,7 @@ export function WicklowGallery() {
             Dogs loving Wicklow
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Real walks, real dogs, real Wicklow scenery — from Greystones beach to the Kilcoole coast.
+            Real walks, real dogs — from the Greystones cliff walk to the Kilcoole strand.
           </p>
         </div>
 
@@ -66,8 +42,6 @@ export function WicklowGallery() {
                   alt={photo.alt}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
-                  width={1280}
-                  height={853}
                 />
               </div>
               <figcaption className="bg-card p-4 text-center font-display text-sm font-semibold text-card-foreground">
