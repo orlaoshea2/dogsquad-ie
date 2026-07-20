@@ -67,10 +67,10 @@ export const createBooking = createServerFn({ method: "POST" })
     return { id: booking.id };
   });
 
+const slotSchema = z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) });
+
 export const getAvailableSlots = createServerFn({ method: "POST" })
-  .inputValidator((input) =>
-    z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).parse(input),
-  )
+  .validator({ parse: slotSchema.parse })
   .handler(async ({ data }) => {
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
