@@ -46,7 +46,7 @@ export function BookingEnquiry() {
       dogBreed: "",
       preferredDate: "",
       preferredTime: "morning",
-      duration: "60",
+      duration: "90",
       notes: "",
     },
   });
