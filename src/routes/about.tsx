@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { Heart, Award, Users, ArrowRight } from "lucide-react";
-import aboutImage from "@/assets/about-walker.jpg";
+import aboutImage from "@/assets/ds-2.jpg";
 import coastImage from "@/assets/wicklow-coast.jpg";
 
 export const Route = createFileRoute("/about")({
@@ -39,7 +39,7 @@ function AboutPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
                   src={aboutImage}
-                  alt="A professional dog walker with happy dogs in a park"
+                  alt="Happy Dog Squad pack on a Wicklow walk"
                   className="h-full w-full object-cover"
                 />
               </div>
