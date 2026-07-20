@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useServerFn } from "@tanstack/react-start";
+import { Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,8 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn } from "lucide-react";
 import { createBooking } from "@/lib/bookings.functions";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -35,6 +38,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const submitBooking = useServerFn(createBooking);
+  const { user, profile } = useAuth();
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingFormSchema),
@@ -47,6 +51,15 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
       notes: "",
     },
   });
+
+  // Prefill from profile when signed in
+  useEffect(() => {
+    if (user) {
+      form.setValue("email", profile?.email ?? user.email ?? "");
+      if (profile?.full_name) form.setValue("name", profile.full_name);
+      if (profile?.phone) form.setValue("phone", profile.phone);
+    }
+  }, [user, profile, form]);
 
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
@@ -62,6 +75,17 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           durationMinutes: duration,
         },
       });
+
+      // Save/update profile details for signed-in customers
+      if (user) {
+        await supabase.from("profiles").upsert({
+          id: user.id,
+          full_name: values.name,
+          phone: values.phone ?? "",
+          email: values.email,
+        });
+      }
+
       setSuccess(true);
       form.reset();
     } catch (err) {
@@ -107,6 +131,23 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
         </div>
       </CardHeader>
       <CardContent>
+        {user ? (
+          <div className="mb-4 flex items-center gap-2 rounded-md border border-teal/30 bg-teal/5 px-3 py-2 text-sm text-foreground">
+            <UserCheck className="h-4 w-4 text-teal" />
+            <span>Signed in as <strong>{profile?.email ?? user.email}</strong> — your details are prefilled.</span>
+          </div>
+        ) : (
+          <div className="mb-4 flex items-center justify-between gap-2 rounded-md border border-border bg-muted/40 px-3 py-2 text-sm">
+            <span className="text-muted-foreground">Have an account? Sign in to skip filling in your details.</span>
+            <Link
+              to="/auth"
+              className="inline-flex shrink-0 items-center gap-1 font-semibold text-ocean hover:underline"
+            >
+              <LogIn className="h-3.5 w-3.5" /> Sign in
+            </Link>
+          </div>
+        )}
+
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="name">Your name</Label>
