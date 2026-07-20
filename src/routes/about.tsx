@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { Heart, Award, Users, ArrowRight } from "lucide-react";
 import aboutImage from "@/assets/ds-2.jpg";
-import coastImage from "@/assets/wicklow-coast.jpg";
+import coastImage from "@/assets/greystones-today.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -81,7 +81,7 @@ function AboutPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
                 <img
                   src={coastImage}
-                  alt="Greystones coast and Wicklow mountains"
+                  alt="Greystones harbour on a sunny day"
                   className="h-full w-full object-cover"
                   loading="lazy"
                   width={1280}
