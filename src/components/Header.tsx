@@ -102,6 +102,23 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            {user ? (
+              <Button
+                variant="outline"
+                onClick={() => { setMobileOpen(false); handleSignOut(); }}
+                className="mt-1"
+              >
+                <LogOut className="mr-2 h-4 w-4" /> Sign out ({user.email})
+              </Button>
+            ) : (
+              <Link
+                to="/auth"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex items-center gap-1 text-base font-medium text-muted-foreground hover:text-foreground"
+              >
+                <LogIn className="h-4 w-4" /> Sign in
+              </Link>
+            )}
             <Button
               onClick={() => {
                 setMobileOpen(false);
@@ -113,6 +130,7 @@ export function Header() {
             </Button>
           </nav>
         </div>
+
       )}
     </header>
   );
