@@ -21,10 +21,10 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:min-h-[620px] sm:px-6 lg:min-h-[720px] lg:px-8">
-        <h1 className="font-display text-4xl font-extrabold tracking-tight text-primary-foreground drop-shadow-lg sm:text-5xl lg:text-6xl">
+        <h1 className="font-display text-4xl font-extrabold tracking-tight text-primary-foreground [text-shadow:0_3px_12px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
           Every Walk an Adventure
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-primary-foreground/95 drop-shadow-md sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg font-semibold text-primary-foreground [text-shadow:0_2px_8px_rgba(0,0,0,0.4)] sm:text-xl">
           Trusted dog walking, house visits and dog taxi services in Greystones & Co. Wicklow.
           Local, experienced, and completely dog-focused — because every tail wag matters.
         </p>
