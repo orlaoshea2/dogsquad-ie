@@ -20,10 +20,10 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:min-h-[620px] sm:px-6 lg:min-h-[720px] lg:px-8">
-        <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+        <h1 className="font-display text-4xl font-extrabold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
           Every Walk an Adventure
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/90 sm:text-xl">
           Trusted dog walking, house visits and dog taxi services in Greystones & Co. Wicklow.
           Local, experienced, and completely dog-focused — because every tail wag matters.
         </p>
@@ -31,7 +31,7 @@ export function Hero() {
           <Button
             asChild
             size="lg"
-            className="bg-teal text-primary-foreground hover:bg-teal-light"
+            className="bg-teal text-primary-foreground hover:bg-teal/80"
           >
             <a href="#book" onClick={(e) => {
               e.preventDefault();
@@ -44,7 +44,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+              className="border-primary-foreground/40 bg-primary-foreground/10 text-primary-foreground backdrop-blur-sm hover:bg-primary-foreground/20"
             >
               Explore services
             </Button>
