@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 type ServiceType = "walk" | "visit";
 
 const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
-  walk: [30, 60, 90],
+  walk: [60],
   visit: [30, 60],
 };
 
@@ -75,10 +75,10 @@ export function BookingCalendar() {
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online in 60 seconds</p>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Pick a date, time & duration
+            Pick a date & time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Choose a dog walk or a home visit in Greystones, Delgany or Kilcoole, select your slot, and we'll confirm within minutes.
+            Dog walks are €20 for a full 60 minutes. Home visits are available too. Choose your slot and we'll confirm within minutes.
           </p>
         </div>
 
@@ -191,7 +191,7 @@ export function BookingCalendar() {
                               : "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5",
                           )}
                         >
-                          {d} min
+                          {serviceType === "walk" ? "€20 — " : ""}{d} min
                         </button>
                       ))}
                     </div>

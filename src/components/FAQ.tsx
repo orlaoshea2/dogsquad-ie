@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "How long are the walks?",
     answer:
-      "Solo walks can be 30, 60, or 90 minutes. Group adventures are usually 60 or 90 minutes. Puppy visits are shorter at 20 or 45 minutes to suit young dogs.",
+      "All dog walks are a full 60 minutes. Puppy visits are shorter at 20 minutes, and home visits are 30 or 60 minutes to suit your schedule.",
   },
   {
     question: "What happens if I need to cancel?",

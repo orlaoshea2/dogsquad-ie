@@ -8,19 +8,19 @@ const services = [
     icon: Footprints,
     title: "Solo Walks",
     description: "One-on-one attention for dogs who prefer their own pace or need focused training.",
-    price: "€25 / 30 min · €35 / 60 min · €45 / 90 min",
+    price: "€20 / 60 min",
   },
   {
     icon: Users,
     title: "Group Adventures",
     description: "Social walks with a small pack of friendly dogs. Great exercise and socialisation.",
-    price: "€18 / 60 min · €25 / 90 min",
+    price: "€20 / 60 min",
   },
   {
     icon: Baby,
     title: "Puppy Visits",
     description: "Short visits for young pups including feeding, play, and toilet breaks.",
-    price: "€20 / 20 min · €30 / 45 min",
+    price: "€20 / 20 min",
   },
   {
     icon: Clock,

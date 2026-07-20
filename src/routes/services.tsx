@@ -12,14 +12,14 @@ const serviceDetails = [
     icon: Footprints,
     title: "Solo Walks",
     description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement.",
-    price: "€25 / 30 min · €35 / 60 min",
+    price: "€20 / 60 min",
     features: ["Personalised route", "1-on-1 attention", "Training support"],
   },
   {
     icon: Users,
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
-    price: "€18 / 60 min",
+    price: "€20 / 60 min",
     features: ["Max 4 dogs per group", "Matching by temperament", "Photo updates"],
   },
   {
@@ -92,16 +92,8 @@ function ServicesPage() {
                   <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 30 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€25</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€35</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€45</span>
+                      <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
                 </div>
@@ -117,11 +109,7 @@ function ServicesPage() {
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€18</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€25</span>
+                      <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
                 </div>
