@@ -7,8 +7,8 @@ import { useAuth } from "@/hooks/useAuth";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
   { to: "/booking", label: "Booking" },
 ];
