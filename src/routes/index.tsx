@@ -4,7 +4,8 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
-import { BookingCalendar } from "@/components/BookingCalendar";
+import { BookingEnquiry } from "@/components/BookingEnquiry";
+import { InstagramReels } from "@/components/InstagramReels";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,7 +26,8 @@ function HomePage() {
       <main className="flex-1">
         <Hero />
         <Services />
-        <BookingCalendar />
+        <BookingEnquiry />
+        <InstagramReels />
         <Testimonials />
       </main>
       <Footer />
