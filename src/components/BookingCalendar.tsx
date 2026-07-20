@@ -157,9 +157,11 @@ export function BookingCalendar() {
                   </div>
 
                   <div className="pt-4">
-                    <p className="mb-2 text-sm font-medium text-foreground">Walk duration</p>
+                    <p className="mb-2 text-sm font-medium text-foreground">
+                      {serviceType === "walk" ? "Walk" : "Visit"} duration
+                    </p>
                     <div className="flex gap-2">
-                      {DURATIONS.map((d) => (
+                      {DURATIONS_BY_SERVICE[serviceType].map((d) => (
                         <button
                           key={d}
                           onClick={() => setSelectedDuration(d)}
