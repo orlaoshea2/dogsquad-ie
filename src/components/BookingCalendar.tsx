@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 type ServiceType = "walk" | "visit";
 
 const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
-  walk: [30, 60, 90],
+  walk: [60],
   visit: [30, 60],
 };
 
