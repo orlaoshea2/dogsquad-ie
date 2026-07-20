@@ -1,7 +1,9 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, PawPrint, Phone } from "lucide-react";
+import { Menu, X, PawPrint, Phone, LogIn, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+
 
 const navLinks = [
   { to: "/", label: "Home" },
