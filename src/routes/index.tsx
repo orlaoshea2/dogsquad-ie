@@ -29,6 +29,7 @@ function HomePage() {
         <Services />
         <BookingEnquiry />
         <InstagramReels />
+        <FAQ />
         <Testimonials />
       </main>
       <Footer />
