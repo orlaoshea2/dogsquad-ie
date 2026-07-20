@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { PawPrint, Mail, Phone, MapPin } from "lucide-react";
+import { PawPrint, Mail, Phone, MapPin, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
@@ -36,6 +36,17 @@ export function Footer() {
               <li className="flex items-center gap-2 text-primary-foreground/80">
                 <Mail className="h-4 w-4" />
                 <span>hello@dogsquad.ie</span>
+              </li>
+              <li className="flex items-center gap-2 text-primary-foreground/80">
+                <Instagram className="h-4 w-4" />
+                <a
+                  href="https://www.instagram.com/dogsquad_wicklow/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-foreground"
+                >
+                  @dogsquad_wicklow
+                </a>
               </li>
               <li className="flex items-start gap-2 text-primary-foreground/80">
                 <MapPin className="h-4 w-4 mt-0.5" />
