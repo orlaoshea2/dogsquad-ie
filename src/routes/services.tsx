@@ -95,6 +95,10 @@ function ServicesPage() {
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
                       <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€25</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -110,6 +114,10 @@ function ServicesPage() {
                     <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
                       <span className="font-display font-semibold text-ocean">€20</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€25</span>
                     </li>
                   </ul>
                 </div>
