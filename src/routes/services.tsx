@@ -12,15 +12,15 @@ const serviceDetails = [
     icon: Footprints,
     title: "Solo Walks",
     description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement.",
-    price: "€20 / 60 min · €25 / 90 min",
-    features: ["Personalised route", "1-on-1 attention", "Training support"],
+    price: "€20 / 90 min",
+    features: ["Personalised route", "1-on-1 attention", "Pick-up & drop-off included"],
   },
   {
     icon: Users,
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
-    price: "€20 / 60 min · €25 / 90 min",
-    features: ["Max 4 dogs per group", "Matching by temperament", "Photo updates"],
+    price: "€20 / 90 min",
+    features: ["Max 4 dogs per group", "Matching by temperament", "Pick-up & drop-off included"],
   },
   {
     icon: Baby,
@@ -37,6 +37,7 @@ const serviceDetails = [
     features: ["Feeding & play", "Toilet breaks", "Medication support"],
   },
 ];
+
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -76,7 +77,8 @@ function ServicesPage() {
                 Clear pricing packages
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                Simple rates with no hidden fees. Choose the duration that fits your dog's energy and your schedule.
+                Simple, flat rate for dog walks — €20 for a full 90 minutes with free pick-up and drop-off in Greystones, Delgany & Kilcoole.
+
               </p>
             </div>
 
@@ -89,15 +91,11 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Solo Walks</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement. Pick-up & drop-off included.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€20</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€25</span>
+                      <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
                 </div>
@@ -109,18 +107,15 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Group Adventures</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 4 dogs. Social, fun and great exercise.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 4 dogs. Social, fun and great exercise. Pick-up & drop-off included.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€20</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€25</span>
+                      <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
                 </div>
+
               </div>
 
               <div className="grid divide-y border-t border-border/60 md:grid-cols-2 md:divide-x md:divide-y-0">

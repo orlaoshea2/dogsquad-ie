@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "How long are the walks?",
     answer:
-      "All dog walks are a full 60 minutes. Puppy visits are shorter at 20 minutes, and home visits are 30 or 60 minutes to suit your schedule.",
+      "All dog walks are a full 90 minutes for €20, including free pick-up and drop-off. Home visits are 30 or 60 minutes to suit your schedule.",
   },
   {
     question: "What happens if I need to cancel?",
