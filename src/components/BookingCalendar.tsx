@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,7 +18,7 @@ const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
 
 export function BookingCalendar() {
   const [serviceType, setServiceType] = useState<ServiceType>("walk");
-  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [date, setDate] = useState<Date | undefined>(() => addDays(startOfDay(new Date()), 1));
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<number>(60);
   const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
@@ -26,6 +26,25 @@ export function BookingCalendar() {
   const [showForm, setShowForm] = useState(false);
 
   const fetchSlots = useServerFn(getAvailableSlots);
+
+  useEffect(() => {
+    if (!date) return;
+    let cancelled = false;
+    (async () => {
+      setLoading(true);
+      try {
+        const dateStr = format(date, "yyyy-MM-dd");
+        const result = await fetchSlots({ data: { date: dateStr } });
+        if (!cancelled) setSlots(result);
+      } catch (err) {
+        console.error("Failed to fetch slots:", err);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDateSelect = async (selected: Date | undefined) => {
     setDate(selected);
