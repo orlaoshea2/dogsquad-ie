@@ -51,9 +51,12 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
     try {
+      const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
+      const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
       await submitBooking({
         data: {
           ...values,
+          notes: mergedNotes,
           walkDate: format(date, "yyyy-MM-dd"),
           walkTime: time,
           durationMinutes: duration,
