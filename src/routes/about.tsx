@@ -39,7 +39,7 @@ function AboutPage() {
                   I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
               </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
+              <div className="mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
                   src={aboutImage.url}
                   alt="Dog Squad walker with two happy dogs on a grassy lawn"
