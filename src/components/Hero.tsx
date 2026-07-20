@@ -14,7 +14,6 @@ export function Hero() {
           className="h-full w-full object-cover"
           width={2040}
           height={1148}
-          priority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ocean/70 via-ocean/50 to-ocean/70" />
       </div>
