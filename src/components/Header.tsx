@@ -115,13 +115,24 @@ export function Header() {
               </Link>
             ))}
             {user ? (
-              <Button
-                variant="outline"
-                onClick={() => { setMobileOpen(false); handleSignOut(); }}
-                className="mt-1"
-              >
-                <LogOut className="mr-2 h-4 w-4" /> Sign out ({user.email})
-              </Button>
+              <>
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    onClick={() => setMobileOpen(false)}
+                    className="inline-flex items-center gap-1 text-base font-semibold text-ocean"
+                  >
+                    <ShieldCheck className="h-4 w-4" /> Admin
+                  </Link>
+                )}
+                <Button
+                  variant="outline"
+                  onClick={() => { setMobileOpen(false); handleSignOut(); }}
+                  className="mt-1"
+                >
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out ({user.email})
+                </Button>
+              </>
             ) : (
               <Link
                 to="/auth"
