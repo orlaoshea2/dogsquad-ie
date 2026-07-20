@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/about-walker.jpg";
+import heroImage from "@/assets/hero-dogs-glendalough.jpg";
 
 const benefits = [
   "Insured & experienced walkers",
