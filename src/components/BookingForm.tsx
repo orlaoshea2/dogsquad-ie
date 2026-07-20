@@ -24,13 +24,14 @@ const bookingFormSchema = z.object({
 type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 interface BookingFormProps {
+  serviceType?: "walk" | "visit";
   date: Date;
   time: string;
   duration: number;
   onBack?: () => void;
 }
 
-export function BookingForm({ date, time, duration, onBack }: BookingFormProps) {
+export function BookingForm({ serviceType = "walk", date, time, duration, onBack }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const submitBooking = useServerFn(createBooking);
