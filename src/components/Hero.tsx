@@ -36,11 +36,18 @@ export function Hero() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/booking">
-                <Button size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
+              <Button
+                asChild
+                size="lg"
+                className="bg-ocean text-primary-foreground hover:bg-ocean-light"
+              >
+                <a href="#book" onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
+                }}>
                   Book a walk <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+                </a>
+              </Button>
               <Link to="/services">
                 <Button size="lg" variant="outline" className="border-ocean text-ocean hover:bg-ocean/5">
                   Explore services

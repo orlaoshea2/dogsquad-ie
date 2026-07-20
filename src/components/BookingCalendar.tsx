@@ -51,15 +51,15 @@ export function BookingCalendar() {
   const disabledDays = (day: Date) => isBefore(day, today);
 
   return (
-    <section className="py-16 sm:py-24">
+    <section id="book" className="scroll-mt-24 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online</p>
+          <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online in 60 seconds</p>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Pick a service, date and time
+            Pick a date, time & duration
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Choose a dog walk or a home visit, pick your slot, and we'll confirm within minutes.
+            Choose a dog walk or a home visit in Greystones, Delgany or Kilcoole, select your slot, and we'll confirm within minutes.
           </p>
         </div>
 
