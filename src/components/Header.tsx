@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { Menu, X, Phone, LogIn, LogOut, User as UserIcon, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import logoAsset from "@/assets/dogsquad-logo.png.asset.json";
@@ -18,7 +18,7 @@ const navLinks = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
-  const { user, signOut } = useAuth();
+  const { user, isAdmin, signOut } = useAuth();
   const handleSignOut = async () => {
     await signOut();
     router.navigate({ to: "/" });
