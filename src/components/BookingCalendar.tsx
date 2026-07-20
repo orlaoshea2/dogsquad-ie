@@ -18,7 +18,7 @@ const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
 
 const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
   walk: { 90: "€20" },
-  visit: { 30: "€20", 60: "€40" },
+  visit: { 30: "€20", 60: "€30" },
 };
 
 export function BookingCalendar() {
