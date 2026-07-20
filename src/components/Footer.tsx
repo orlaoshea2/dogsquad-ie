@@ -12,7 +12,7 @@ export function Footer() {
               <span>Dog Squad</span>
             </Link>
             <p className="mt-3 max-w-xs text-sm text-primary-foreground/80">
-              Professional, reliable dog walking in Dublin. Your dog's happiness is our priority.
+              Professional, reliable dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-primary-foreground/80">
                 <MapPin className="h-4 w-4 mt-0.5" />
-                <span>Dublin, Ireland</span>
+                <span>Greystones, Co. Wicklow</span>
               </li>
             </ul>
           </div>

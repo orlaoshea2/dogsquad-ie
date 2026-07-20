@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/about-walker.jpg";
+import heroImage from "@/assets/hero-wicklow.jpg";
 
 const benefits = [
   "Insured & experienced walkers",
@@ -16,14 +16,14 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="max-w-2xl">
             <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">
-              Dublin's trusted dog walkers
+              Greystones · Delgany · Kilcoole
             </p>
             <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Happy dogs. <span className="text-ocean">Reliable walks.</span>
+              Happy dogs. <span className="text-ocean">Coastal walks.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Book a professional dog walker in seconds. We treat your pup like family —
-              daily walks, group adventures, and puppy visits across Dublin.
+              Wicklow's friendly local dog walker. Cliff-walk adventures, beach strolls
+              and puppy visits across Greystones, Delgany and Kilcoole.
             </p>
             <ul className="mt-6 space-y-3">
               {benefits.map((benefit) => (
