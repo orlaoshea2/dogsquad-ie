@@ -10,7 +10,10 @@ export function BookNowButton() {
       const bookSection = document.getElementById("book");
       if (!bookSection) return;
       const rect = bookSection.getBoundingClientRect();
-      setVisible(rect.top > window.innerHeight || rect.bottom < 0);
+      // Show once the user has scrolled past the calendar section, or when the calendar is below the viewport
+      const calendarOutOfView = rect.top > window.innerHeight || rect.bottom < 0;
+      const scrolledPastCalendar = rect.bottom < 0 && window.scrollY > 400;
+      setVisible(calendarOutOfView || scrolledPastCalendar);
     };
 
     onScroll();
