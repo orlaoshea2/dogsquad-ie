@@ -11,9 +11,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About | Dog Squad Wicklow" },
-      { name: "description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
+      { name: "description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
       { property: "og:title", content: "About | Dog Squad Wicklow" },
-      { property: "og:description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
+      { property: "og:description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
     ],
   }),
   component: AboutPage,
@@ -28,12 +28,15 @@ function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About us</p>
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About me</p>
                 <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                  Dogs aren't just clients — they're family
+                  A lifetime with animals, dedicated to your dog
                 </h1>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  Dog Squad started with a simple mission: give Wicklow dogs the coastal exercise, love and adventure they deserve — from the Greystones cliff walk to the Kilcoole strand — while giving owners total peace of mind.
+                  I'm a Wicklow-based dog walker with a BSc in Animal Science and a lifelong passion for animals and dog care. I gained valuable hands-on experience working on Sheikh Mohammed bin Rashid Al Maktoum's thoroughbred stud, where I developed a deep understanding of animal welfare, care, and handling.
+                </p>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
               </div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
@@ -52,16 +55,16 @@ function AboutPage() {
             <div className="grid gap-8 md:grid-cols-3">
               <div className="rounded-2xl bg-card p-6 shadow-sm">
                 <Heart className="h-8 w-8 text-teal" />
-                <h3 className="mt-4 font-display text-xl font-semibold">Loving care</h3>
+                <h3 className="mt-4 font-display text-xl font-semibold">Personal attention</h3>
                 <p className="mt-2 text-muted-foreground">
-                  We get to know every dog's personality, fears, and favourite games before the first walk.
+                  I get to know every dog's personality, fears, and favourite games before the first walk.
                 </p>
               </div>
               <div className="rounded-2xl bg-card p-6 shadow-sm">
                 <Award className="h-8 w-8 text-teal" />
-                <h3 className="mt-4 font-display text-xl font-semibold">Experienced team</h3>
+                <h3 className="mt-4 font-display text-xl font-semibold">Qualified & insured</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Every walker is trained in canine first aid, behaviour, and safe handling.
+                  BSc Animal Science, Dog First Aid certified, and IMDT Professional Accredited Training completed.
                 </p>
               </div>
               <div className="rounded-2xl bg-card p-6 shadow-sm">
@@ -111,7 +114,7 @@ function AboutPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-3xl font-bold">Join the pack</h2>
             <p className="mt-4 text-primary-foreground/80">
-              See why Wicklow dog owners in Greystones, Delgany and Kilcoole trust Dog Squad with their best friends.
+              See why Wicklow dog owners in Greystones, Delgany and Kilcoole trust me with their best friends.
             </p>
             <Link to="/booking" className="mt-6 inline-block">
               <Button size="lg" className="bg-primary-foreground text-ocean hover:bg-primary-foreground/90">
