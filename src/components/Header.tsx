@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { Menu, X, Phone, LogIn, LogOut, User as UserIcon, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import logoAsset from "@/assets/dogsquad-logo.png.asset.json";
@@ -18,7 +18,7 @@ const navLinks = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
-  const { user, signOut } = useAuth();
+  const { user, isAdmin, signOut } = useAuth();
   const handleSignOut = async () => {
     await signOut();
     router.navigate({ to: "/" });
@@ -59,6 +59,14 @@ export function Header() {
           </a>
           {user ? (
             <>
+              {isAdmin && (
+                <Link
+                  to="/admin"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-ocean hover:text-ocean-light"
+                >
+                  <ShieldCheck className="h-4 w-4" /> Admin
+                </Link>
+              )}
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <UserIcon className="h-4 w-4" />
                 {user.email}
@@ -107,13 +115,24 @@ export function Header() {
               </Link>
             ))}
             {user ? (
-              <Button
-                variant="outline"
-                onClick={() => { setMobileOpen(false); handleSignOut(); }}
-                className="mt-1"
-              >
-                <LogOut className="mr-2 h-4 w-4" /> Sign out ({user.email})
-              </Button>
+              <>
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    onClick={() => setMobileOpen(false)}
+                    className="inline-flex items-center gap-1 text-base font-semibold text-ocean"
+                  >
+                    <ShieldCheck className="h-4 w-4" /> Admin
+                  </Link>
+                )}
+                <Button
+                  variant="outline"
+                  onClick={() => { setMobileOpen(false); handleSignOut(); }}
+                  className="mt-1"
+                >
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out ({user.email})
+                </Button>
+              </>
             ) : (
               <Link
                 to="/auth"
