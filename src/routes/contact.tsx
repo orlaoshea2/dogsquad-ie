@@ -41,7 +41,9 @@ function ContactPage() {
                     <Phone className="h-6 w-6 text-teal" />
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold">Phone</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">+353 1 234 5678</p>
+                  <a href="tel:+353866063416" className="mt-2 text-sm font-semibold text-ocean hover:underline">
+                    086 606 3416
+                  </a>
                 </CardContent>
               </Card>
               <Card className="border-border/60 bg-card">
