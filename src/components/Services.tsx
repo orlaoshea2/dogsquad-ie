@@ -24,9 +24,9 @@ const services = [
   },
   {
     icon: Clock,
-    title: "Pet Sitting",
-    description: "Overnight or daytime sitting in your home so your dog stays comfortable.",
-    price: "€25 / 30 min visit · €45 / overnight",
+    title: "Home Visits",
+    description: "Drop-in visits for feeding, play, toilet breaks and company while you're out.",
+    price: "€25 / 30 min · €35 / 60 min",
   },
 ];
 

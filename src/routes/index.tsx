@@ -12,9 +12,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
-      { name: "description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and pet sitting." },
+      { name: "description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and home visits." },
       { property: "og:title", content: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
-      { property: "og:description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and pet sitting." },
+      { property: "og:description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and home visits." },
     ],
   }),
   component: HomePage,
