@@ -39,7 +39,7 @@ function AboutPage() {
                   I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
               </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
+              <div className="mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
                   src={aboutImage.url}
                   alt="Dog Squad walker with two happy dogs on a grassy lawn"
@@ -81,7 +81,7 @@ function AboutPage() {
         <section className="py-16 sm:py-24 bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
+              <div className="mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
                 <img
                   src={coastImage}
                   alt="Greystones harbour on a sunny day"
