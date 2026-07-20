@@ -61,8 +61,8 @@
 :root {
   --radius: 0.75rem;
 
-  --font-heading: "Outfit", sans-serif;
-  --font-body: "Figtree", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
 
   --background: oklch(0.98 0.005 245);
   --foreground: oklch(0.2 0.04 245);
@@ -75,7 +75,7 @@
   --secondary: oklch(0.95 0.02 220);
   --secondary-foreground: oklch(0.28 0.09 245);
   --muted: oklch(0.94 0.015 230);
-  --muted-foreground: oklch(0.52 0.03 235);
+  --muted-foreground: oklch(0.42 0.03 235);
   --accent: oklch(0.55 0.12 195);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.55 0.2 25);
