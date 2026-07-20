@@ -27,7 +27,7 @@ const bookingFormSchema = z.object({
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
 });
 
-type BookingFormValues = z.infer<typeof bookingFormSchema>;
+type BookingFormValues = z.input<typeof bookingFormSchema>;
 
 interface BookingFormProps {
   serviceType?: "walk" | "visit";
