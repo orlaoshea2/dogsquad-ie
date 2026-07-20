@@ -28,12 +28,10 @@ function HomePage() {
       <main className="flex-1">
         <Hero />
         <Services />
-        <WicklowGallery />
         <BookingEnquiry />
         <InstagramReels />
         <FAQ />
         <Testimonials />
-
       </main>
       <Footer />
     </div>
