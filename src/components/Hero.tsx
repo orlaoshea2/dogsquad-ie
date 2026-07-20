@@ -1,76 +1,55 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-dogs-glendalough.jpg";
-
-const benefits = [
-  "Insured & experienced walkers",
-  "GPS-tracked walks",
-  "Same-day slots available",
-];
+import { ArrowRight } from "lucide-react";
+import heroImage from "@/assets/dogsquad-hero.jpg";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero py-16 sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="max-w-2xl">
-            <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">
-              Greystones · Delgany · Kilcoole
-            </p>
-            <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Happy dogs. <span className="text-ocean">Coastal walks.</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Wicklow's friendly local dog walker. Cliff-walk adventures, beach strolls
-              and puppy visits across Greystones, Delgany and Kilcoole.
-            </p>
-            <ul className="mt-6 space-y-3">
-              {benefits.map((benefit) => (
-                <li key={benefit} className="flex items-center gap-3 text-foreground">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal/10">
-                    <Check className="h-4 w-4 text-teal" />
-                  </span>
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-ocean text-primary-foreground hover:bg-ocean-light"
-              >
-                <a href="#book" onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
-                }}>
-                  Book a walk <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Link to="/services">
-                <Button size="lg" variant="outline" className="border-ocean text-ocean hover:bg-ocean/5">
-                  Explore services
-                </Button>
-              </Link>
-            </div>
-          </div>
+    <section className="relative min-h-[520px] sm:min-h-[620px] lg:min-h-[720px]">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Happy dogs on a group walk across the Wicklow hills"
+          className="h-full w-full object-cover"
+          width={2040}
+          height={1148}
+          priority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ocean/70 via-ocean/50 to-ocean/70" />
+      </div>
 
-          <div className="relative">
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
-              <img
-                src={heroImage}
-                alt="Happy group of dogs at Glendalough, Wicklow"
-                className="h-full w-full object-cover"
-                width={1280}
-                height={960}
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-xl bg-card p-4 shadow-lg sm:block">
-              <p className="font-display text-3xl font-bold text-ocean">2,000+</p>
-              <p className="text-sm text-muted-foreground">walks completed</p>
-            </div>
-          </div>
+      {/* Content */}
+      <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:min-h-[620px] sm:px-6 lg:min-h-[720px] lg:px-8">
+        <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Every Walk an Adventure
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">
+          Trusted dog walking, house visits and dog taxi services in Greystones & Co. Wicklow.
+          Local, experienced, and completely dog-focused — because every tail wag matters.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="bg-teal text-primary-foreground hover:bg-teal-light"
+          >
+            <a href="#book" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
+            }}>
+              Book a walk <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+          <Link to="/services">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/40 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            >
+              Explore services
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
