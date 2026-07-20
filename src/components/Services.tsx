@@ -7,14 +7,14 @@ const services = [
   {
     icon: Footprints,
     title: "Solo Walks",
-    description: "One-on-one attention for dogs who prefer their own pace or need focused training.",
-    price: "€20 / 60 min · €25 / 90 min",
+    description: "One-on-one attention for dogs who prefer their own pace or need focused training. Pick-up & drop-off included.",
+    price: "€20 / 90 min",
   },
   {
     icon: Users,
     title: "Group Adventures",
-    description: "Social walks with a small pack of friendly dogs. Great exercise and socialisation.",
-    price: "€20 / 60 min · €25 / 90 min",
+    description: "Social walks with a small pack of friendly dogs. Pick-up & drop-off included.",
+    price: "€20 / 90 min",
   },
   {
     icon: Baby,
@@ -29,6 +29,7 @@ const services = [
     price: "€20 / 30 min · €40 / 60 min",
   },
 ];
+
 
 export function Services() {
   return (
