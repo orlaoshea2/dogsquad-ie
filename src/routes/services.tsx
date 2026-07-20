@@ -68,6 +68,110 @@ function ServicesPage() {
 
         <Services />
 
+        <section className="py-16 sm:py-24 bg-muted/30">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Pricing</p>
+              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Clear pricing packages
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                Simple rates with no hidden fees. Choose the duration that fits your dog's energy and your schedule.
+              </p>
+            </div>
+
+            <div className="mt-12 overflow-hidden rounded-xl border border-border/60 bg-card shadow-sm">
+              <div className="grid divide-y md:grid-cols-2 md:divide-x md:divide-y-0">
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                      <Footprints className="h-5 w-5 text-teal" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-card-foreground">Solo Walks</h3>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement.</p>
+                  <ul className="mt-4 space-y-3">
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 30 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€25</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€35</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€45</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                      <Users className="h-5 w-5 text-teal" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-card-foreground">Group Adventures</h3>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 4 dogs. Social, fun and great exercise.</p>
+                  <ul className="mt-4 space-y-3">
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€18</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€25</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="grid divide-y border-t border-border/60 md:grid-cols-2 md:divide-x md:divide-y-0">
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                      <Baby className="h-5 w-5 text-teal" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-card-foreground">Puppy Visits</h3>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">Feeding, play, toilet breaks and cuddles for young puppies.</p>
+                  <ul className="mt-4 space-y-3">
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 20 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€20</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 45 minutes</span>
+                      <span className="font-display font-semibold text-ocean">€30</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                      <Clock className="h-5 w-5 text-teal" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-card-foreground">Pet Sitting</h3>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">Care in your own home so your dog keeps their routine.</p>
+                  <ul className="mt-4 space-y-3">
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 30 minute visit</span>
+                      <span className="font-display font-semibold text-ocean">€25</span>
+                    </li>
+                    <li className="flex items-center justify-between text-foreground">
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> Overnight</span>
+                      <span className="font-display font-semibold text-ocean">€45</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-2">
