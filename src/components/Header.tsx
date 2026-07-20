@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, PawPrint } from "lucide-react";
+import { Menu, X, PawPrint, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -37,7 +37,14 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-4 md:flex">
+          <a
+            href="tel:+353866063416"
+            className="flex items-center gap-1.5 text-sm font-semibold text-ocean hover:text-ocean-light"
+          >
+            <Phone className="h-4 w-4" />
+            086 606 3416
+          </a>
           <Button
             onClick={() => router.navigate({ to: "/booking" })}
             className="bg-ocean text-primary-foreground hover:bg-ocean-light"
