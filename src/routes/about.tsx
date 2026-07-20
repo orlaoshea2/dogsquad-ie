@@ -41,8 +41,8 @@ function AboutPage() {
               </div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
-                  src={aboutImage}
-                  alt="Happy Dog Squad pack on a Wicklow walk"
+                  src={aboutImage.url}
+                  alt="Dog Squad walker with two happy dogs on a grassy lawn"
                   className="h-full w-full object-cover"
                 />
               </div>
