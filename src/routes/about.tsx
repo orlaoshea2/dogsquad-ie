@@ -55,9 +55,9 @@ function AboutPage() {
             <div className="grid gap-8 md:grid-cols-3">
               <div className="rounded-2xl bg-card p-6 shadow-sm">
                 <Heart className="h-8 w-8 text-teal" />
-                <h3 className="mt-4 font-display text-xl font-semibold">Loving care</h3>
+                <h3 className="mt-4 font-display text-xl font-semibold">Personal attention</h3>
                 <p className="mt-2 text-muted-foreground">
-                  We get to know every dog's personality, fears, and favourite games before the first walk.
+                  I get to know every dog's personality, fears, and favourite games before the first walk.
                 </p>
               </div>
               <div className="rounded-2xl bg-card p-6 shadow-sm">
