@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CalendarPlus } from "lucide-react";
 
 export function BookNowButton() {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
+  const pathname = router.state.location.pathname;
 
   useEffect(() => {
     const onScroll = () => {
-      const bookSection = document.getElementById("book");
-      if (!bookSection) return;
-      const rect = bookSection.getBoundingClientRect();
-      const pastCalendar = rect.bottom < 0;
-      const calendarBelowViewport = rect.top > window.innerHeight;
-      setVisible(pastCalendar || calendarBelowViewport);
+      setVisible(window.scrollY > 200);
     };
 
     onScroll();
@@ -20,8 +18,14 @@ export function BookNowButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToBook = () => {
-    document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
+  if (pathname === "/booking") return null;
+
+  const handleClick = () => {
+    if (pathname === "/") {
+      document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.navigate({ to: "/booking" });
+    }
   };
 
   if (!visible) return null;
@@ -29,7 +33,7 @@ export function BookNowButton() {
   return (
     <div className="fixed bottom-6 right-6 z-50 sm:bottom-8 sm:right-8">
       <Button
-        onClick={scrollToBook}
+        onClick={handleClick}
         size="lg"
         className="shadow-ocean/30 gap-2 rounded-full bg-ocean px-6 text-primary-foreground shadow-lg hover:bg-ocean-light"
       >
