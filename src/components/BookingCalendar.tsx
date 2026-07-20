@@ -12,12 +12,12 @@ import { cn } from "@/lib/utils";
 type ServiceType = "walk" | "visit";
 
 const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
-  walk: [60, 90],
+  walk: [90],
   visit: [30, 60],
 };
 
 const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
-  walk: { 60: "€20", 90: "€25" },
+  walk: { 90: "€20" },
   visit: { 30: "€20", 60: "€40" },
 };
 
@@ -25,7 +25,8 @@ export function BookingCalendar() {
   const [serviceType, setServiceType] = useState<ServiceType>("walk");
   const [date, setDate] = useState<Date | undefined>(() => addDays(startOfDay(new Date()), 1));
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [selectedDuration, setSelectedDuration] = useState<number>(60);
+  const [selectedDuration, setSelectedDuration] = useState<number>(90);
+
   const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -83,7 +84,7 @@ export function BookingCalendar() {
             Pick a date & time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Dog walks are €20 for 60 minutes or €25 for 90 minutes. Home visits are available too. Choose your slot and we'll confirm within minutes.
+            Dog walks are <strong>€20 for a full 90 minutes</strong> with free pick-up and drop-off in Greystones, Delgany & Kilcoole. Home visits available too — pick your slot and we'll confirm within minutes.
           </p>
         </div>
 

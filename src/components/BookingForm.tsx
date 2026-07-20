@@ -125,7 +125,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           <div>
             <h3 className="font-display text-xl font-semibold text-foreground">Complete your booking</h3>
             <p className="text-sm text-muted-foreground">
-              {serviceType === "visit" ? `Home visit — €${duration === 30 ? "20" : "40"}` : `Dog walk — €${duration === 60 ? "20" : "25"}`} · {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes
+              {serviceType === "visit" ? `Home visit — €${duration === 30 ? "20" : "40"}` : `Dog walk — €20 · includes pick-up & drop-off`} · {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes
             </p>
           </div>
         </div>
