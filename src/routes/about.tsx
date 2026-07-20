@@ -11,9 +11,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About | Dog Squad Wicklow" },
-      { name: "description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
+      { name: "description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
       { property: "og:title", content: "About | Dog Squad Wicklow" },
-      { property: "og:description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
+      { property: "og:description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
     ],
   }),
   component: AboutPage,
