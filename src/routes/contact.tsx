@@ -59,7 +59,7 @@ function ContactPage() {
                     <MapPin className="h-6 w-6 text-teal" />
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold">Location</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Dublin, Ireland</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Greystones, Co. Wicklow</p>
                 </CardContent>
               </Card>
               <Card className="border-border/60 bg-card">

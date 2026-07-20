@@ -42,9 +42,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Dog Walking Services | Dog Squad" },
-      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Dublin." },
+      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Greystones, Delgany & Kilcoole." },
       { property: "og:title", content: "Dog Walking Services | Dog Squad" },
-      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Dublin." },
+      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Greystones, Delgany & Kilcoole." },
     ],
   }),
   component: ServicesPage,
