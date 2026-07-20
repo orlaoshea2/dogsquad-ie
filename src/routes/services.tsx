@@ -34,7 +34,7 @@ const serviceDetails = [
     icon: Clock,
     title: "Home Visits",
     description: "Drop-in visits to feed, play and check on your dog in their own home while you're out.",
-    price: "€20 / 30 min · €40 / 60 min",
+    price: "€20 / 30 min · €30 / 60 min",
     features: ["Feeding & play", "Toilet breaks", "Medication support"],
   },
 ];
@@ -156,7 +156,7 @@ function ServicesPage() {
                     </li>
                     <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minute visit</span>
-                      <span className="font-display font-semibold text-ocean">€40</span>
+                      <span className="font-display font-semibold text-ocean">€30</span>
                     </li>
                   </ul>
                 </div>
