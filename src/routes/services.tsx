@@ -1,0 +1,142 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Services } from "@/components/Services";
+import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
+import { Footprints, Users, Baby, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+const serviceDetails = [
+  {
+    icon: Footprints,
+    title: "Solo Walks",
+    description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement.",
+    price: "€25 / 30 min · €35 / 60 min",
+    features: ["Personalised route", "1-on-1 attention", "Training support"],
+  },
+  {
+    icon: Users,
+    title: "Group Adventures",
+    description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
+    price: "€18 / 60 min",
+    features: ["Max 4 dogs per group", "Matching by temperament", "Photo updates"],
+  },
+  {
+    icon: Baby,
+    title: "Puppy Visits",
+    description: "Young puppies need frequent breaks. We feed, play, clean up, and give plenty of cuddles.",
+    price: "€20 / 20 min",
+    features: ["Toilet training help", "Feeding & play", "Flexible timing"],
+  },
+  {
+    icon: Clock,
+    title: "Pet Sitting",
+    description: "Overnight or extended daytime care in your own home so your dog keeps their routine and comfort.",
+    price: "€45 / overnight · €25 / visit",
+    features: ["Feeding & walks", "Medication support", "Daily updates"],
+  },
+];
+
+export const Route = createFileRoute("/services")({
+  head: () => ({
+    meta: [
+      { title: "Dog Walking Services | Dog Squad" },
+      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Dublin." },
+      { property: "og:title", content: "Dog Walking Services | Dog Squad" },
+      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Dublin." },
+    ],
+  }),
+  component: ServicesPage,
+});
+
+function ServicesPage() {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <section className="bg-gradient-hero py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+              Services that fit your dog
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Whether your dog needs a calm solo stroll or an energetic group hike, we have the right option.
+            </p>
+          </div>
+        </section>
+
+        <Services />
+
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 md:grid-cols-2">
+              {serviceDetails.map((service) => (
+                <Card key={service.title} className="border-border/60 bg-card">
+                  <CardHeader>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10">
+                      <service.icon className="h-6 w-6 text-teal" />
+                    </div>
+                    <h3 className="font-display text-2xl font-semibold text-card-foreground">{service.title}</h3>
+                    <p className="font-display font-semibold text-ocean">{service.price}</p>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-2 text-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-ocean py-16 text-primary-foreground">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="flex items-start gap-4">
+                <Shield className="h-8 w-8 shrink-0 text-teal" />
+                <div>
+                  <h3 className="font-display text-lg font-semibold">Fully insured</h3>
+                  <p className="mt-1 text-sm text-primary-foreground/80">Every walk is covered for peace of mind.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <MapPin className="h-8 w-8 shrink-0 text-teal" />
+                <div>
+                  <h3 className="font-display text-lg font-semibold">GPS-tracked</h3>
+                  <p className="mt-1 text-sm text-primary-foreground/80">See exactly where your dog walked.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Camera className="h-8 w-8 shrink-0 text-teal" />
+                <div>
+                  <h3 className="font-display text-lg font-semibold">Photo updates</h3>
+                  <p className="mt-1 text-sm text-primary-foreground/80">Receive photos after every adventure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 text-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="font-display text-2xl font-bold text-foreground">Ready to book?</h2>
+            <Link to="/booking" className="mt-4 inline-block">
+              <Button size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
+                Book a walk <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+}

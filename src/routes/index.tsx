@@ -1,24 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
+import { Services } from "@/components/Services";
+import { Testimonials } from "@/components/Testimonials";
+import { BookingCalendar } from "@/components/BookingCalendar";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Dog Squad | Professional Dog Walking in Dublin" },
+      { name: "description", content: "Book a reliable dog walker online. Solo walks, group adventures, puppy visits and pet sitting across Dublin." },
+      { property: "og:title", content: "Dog Squad | Professional Dog Walking in Dublin" },
+      { property: "og:description", content: "Book a reliable dog walker online. Solo walks, group adventures, puppy visits and pet sitting across Dublin." },
+    ],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <Services />
+        <BookingCalendar />
+        <Testimonials />
+      </main>
+      <Footer />
     </div>
   );
 }
