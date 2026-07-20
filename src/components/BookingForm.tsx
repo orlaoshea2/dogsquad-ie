@@ -74,7 +74,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
     try {
       const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
       const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
-      const method = values.paymentMethod;
+      const method: PaymentMethod = values.paymentMethod ?? "pay_later";
       await submitBooking({
         data: {
           ...values,
