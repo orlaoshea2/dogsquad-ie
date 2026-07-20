@@ -3,15 +3,21 @@ import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Loader2, Clock, CalendarDays } from "lucide-react";
+import { Loader2, Clock, CalendarDays, PawPrint, Home } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm } from "./BookingForm";
 import { cn } from "@/lib/utils";
 
-const DURATIONS = [30, 60, 90];
+type ServiceType = "walk" | "visit";
+
+const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
+  walk: [30, 60, 90],
+  visit: [30, 60],
+};
 
 export function BookingCalendar() {
+  const [serviceType, setServiceType] = useState<ServiceType>("walk");
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<number>(60);
