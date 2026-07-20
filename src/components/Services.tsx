@@ -7,9 +7,10 @@ const services = [
   {
     icon: Footprints,
     title: "Solo Walks",
-    description: "One-on-one attention for dogs who prefer their own pace or need focused training. Pick-up & drop-off included.",
-    price: "€20 / 90 min",
+    description: "One-on-one attention for dogs who prefer their own pace or need focused training. Get in touch to organise.",
+    price: "Contact to organise",
   },
+
   {
     icon: Users,
     title: "Group Adventures",
