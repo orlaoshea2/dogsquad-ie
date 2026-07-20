@@ -39,7 +39,7 @@ function AboutPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
                   src={aboutImage}
-                  alt="A professional dog walker with happy dogs in a park"
+                  alt="Happy Dog Squad pack on a Wicklow walk"
                   className="h-full w-full object-cover"
                 />
               </div>
