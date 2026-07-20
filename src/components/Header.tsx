@@ -57,6 +57,15 @@ export function Header() {
             <Phone className="h-4 w-4" />
             086 606 3416
           </a>
+          <a
+            href="https://www.instagram.com/dogsquad_wicklow/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-ocean hover:text-ocean-light"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
           {user ? (
             <>
               {isAdmin && (
