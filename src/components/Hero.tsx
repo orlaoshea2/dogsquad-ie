@@ -53,8 +53,10 @@ export function Hero() {
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
               <img
                 src={heroImage}
-                alt="Dog Squad walker with happy dogs on a group walk"
+                alt="Happy group of dogs at Glendalough, Wicklow"
                 className="h-full w-full object-cover"
+                width={1280}
+                height={960}
               />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden rounded-xl bg-card p-4 shadow-lg sm:block">
