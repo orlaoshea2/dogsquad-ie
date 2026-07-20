@@ -9,10 +9,10 @@ import aboutImage from "@/assets/about-walker.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | Dog Squad" },
-      { name: "description", content: "Meet the Dog Squad team — passionate, experienced dog walkers serving Dublin with reliable, loving care." },
-      { property: "og:title", content: "About Us | Dog Squad" },
-      { property: "og:description", content: "Meet the Dog Squad team — passionate, experienced dog walkers serving Dublin with reliable, loving care." },
+      { title: "About | Dog Squad Wicklow" },
+      { name: "description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
+      { property: "og:title", content: "About | Dog Squad Wicklow" },
+      { property: "og:description", content: "Meet your local Wicklow dog walker — serving Greystones, Delgany and Kilcoole with reliable, loving care." },
     ],
   }),
   component: AboutPage,
@@ -32,7 +32,7 @@ function AboutPage() {
                   Dogs aren't just clients — they're family
                 </h1>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  Dog Squad started with a simple mission: give Dublin dogs the exercise, love, and adventure they deserve while giving owners total peace of mind.
+                  Dog Squad started with a simple mission: give Wicklow dogs the coastal exercise, love and adventure they deserve — from the Greystones cliff walk to the Kilcoole strand — while giving owners total peace of mind.
                 </p>
               </div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
@@ -78,7 +78,7 @@ function AboutPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-3xl font-bold">Join the pack</h2>
             <p className="mt-4 text-primary-foreground/80">
-              See why hundreds of Dublin dog owners trust Dog Squad with their best friends.
+              See why Wicklow dog owners in Greystones, Delgany and Kilcoole trust Dog Squad with their best friends.
             </p>
             <Link to="/booking" className="mt-6 inline-block">
               <Button size="lg" className="bg-primary-foreground text-ocean hover:bg-primary-foreground/90">

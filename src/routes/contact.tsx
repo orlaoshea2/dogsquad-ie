@@ -7,10 +7,10 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Dog Squad" },
-      { name: "description", content: "Get in touch with Dog Squad. Call, email, or visit us in Dublin for dog walking enquiries." },
-      { property: "og:title", content: "Contact | Dog Squad" },
-      { property: "og:description", content: "Get in touch with Dog Squad. Call, email, or visit us in Dublin for dog walking enquiries." },
+      { title: "Contact | Dog Squad Wicklow" },
+      { name: "description", content: "Get in touch with Dog Squad — dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow." },
+      { property: "og:title", content: "Contact | Dog Squad Wicklow" },
+      { property: "og:description", content: "Get in touch with Dog Squad — dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow." },
     ],
   }),
   component: ContactPage,
