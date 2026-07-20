@@ -7,7 +7,6 @@ import { Testimonials } from "@/components/Testimonials";
 import { BookingCalendar } from "@/components/BookingCalendar";
 import { InstagramReels } from "@/components/InstagramReels";
 import { FAQ } from "@/components/FAQ";
-import { BookNowButton } from "@/components/BookNowButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +33,6 @@ function HomePage() {
         <Testimonials />
       </main>
       <Footer />
-      <BookNowButton />
     </div>
   );
 }
