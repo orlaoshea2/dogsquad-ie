@@ -62,9 +62,9 @@ function AboutPage() {
               </div>
               <div className="rounded-2xl bg-card p-6 shadow-sm">
                 <Award className="h-8 w-8 text-teal" />
-                <h3 className="mt-4 font-display text-xl font-semibold">Experienced team</h3>
+                <h3 className="mt-4 font-display text-xl font-semibold">Qualified & insured</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Every walker is trained in canine first aid, behaviour, and safe handling.
+                  BSc Animal Science, Dog First Aid certified, and IMDT Professional Accredited Training completed.
                 </p>
               </div>
               <div className="rounded-2xl bg-card p-6 shadow-sm">
