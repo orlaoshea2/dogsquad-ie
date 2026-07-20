@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { Heart, Award, Users, ArrowRight } from "lucide-react";
-import aboutImage from "@/assets/about-walker.jpg";
+import aboutImage from "@/assets/ds-2.jpg";
 import coastImage from "@/assets/wicklow-coast.jpg";
 
 export const Route = createFileRoute("/about")({
