@@ -17,6 +17,12 @@ const navLinks = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
+  const { user, signOut } = useAuth();
+  const handleSignOut = async () => {
+    await signOut();
+    router.navigate({ to: "/" });
+  };
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
@@ -47,6 +53,24 @@ export function Header() {
             <Phone className="h-4 w-4" />
             086 606 3416
           </a>
+          {user ? (
+            <>
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <UserIcon className="h-4 w-4" />
+                {user.email}
+              </span>
+              <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                <LogOut className="h-4 w-4" />
+              </Button>
+            </>
+          ) : (
+            <Link
+              to="/auth"
+              className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground"
+            >
+              <LogIn className="h-4 w-4" /> Sign in
+            </Link>
+          )}
           <Button
             onClick={() => router.navigate({ to: "/booking" })}
             className="bg-ocean text-primary-foreground hover:bg-ocean-light"
@@ -54,6 +78,7 @@ export function Header() {
             Book a walk
           </Button>
         </div>
+
 
         <button
           className="md:hidden"
