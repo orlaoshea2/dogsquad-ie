@@ -32,7 +32,7 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
 }
 
 export const createBooking = createServerFn({ method: "POST" })
-  .inputValidator((input) => bookingSchema.parse(input))
+  .validator({ parse: bookingSchema.parse })
   .handler(async ({ data }) => {
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
