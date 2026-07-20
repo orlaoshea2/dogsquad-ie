@@ -13,6 +13,7 @@ const bookingSchema = z.object({
   walkTime: z.string().regex(/^\d{2}:\d{2}$/, "Valid time is required"),
   durationMinutes: z.number().int().min(30).max(180).default(60),
   notes: z.string().optional(),
+  paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
 });
 
 function createSupabaseFetch(supabaseKey: string): typeof fetch {
