@@ -56,11 +56,36 @@ export function BookingCalendar() {
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online</p>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Pick a date and time
+            Pick a service, date and time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Choose your preferred walk date and slot. We'll confirm your booking within minutes.
+            Choose a dog walk or a home visit, pick your slot, and we'll confirm within minutes.
           </p>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-md gap-2 rounded-lg border border-border/60 bg-card p-1">
+          {([
+            { id: "walk", label: "Dog walk", Icon: PawPrint },
+            { id: "visit", label: "Home visit", Icon: Home },
+          ] as const).map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              onClick={() => {
+                setServiceType(id);
+                const durations = DURATIONS_BY_SERVICE[id];
+                if (!durations.includes(selectedDuration)) setSelectedDuration(durations[0]);
+              }}
+              className={cn(
+                "flex flex-1 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                serviceType === id
+                  ? "bg-ocean text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <Icon className="h-4 w-4" />
+              {label}
+            </button>
+          ))}
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
