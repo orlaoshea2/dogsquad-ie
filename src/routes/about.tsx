@@ -114,7 +114,7 @@ function AboutPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-3xl font-bold">Join the pack</h2>
             <p className="mt-4 text-primary-foreground/80">
-              See why Wicklow dog owners in Greystones, Delgany and Kilcoole trust Dog Squad with their best friends.
+              See why Wicklow dog owners in Greystones, Delgany and Kilcoole trust me with their best friends.
             </p>
             <Link to="/booking" className="mt-6 inline-block">
               <Button size="lg" className="bg-primary-foreground text-ocean hover:bg-primary-foreground/90">
