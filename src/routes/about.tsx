@@ -28,12 +28,15 @@ function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About us</p>
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About me</p>
                 <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                  Dogs aren't just clients — they're family
+                  A lifetime with animals, dedicated to your dog
                 </h1>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  Dog Squad started with a simple mission: give Wicklow dogs the coastal exercise, love and adventure they deserve — from the Greystones cliff walk to the Kilcoole strand — while giving owners total peace of mind.
+                  I'm a Wicklow-based dog walker with a BSc in Animal Science and a lifelong passion for animals and dog care. I gained valuable hands-on experience working on Sheikh Mohammed bin Rashid Al Maktoum's thoroughbred stud, where I developed a deep understanding of animal welfare, care, and handling.
+                </p>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
               </div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
