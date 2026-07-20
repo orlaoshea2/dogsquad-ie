@@ -53,7 +53,7 @@ export function Hero() {
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
               <img
                 src={heroImage}
-                alt="Dog Squad walker with a happy white dog"
+                alt="Dog Squad walker with happy dogs on a group walk"
                 className="h-full w-full object-cover"
               />
             </div>
