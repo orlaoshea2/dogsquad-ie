@@ -7,10 +7,10 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Dog Squad" },
-      { name: "description", content: "Get in touch with Dog Squad. Call, email, or visit us in Dublin for dog walking enquiries." },
-      { property: "og:title", content: "Contact | Dog Squad" },
-      { property: "og:description", content: "Get in touch with Dog Squad. Call, email, or visit us in Dublin for dog walking enquiries." },
+      { title: "Contact | Dog Squad Wicklow" },
+      { name: "description", content: "Get in touch with Dog Squad — dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow." },
+      { property: "og:title", content: "Contact | Dog Squad Wicklow" },
+      { property: "og:description", content: "Get in touch with Dog Squad — dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow." },
     ],
   }),
   component: ContactPage,
@@ -59,7 +59,7 @@ function ContactPage() {
                     <MapPin className="h-6 w-6 text-teal" />
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold">Location</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Dublin, Ireland</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Greystones, Co. Wicklow</p>
                 </CardContent>
               </Card>
               <Card className="border-border/60 bg-card">

@@ -11,10 +11,10 @@ import { FAQ } from "@/components/FAQ";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dog Squad | Professional Dog Walking in Dublin" },
-      { name: "description", content: "Book a reliable dog walker online. Solo walks, group adventures, puppy visits and pet sitting across Dublin." },
-      { property: "og:title", content: "Dog Squad | Professional Dog Walking in Dublin" },
-      { property: "og:description", content: "Book a reliable dog walker online. Solo walks, group adventures, puppy visits and pet sitting across Dublin." },
+      { title: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
+      { name: "description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and pet sitting." },
+      { property: "og:title", content: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
+      { property: "og:description", content: "Local dog walker in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and pet sitting." },
     ],
   }),
   component: HomePage,
