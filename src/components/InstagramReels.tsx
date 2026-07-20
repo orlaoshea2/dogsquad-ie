@@ -1,15 +1,15 @@
 import { Instagram, Play, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const INSTAGRAM_HANDLE = "dogsquad";
-const INSTAGRAM_URL = `https://instagram.com/${INSTAGRAM_HANDLE}`;
+const INSTAGRAM_HANDLE = "dogsquad_wicklow";
+const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
 
 const reels = [
-  { id: 1, caption: "Morning pack walk in Phoenix Park", likes: "1.2k", gradient: "from-ocean via-teal to-teal-light" },
-  { id: 2, caption: "Puppy's first big adventure", likes: "984", gradient: "from-teal via-teal-light to-ocean" },
-  { id: 3, caption: "Beach day with the squad", likes: "2.1k", gradient: "from-teal-light via-ocean to-teal" },
-  { id: 4, caption: "Rainy day zoomies", likes: "756", gradient: "from-ocean-light via-teal to-ocean" },
-  { id: 5, caption: "Meet the goodest boys", likes: "1.8k", gradient: "from-teal via-ocean to-teal-light" },
+  { id: 1, caption: "Morning pack walk around Greystones", likes: "1.2k", gradient: "from-ocean via-teal to-teal-light" },
+  { id: 2, caption: "Puppy's first big adventure in Wicklow", likes: "984", gradient: "from-teal via-teal-light to-ocean" },
+  { id: 3, caption: "Beach day with the squad at Kilcoole", likes: "2.1k", gradient: "from-teal-light via-ocean to-teal" },
+  { id: 4, caption: "Rainy day zoomies in Delgany", likes: "756", gradient: "from-ocean-light via-teal to-ocean" },
+  { id: 5, caption: "Meet the goodest boys of Wicklow", likes: "1.8k", gradient: "from-teal via-ocean to-teal-light" },
   { id: 6, caption: "Happy tails, happy owners", likes: "1.4k", gradient: "from-ocean via-teal-light to-teal" },
 ];
 
