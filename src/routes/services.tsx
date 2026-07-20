@@ -31,10 +31,10 @@ const serviceDetails = [
   },
   {
     icon: Clock,
-    title: "Pet Sitting",
-    description: "Overnight or extended daytime care in your own home so your dog keeps their routine and comfort.",
-    price: "€45 / overnight · €25 / visit",
-    features: ["Feeding & walks", "Medication support", "Daily updates"],
+    title: "Home Visits",
+    description: "Drop-in visits to feed, play and check on your dog in their own home while you're out.",
+    price: "€25 / 30 min · €35 / 60 min",
+    features: ["Feeding & play", "Toilet breaks", "Medication support"],
   },
 ];
 
@@ -42,9 +42,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Dog Walking Services | Dog Squad" },
-      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Greystones, Delgany & Kilcoole." },
+      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and home visits in Greystones, Delgany & Kilcoole." },
       { property: "og:title", content: "Dog Walking Services | Dog Squad" },
-      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and pet sitting in Greystones, Delgany & Kilcoole." },
+      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and home visits in Greystones, Delgany & Kilcoole." },
     ],
   }),
   component: ServicesPage,
@@ -153,17 +153,17 @@ function ServicesPage() {
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
                       <Clock className="h-5 w-5 text-teal" />
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-card-foreground">Pet Sitting</h3>
+                    <h3 className="font-display text-xl font-semibold text-card-foreground">Home Visits</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Care in your own home so your dog keeps their routine.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Drop-in care in your own home so your dog keeps their routine.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 30 minute visit</span>
                       <span className="font-display font-semibold text-ocean">€25</span>
                     </li>
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> Overnight</span>
-                      <span className="font-display font-semibold text-ocean">€45</span>
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 60 minute visit</span>
+                      <span className="font-display font-semibold text-ocean">€35</span>
                     </li>
                   </ul>
                 </div>
