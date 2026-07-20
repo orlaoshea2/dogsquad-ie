@@ -11,10 +11,11 @@ const serviceDetails = [
   {
     icon: Footprints,
     title: "Solo Walks",
-    description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement.",
-    price: "€20 / 90 min",
-    features: ["Personalised route", "1-on-1 attention", "Pick-up & drop-off included"],
+    description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement. Get in touch to organise.",
+    price: "Contact to organise",
+    features: ["Personalised route", "1-on-1 attention", "Tailored schedule"],
   },
+
   {
     icon: Users,
     title: "Group Adventures",
@@ -91,14 +92,15 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Solo Walks</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement. Pick-up & drop-off included.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">One walker, one dog. Personal attention and training reinforcement.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€20</span>
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> Bespoke schedule</span>
+                      <a href="/contact" className="font-display font-semibold text-ocean hover:underline">Contact to organise</a>
                     </li>
                   </ul>
                 </div>
+
 
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-3">
