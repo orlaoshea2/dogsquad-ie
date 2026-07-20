@@ -51,13 +51,6 @@ export function Header() {
 
         <div className="hidden items-center gap-4 md:flex">
           <a
-            href="tel:+353866063416"
-            className="flex items-center gap-1.5 text-sm font-semibold text-ocean hover:text-ocean-light"
-          >
-            <Phone className="h-4 w-4" />
-            086 606 3416
-          </a>
-          <a
             href="https://www.instagram.com/dogsquad_wicklow/"
             target="_blank"
             rel="noopener noreferrer"
