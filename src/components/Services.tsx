@@ -8,25 +8,25 @@ const services = [
     icon: Footprints,
     title: "Solo Walks",
     description: "One-on-one attention for dogs who prefer their own pace or need focused training.",
-    price: "From €25",
+    price: "€25 / 30 min · €35 / 60 min · €45 / 90 min",
   },
   {
     icon: Users,
     title: "Group Adventures",
     description: "Social walks with a small pack of friendly dogs. Great exercise and socialisation.",
-    price: "From €18",
+    price: "€18 / 60 min · €25 / 90 min",
   },
   {
     icon: Baby,
     title: "Puppy Visits",
     description: "Short visits for young pups including feeding, play, and toilet breaks.",
-    price: "From €20",
+    price: "€20 / 20 min · €30 / 45 min",
   },
   {
     icon: Clock,
     title: "Pet Sitting",
     description: "Overnight or daytime sitting in your home so your dog stays comfortable.",
-    price: "From €45",
+    price: "€25 / 30 min visit · €45 / overnight",
   },
 ];
 
