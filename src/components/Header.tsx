@@ -8,7 +8,9 @@ const navLinks = [
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
+  { to: "/booking", label: "Booking" },
 ];
+
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
