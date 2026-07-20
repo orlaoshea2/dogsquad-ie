@@ -59,6 +59,14 @@ export function Header() {
           </a>
           {user ? (
             <>
+              {isAdmin && (
+                <Link
+                  to="/admin"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-ocean hover:text-ocean-light"
+                >
+                  <ShieldCheck className="h-4 w-4" /> Admin
+                </Link>
+              )}
               <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <UserIcon className="h-4 w-4" />
                 {user.email}
