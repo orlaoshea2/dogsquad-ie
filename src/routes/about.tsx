@@ -81,7 +81,7 @@ function AboutPage() {
         <section className="py-16 sm:py-24 bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
+              <div className="mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
                 <img
                   src={coastImage}
                   alt="Greystones harbour on a sunny day"
