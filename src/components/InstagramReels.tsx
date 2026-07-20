@@ -24,7 +24,7 @@ export function InstagramReels() {
               Wagging tails on Instagram
             </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              Daily reels from our walks, playdates and pack adventures across Dublin.
+              Daily reels from our walks, cliff-walk adventures and playdates across Wicklow.
             </p>
           </div>
           <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="mt-6 sm:mt-0">
