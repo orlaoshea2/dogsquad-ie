@@ -45,7 +45,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary-foreground/40 bg-primary-foreground/10 text-primary-foreground backdrop-blur-sm hover:bg-primary-foreground/20"
+              className="border-primary-foreground/60 bg-primary-foreground/15 text-primary-foreground shadow-lg shadow-black/20 backdrop-blur-sm hover:bg-primary-foreground/25"
             >
               Explore services
             </Button>
