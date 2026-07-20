@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          created_at: string
+          dog_breed: string | null
+          dog_name: string
+          duration_minutes: number
+          email: string
+          id: string
+          name: string
+          notes: string | null
+          phone: string | null
+          status: string
+          walk_date: string
+          walk_time: string
+        }
+        Insert: {
+          created_at?: string
+          dog_breed?: string | null
+          dog_name: string
+          duration_minutes?: number
+          email: string
+          id?: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+          walk_date: string
+          walk_time: string
+        }
+        Update: {
+          created_at?: string
+          dog_breed?: string | null
+          dog_name?: string
+          duration_minutes?: number
+          email?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+          walk_date?: string
+          walk_time?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
