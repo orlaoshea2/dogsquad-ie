@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone, LogIn, LogOut, User as UserIcon, ShieldCheck, Instagram } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User as UserIcon, ShieldCheck, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import logoAsset from "@/assets/dogsquad-logo.png.asset.json";
@@ -50,13 +50,6 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <a
-            href="tel:+353866063416"
-            className="flex items-center gap-1.5 text-sm font-semibold text-ocean hover:text-ocean-light"
-          >
-            <Phone className="h-4 w-4" />
-            086 606 3416
-          </a>
           <a
             href="https://www.instagram.com/dogsquad_wicklow/"
             target="_blank"
