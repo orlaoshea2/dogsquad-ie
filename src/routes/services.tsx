@@ -12,14 +12,14 @@ const serviceDetails = [
     icon: Footprints,
     title: "Solo Walks",
     description: "One walker, one dog. Perfect for reactive dogs, seniors, or pups who need focused training reinforcement.",
-    price: "€20 / 60 min",
+    price: "€20 / 60 min · €25 / 90 min",
     features: ["Personalised route", "1-on-1 attention", "Training support"],
   },
   {
     icon: Users,
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
-    price: "€20 / 60 min",
+    price: "€20 / 60 min · €25 / 90 min",
     features: ["Max 4 dogs per group", "Matching by temperament", "Photo updates"],
   },
   {
