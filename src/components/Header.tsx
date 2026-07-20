@@ -112,7 +112,6 @@ export function Header() {
             <Instagram className="h-5 w-5" />
           </a>
           <button
-            className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
