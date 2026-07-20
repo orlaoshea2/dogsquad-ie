@@ -83,6 +83,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           walkTime: time,
           durationMinutes: duration,
           paymentMethod: method,
+          userId: user?.id,
         },
       });
 
