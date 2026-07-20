@@ -26,7 +26,7 @@ const services = [
     icon: Clock,
     title: "Home Visits",
     description: "Drop-in visits for feeding, play, toilet breaks and company while you're out.",
-    price: "€25 / 30 min · €35 / 60 min",
+    price: "€20 / 30 min · €40 / 60 min",
   },
 ];
 

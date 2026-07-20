@@ -16,6 +16,11 @@ const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
   visit: [30, 60],
 };
 
+const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
+  walk: { 60: "€20" },
+  visit: { 30: "€20", 60: "€40" },
+};
+
 export function BookingCalendar() {
   const [serviceType, setServiceType] = useState<ServiceType>("walk");
   const [date, setDate] = useState<Date | undefined>(() => addDays(startOfDay(new Date()), 1));
@@ -191,7 +196,7 @@ export function BookingCalendar() {
                               : "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5",
                           )}
                         >
-                          {serviceType === "walk" ? "€20 — " : ""}{d} min
+                          {PRICE_LABEL[serviceType][d]} — {d} min
                         </button>
                       ))}
                     </div>
