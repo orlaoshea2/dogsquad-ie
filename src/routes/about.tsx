@@ -75,6 +75,38 @@ function AboutPage() {
           </div>
         </section>
 
+        <section className="py-16 sm:py-24 bg-muted/30">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
+                <img
+                  src={coastImage}
+                  alt="Greystones coast and Wicklow mountains"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                />
+              </div>
+              <div className="order-1 lg:order-2">
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Where we walk</p>
+                <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  Local to Wicklow's coast
+                </h2>
+                <p className="mt-4 text-muted-foreground">
+                  Every walk happens right on your doorstep — no long drives, no stressed dogs. We cover:
+                </p>
+                <ul className="mt-4 space-y-2 text-foreground">
+                  <li>• <strong>Greystones</strong> — south beach, cliff walk to Bray Head, harbour loop</li>
+                  <li>• <strong>Delgany</strong> — village lanes, Glen of the Downs, quiet field trails</li>
+                  <li>• <strong>Kilcoole</strong> — beach strolls, Newcastle nature reserve, coastal path</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         <section className="bg-ocean py-16 text-center text-primary-foreground">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-3xl font-bold">Join the pack</h2>
