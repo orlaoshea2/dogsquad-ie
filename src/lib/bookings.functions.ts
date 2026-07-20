@@ -59,6 +59,7 @@ export const createBooking = createServerFn({ method: "POST" })
         notes: data.notes || null,
         payment_method: data.paymentMethod,
         payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",
+        user_id: data.userId || null,
       })
       .select("id")
       .single();
