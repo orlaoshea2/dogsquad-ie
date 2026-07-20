@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-dogs.jpg";
+import heroImage from "@/assets/about-walker.jpg";
 
 const benefits = [
   "Insured & experienced walkers",
@@ -53,7 +53,7 @@ export function Hero() {
             <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-xl">
               <img
                 src={heroImage}
-                alt="A happy dog being walked on a sunny trail"
+                alt="Dog Squad walker with a happy white dog"
                 className="h-full w-full object-cover"
               />
             </div>
