@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dog Squad | Professional Dog Walking in Dublin" },
+      { title: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
       { name: "description", content: "Reliable, loving dog walking services. Book your dog's daily walk online with our easy calendar." },
       { name: "author", content: "Dog Squad" },
-      { property: "og:title", content: "Dog Squad | Professional Dog Walking in Dublin" },
+      { property: "og:title", content: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
       { property: "og:description", content: "Reliable, loving dog walking services. Book your dog's daily walk online with our easy calendar." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
