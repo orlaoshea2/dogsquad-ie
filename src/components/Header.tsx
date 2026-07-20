@@ -28,9 +28,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 font-display text-xl font-bold text-foreground">
-          <PawPrint className="h-7 w-7 text-teal" />
-          <span>Dog Squad</span>
+        <Link to="/" className="flex items-center">
+          <img
+            src={logoAsset.url}
+            alt="Dog Squad"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
