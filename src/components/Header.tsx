@@ -1,8 +1,9 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, PawPrint, Phone, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { Menu, X, Phone, LogIn, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import logoAsset from "@/assets/dogsquad-logo.png.asset.json";
 
 
 const navLinks = [
