@@ -186,6 +186,7 @@ export function BookingCalendar() {
         {showForm && date && selectedTime && (
           <div className="mt-8">
             <BookingForm
+              serviceType={serviceType}
               date={date}
               time={selectedTime}
               duration={selectedDuration}
