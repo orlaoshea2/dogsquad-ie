@@ -71,7 +71,7 @@ function AboutPage() {
                 <Users className="h-8 w-8 text-teal" />
                 <h3 className="mt-4 font-display text-xl font-semibold">Small groups</h3>
                 <p className="mt-2 text-muted-foreground">
-                  Group walks are capped at four dogs so every pup gets attention and supervision.
+                  Group walks are capped at six dogs so every pup gets attention and supervision.
                 </p>
               </div>
             </div>

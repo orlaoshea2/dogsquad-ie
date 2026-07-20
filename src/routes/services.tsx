@@ -21,7 +21,7 @@ const serviceDetails = [
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
     price: "€20 / 90 min",
-    features: ["Max 4 dogs per group", "Matching by temperament", "Pick-up & drop-off included"],
+    features: ["Max 6 dogs per group", "Matching by temperament", "Pick-up & drop-off included"],
   },
   {
     icon: Baby,
@@ -109,7 +109,7 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Group Adventures</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 4 dogs. Social, fun and great exercise. Pick-up & drop-off included.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 6 dogs. Social, fun and great exercise. Pick-up & drop-off included.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
                       <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
