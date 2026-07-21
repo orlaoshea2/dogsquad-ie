@@ -14,8 +14,8 @@ const services = [
   {
     icon: Users,
     title: "Group Adventures",
-    description: "Social walks with a small pack of up to 6 friendly dogs. Pick-up & drop-off included.",
-    price: "€20 / 90 min",
+    description: "Social walks with a small pack of up to 6 friendly dogs. 90 minutes includes pick-up & drop-off.",
+    price: "€20 / 90 min total",
   },
   {
     icon: Baby,

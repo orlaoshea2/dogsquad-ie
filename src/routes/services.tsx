@@ -20,8 +20,8 @@ const serviceDetails = [
     icon: Users,
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
-    price: "€20 / 90 min",
-    features: ["Max 6 dogs per group", "Matching by temperament", "Pick-up & drop-off included"],
+    price: "€20 / 90 min total",
+    features: ["Max 6 dogs per group", "Matching by temperament", "90 minutes includes pick-up & drop-off"],
   },
   {
     icon: Baby,
@@ -78,8 +78,7 @@ function ServicesPage() {
                 Clear pricing packages
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                Simple, flat rate for dog walks — €20 for a full 90 minutes with free pick-up and drop-off in Greystones, Delgany & Kilcoole.
-
+                Simple, flat rate for dog walks — €20 for a full 90 minutes including pick-up and drop-off in Greystones, Delgany & Kilcoole.
               </p>
             </div>
 
@@ -109,10 +108,10 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Group Adventures</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 6 dogs. Social, fun and great exercise. Pick-up & drop-off included.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 6 dogs. Social, fun and great exercise. 90 minutes includes pick-up & drop-off.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes</span>
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes total</span>
                       <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
