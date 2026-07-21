@@ -41,7 +41,6 @@ export function WicklowGallery() {
                   src={photo.src}
                   alt={photo.alt}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
                 />
               </div>
               <figcaption className="bg-card p-4 text-center font-display text-sm font-semibold text-card-foreground">
