@@ -1,17 +1,17 @@
-import ds1 from "@/assets/ds-1.jpg";
-import ds2 from "@/assets/ds-2.jpg";
-import ds3 from "@/assets/ds-3.jpg";
-import ds4 from "@/assets/ds-4.jpg";
-import ds5 from "@/assets/ds-5.jpg";
-import ds6 from "@/assets/ds-6.jpg";
+import ds1 from "@/assets/ds-1.jpg.asset.json";
+import ds2 from "@/assets/ds-2.jpg.asset.json";
+import ds3 from "@/assets/ds-3.jpg.asset.json";
+import ds4 from "@/assets/ds-4.jpg.asset.json";
+import ds5 from "@/assets/ds-5.jpg.asset.json";
+import ds6 from "@/assets/ds-6.jpg.asset.json";
 
 const photos = [
-  { src: ds1, alt: "Dog Squad pack on a Wicklow adventure", caption: "Out on the trails" },
-  { src: ds2, alt: "Happy dogs on a group walk in Wicklow", caption: "Group walks" },
-  { src: ds3, alt: "Dogs enjoying a coastal Wicklow walk", caption: "Coastal adventures" },
-  { src: ds4, alt: "Dog Squad walker with the pack", caption: "With the squad" },
-  { src: ds5, alt: "Happy dog on a Wicklow walk", caption: "Tails wagging" },
-  { src: ds6, alt: "Dogs exploring the Wicklow countryside", caption: "Wicklow countryside" },
+  { src: ds1.url, alt: "Dog Squad pack on a Wicklow adventure", caption: "Out on the trails" },
+  { src: ds2.url, alt: "Happy dogs on a group walk in Wicklow", caption: "Group walks" },
+  { src: ds3.url, alt: "Dogs enjoying a coastal Wicklow walk", caption: "Coastal adventures" },
+  { src: ds4.url, alt: "Dog Squad walker with the pack", caption: "With the squad" },
+  { src: ds5.url, alt: "Happy dog on a Wicklow walk", caption: "Tails wagging" },
+  { src: ds6.url, alt: "Dogs exploring the Wicklow countryside", caption: "Wicklow countryside" },
 ];
 
 export function WicklowGallery() {
@@ -41,7 +41,6 @@ export function WicklowGallery() {
                   src={photo.src}
                   alt={photo.alt}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
                 />
               </div>
               <figcaption className="bg-card p-4 text-center font-display text-sm font-semibold text-card-foreground">
