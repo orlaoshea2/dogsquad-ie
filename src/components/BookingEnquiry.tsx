@@ -168,7 +168,7 @@ export function BookingEnquiry() {
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                     {...form.register("duration")}
                   >
-                    <option value="90">90 minutes (€20, incl. pick-up & drop-off)</option>
+                    <option value="90">90 minutes total (€20, incl. pick-up & drop-off)</option>
                   </select>
                 </div>
                 <div className="space-y-2 sm:col-span-2">
