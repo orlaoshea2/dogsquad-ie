@@ -84,7 +84,7 @@ export function BookingCalendar() {
             Pick a date & time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Dog walks are <strong>€20 for a full 90 minutes</strong> including pick-up and drop-off in Greystones, Delgany & Kilcoole. Home visits available too — pick your slot and we'll confirm within minutes.
+            Dog walks are <strong>€20 for 90 minutes door to door</strong> in Greystones, Delgany & Kilcoole. Home visits available too — pick your slot and we'll confirm within minutes.
           </p>
         </div>
 
