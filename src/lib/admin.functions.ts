@@ -17,7 +17,7 @@ export const listAllBookings = createServerFn({ method: "GET" })
     await ensureAdmin(context.supabase, context.userId);
     const { data, error } = await context.supabase
       .from("bookings")
-      .select("id, name, email, phone, dog_name, dog_breed, walk_date, walk_time, duration_minutes, notes, status, payment_method, payment_status, created_at")
+      .select("id, name, email, phone, dog_name, dog_breed, walk_date, walk_time, duration_minutes, notes, status, payment_method, payment_status, created_at, service_type, pickup_address, dropoff_address, distance_km, price_eur")
       .order("walk_date", { ascending: false })
       .order("walk_time", { ascending: false });
     if (error) throw new Error(error.message);
