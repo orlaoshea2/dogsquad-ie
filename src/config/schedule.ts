@@ -7,7 +7,7 @@ export const WALK_DURATION_MINUTES = 75;
 
 export const SLOT_TIMES: Record<ServiceType, string[]> = {
   walk: ["09:00", "12:00", "15:00"],
-  visit: ["11:00", "14:00"],
+  visit: ["11:00", "14:00", "17:00"],
 };
 
 // Closed periods, recurring each year: [startMonth, startDay, endMonth, endDay]
