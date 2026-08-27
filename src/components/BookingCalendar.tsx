@@ -41,13 +41,16 @@ export function BookingCalendar() {
   const fetchSlots = useServerFn(getAvailableSlots);
 
   useEffect(() => {
-    if (!date) return;
+    if (!date) {
+      setSlots([]);
+      return;
+    }
     let cancelled = false;
     (async () => {
       setLoading(true);
       try {
         const dateStr = format(date, "yyyy-MM-dd");
-        const result = await fetchSlots({ data: { date: dateStr } });
+        const result = await fetchSlots({ data: { date: dateStr, serviceType } });
         if (!cancelled) setSlots(result);
       } catch (err) {
         console.error("Failed to fetch slots:", err);
@@ -57,30 +60,16 @@ export function BookingCalendar() {
     })();
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [date, serviceType]);
 
-  const handleDateSelect = async (selected: Date | undefined) => {
+  const handleDateSelect = (selected: Date | undefined) => {
     setDate(selected);
     setSelectedTime(null);
     setShowForm(false);
-    if (!selected) {
-      setSlots([]);
-      return;
-    }
-    setLoading(true);
-    try {
-      const dateStr = format(selected, "yyyy-MM-dd");
-      const result = await fetchSlots({ data: { date: dateStr } });
-      setSlots(result);
-    } catch (err) {
-      console.error("Failed to fetch slots:", err);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const today = startOfDay(new Date());
-  const disabledDays = (day: Date) => isBefore(day, today);
+  const disabledDays = (day: Date) => isBefore(day, today) || !isBookableDate(day);
 
   return (
     <section id="book" className="scroll-mt-24 py-16 sm:py-24">
@@ -91,9 +80,11 @@ export function BookingCalendar() {
             Pick a date & time
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Dog walks are <strong>€20 for 90 minutes door to door</strong> in Greystones, Delgany & Kilcoole. Home visits available too — pick your slot and we'll confirm within minutes.
+            Dog walks are <strong>€20 for 75 minutes door to door</strong> in Greystones, Delgany & Kilcoole, Monday to Friday.
+            Walks leave at 9am, 12pm and 3pm; home visits at 11am and 2pm.
           </p>
         </div>
+
 
         <div className="mx-auto mt-8 flex max-w-md gap-2 rounded-lg border border-border/60 bg-card p-1">
           {([
