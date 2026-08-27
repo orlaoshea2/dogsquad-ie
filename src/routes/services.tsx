@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Baby, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Baby, Clock, Car, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
@@ -168,7 +168,34 @@ function ServicesPage() {
                   </ul>
                 </div>
               </div>
+
+              <div className="border-t border-border/60 p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                    <Car className="h-5 w-5 text-teal" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-card-foreground">Dog Taxi</h3>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Where to and where from — the price is set by the driving distance. Journeys over 20 km are quoted on request.
+                </p>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> Under 5 km</span>
+                    <span className="font-display font-semibold text-ocean">€15</span>
+                  </li>
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 5 – 10 km</span>
+                    <span className="font-display font-semibold text-ocean">€20</span>
+                  </li>
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 10 – 20 km</span>
+                    <span className="font-display font-semibold text-ocean">€25</span>
+                  </li>
+                </ul>
+              </div>
             </div>
+
           </div>
         </section>
 
