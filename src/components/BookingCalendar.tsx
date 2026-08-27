@@ -2,30 +2,37 @@ import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Loader2, Clock, CalendarDays, PawPrint, Home } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm } from "./BookingForm";
 import { cn } from "@/lib/utils";
+import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
 
 type ServiceType = "walk" | "visit";
 
 const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
-  walk: [90],
+  walk: [WALK_DURATION_MINUTES],
   visit: [30, 60],
 };
 
 const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
-  walk: { 90: "€20" },
+  walk: { [WALK_DURATION_MINUTES]: "€20" },
   visit: { 30: "€20", 60: "€30" },
 };
 
+function nextBookableDay(from: Date): Date {
+  let d = addDays(startOfDay(from), 1);
+  for (let i = 0; i < 60 && !isBookableDate(d); i++) d = addDays(d, 1);
+  return d;
+}
+
 export function BookingCalendar() {
   const [serviceType, setServiceType] = useState<ServiceType>("walk");
-  const [date, setDate] = useState<Date | undefined>(() => addDays(startOfDay(new Date()), 1));
+  const [date, setDate] = useState<Date | undefined>(() => nextBookableDay(new Date()));
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [selectedDuration, setSelectedDuration] = useState<number>(90);
+  const [selectedDuration, setSelectedDuration] = useState<number>(WALK_DURATION_MINUTES);
+
 
   const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
   const [loading, setLoading] = useState(false);
