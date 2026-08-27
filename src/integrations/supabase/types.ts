@@ -17,8 +17,10 @@ export type Database = {
       bookings: {
         Row: {
           created_at: string
+          distance_km: number | null
           dog_breed: string | null
           dog_name: string
+          dropoff_address: string | null
           duration_minutes: number
           email: string
           id: string
@@ -27,6 +29,9 @@ export type Database = {
           payment_method: string | null
           payment_status: string
           phone: string | null
+          pickup_address: string | null
+          price_eur: number | null
+          service_type: string
           status: string
           user_id: string | null
           walk_date: string
@@ -34,8 +39,10 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          distance_km?: number | null
           dog_breed?: string | null
           dog_name: string
+          dropoff_address?: string | null
           duration_minutes?: number
           email: string
           id?: string
@@ -44,6 +51,9 @@ export type Database = {
           payment_method?: string | null
           payment_status?: string
           phone?: string | null
+          pickup_address?: string | null
+          price_eur?: number | null
+          service_type?: string
           status?: string
           user_id?: string | null
           walk_date: string
@@ -51,8 +61,10 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          distance_km?: number | null
           dog_breed?: string | null
           dog_name?: string
+          dropoff_address?: string | null
           duration_minutes?: number
           email?: string
           id?: string
@@ -61,6 +73,9 @@ export type Database = {
           payment_method?: string | null
           payment_status?: string
           phone?: string | null
+          pickup_address?: string | null
+          price_eur?: number | null
+          service_type?: string
           status?: string
           user_id?: string | null
           walk_date?: string
