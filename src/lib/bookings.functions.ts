@@ -72,11 +72,17 @@ export const createBooking = createServerFn({ method: "POST" })
     return { id: booking.id };
   });
 
-const slotSchema = z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) });
+const slotSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  serviceType: z.enum(["walk", "visit"]).default("walk"),
+});
 
 export const getAvailableSlots = createServerFn({ method: "POST" })
   .validator({ parse: slotSchema.parse })
   .handler(async ({ data }) => {
+    const day = parseDateString(data.date);
+    if (!isBookableDate(day)) return [];
+
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
     if (!url || !key) throw new Error("Backend configuration missing");
@@ -95,12 +101,11 @@ export const getAvailableSlots = createServerFn({ method: "POST" })
       throw new Error(error.message);
     }
 
-    const allSlots = [
-      "08:00", "10:00", "12:00", "14:00", "16:00", "18:00",
-    ];
+    const allSlots = SLOT_TIMES[data.serviceType];
 
     const booked = new Set(
       (bookedRows ?? []).map((row: { walk_time: string }) => row.walk_time)
     );
     return allSlots.map((time) => ({ time, available: !booked.has(time) }));
   });
+
