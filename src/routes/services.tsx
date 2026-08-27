@@ -37,7 +37,15 @@ const serviceDetails = [
     price: "€20 / 30 min · €30 / 60 min",
     features: ["Feeding & play", "Toilet breaks", "Medication support"],
   },
+  {
+    icon: Car,
+    title: "Dog Taxi",
+    description: "Door-to-door lifts to the vet, groomer, day care or the beach. The price is set by the driving distance between the two addresses.",
+    price: "From €15",
+    features: ["Under 5 km — €15", "5–10 km — €20", "10–20 km — €25"],
+  },
 ];
+
 
 
 export const Route = createFileRoute("/services")({
