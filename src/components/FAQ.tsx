@@ -14,8 +14,19 @@ const faqs = [
   {
     question: "How long are the walks?",
     answer:
-      "All dog walks are 90 minutes door to door for €20. Home visits are 30 or 60 minutes to suit your schedule.",
+      "All dog walks are 75 minutes door to door for €20. Home visits are 30 or 60 minutes to suit your schedule.",
   },
+  {
+    question: "What times and days are available?",
+    answer:
+      "I work Monday to Friday. Walks leave at 9am, 12pm and 3pm, and home visits are at 11am and 2pm. I'm closed from 26–30 October and from 17 December to 2 January.",
+  },
+  {
+    question: "How does the dog taxi work and what does it cost?",
+    answer:
+      "Tell me the pick-up and drop-off addresses and you'll get an instant price based on the driving distance: €15 under 5 km, €20 for 5–10 km, and €25 for 10–20 km. Journeys over 20 km are quoted on request — just get in touch.",
+  },
+
   {
     question: "What happens if I need to cancel?",
     answer:

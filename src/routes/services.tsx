@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Baby, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Baby, Clock, Car, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
@@ -20,8 +20,8 @@ const serviceDetails = [
     icon: Users,
     title: "Group Adventures",
     description: "Small groups of compatible dogs explore local parks and trails together. Great exercise and socialisation.",
-    price: "€20 / 90 min door to door",
-    features: ["Max 6 dogs per group", "Matching by temperament", "90 minutes door to door"],
+    price: "€20 / 75 min door to door",
+    features: ["Max 6 dogs per group", "Matching by temperament", "75 minutes door to door"],
   },
   {
     icon: Baby,
@@ -37,7 +37,15 @@ const serviceDetails = [
     price: "€20 / 30 min · €30 / 60 min",
     features: ["Feeding & play", "Toilet breaks", "Medication support"],
   },
+  {
+    icon: Car,
+    title: "Dog Taxi",
+    description: "Door-to-door lifts to the vet, groomer, day care or the beach. The price is set by the driving distance between the two addresses.",
+    price: "From €15",
+    features: ["Under 5 km — €15", "5–10 km — €20", "10–20 km — €25"],
+  },
 ];
+
 
 
 export const Route = createFileRoute("/services")({
@@ -78,7 +86,7 @@ function ServicesPage() {
                 Clear pricing packages
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                Simple, flat rate for dog walks — €20 for 90 minutes door to door in Greystones, Delgany & Kilcoole.
+                Simple, flat rate for dog walks — €20 for 75 minutes door to door in Greystones, Delgany & Kilcoole.
               </p>
             </div>
 
@@ -108,10 +116,10 @@ function ServicesPage() {
                     </div>
                     <h3 className="font-display text-xl font-semibold text-card-foreground">Group Adventures</h3>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 6 dogs. Social, fun and great exercise. 90 minutes door to door.</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Small matched groups of up to 6 dogs. Social, fun and great exercise. 75 minutes door to door.</p>
                   <ul className="mt-4 space-y-3">
                     <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 90 minutes door to door</span>
+                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 75 minutes door to door</span>
                       <span className="font-display font-semibold text-ocean">€20</span>
                     </li>
                   </ul>
@@ -160,7 +168,34 @@ function ServicesPage() {
                   </ul>
                 </div>
               </div>
+
+              <div className="border-t border-border/60 p-6 sm:p-8">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+                    <Car className="h-5 w-5 text-teal" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-card-foreground">Dog Taxi</h3>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Where to and where from — the price is set by the driving distance. Journeys over 20 km are quoted on request.
+                </p>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> Under 5 km</span>
+                    <span className="font-display font-semibold text-ocean">€15</span>
+                  </li>
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 5 – 10 km</span>
+                    <span className="font-display font-semibold text-ocean">€20</span>
+                  </li>
+                  <li className="flex items-center justify-between text-foreground">
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 10 – 20 km</span>
+                    <span className="font-display font-semibold text-ocean">€25</span>
+                  </li>
+                </ul>
+              </div>
             </div>
+
           </div>
         </section>
 

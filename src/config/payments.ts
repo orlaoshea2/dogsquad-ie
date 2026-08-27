@@ -3,7 +3,7 @@
 // Each link can be created in Revolut Business → Merchant → Payment links.
 
 export const REVOLUT_PAYMENT_LINKS = {
-  // €20 dog walk (90 min)
+  // €20 dog walk (75 min)
   walk: "https://pay.revolut.com/r/YOUR_DOG_WALK_LINK",
   // €20 home visit (30 min)
   visit30: "https://pay.revolut.com/r/YOUR_HOME_VISIT_30_LINK",
