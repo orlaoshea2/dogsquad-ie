@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "What times and days are available?",
     answer:
-      "I work Monday to Friday. Walks leave at 9am, 12pm and 3pm, and home visits are at 11am and 2pm. I'm closed from 26–30 October and from 17 December to 2 January.",
+      "I work Monday to Friday. Walks leave at 9am, 12pm and 3pm, and home visits are at 11am, 2pm and 5pm. I'm closed from 26–30 October and from 17 December to 2 January.",
   },
   {
     question: "How does the dog taxi work and what does it cost?",
