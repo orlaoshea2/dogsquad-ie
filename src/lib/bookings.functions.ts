@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
+import { SLOT_TIMES, isBookableDate, parseDateString } from "@/config/schedule";
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -11,7 +12,7 @@ const bookingSchema = z.object({
   dogBreed: z.string().optional(),
   walkDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Valid date is required"),
   walkTime: z.string().regex(/^\d{2}:\d{2}$/, "Valid time is required"),
-  durationMinutes: z.number().int().min(30).max(180).default(60),
+  durationMinutes: z.number().int().min(20).max(180).default(75),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
   userId: z.string().uuid().optional(),
