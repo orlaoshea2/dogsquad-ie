@@ -31,9 +31,7 @@ function HomePage() {
         <BookingCalendar />
         <Services />
         <DogTaxiRequest />
-
         <WicklowGallery />
-        <InstagramReels />
         <FAQ />
         <Testimonials />
       </main>
