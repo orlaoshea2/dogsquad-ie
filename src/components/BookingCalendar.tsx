@@ -81,7 +81,7 @@ export function BookingCalendar() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Dog walks are <strong>€20 for 75 minutes door to door</strong> in Greystones, Delgany & Kilcoole, Monday to Friday.
-            Walks leave at 9am, 12pm and 3pm; home visits at 11am and 2pm.
+            Walks leave at 9am, 12pm and 3pm; home visits at 11am, 2pm and 5pm.
           </p>
         </div>
 
