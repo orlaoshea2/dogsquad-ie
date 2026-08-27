@@ -14,8 +14,8 @@ const services = [
   {
     icon: Users,
     title: "Group Adventures",
-    description: "Social walks with a small pack of up to 6 friendly dogs. 90 minutes door to door.",
-    price: "€20 / 90 min door to door",
+    description: "Social walks with a small pack of up to 6 friendly dogs. 75 minutes door to door.",
+    price: "€20 / 75 min door to door",
   },
   {
     icon: Baby,
