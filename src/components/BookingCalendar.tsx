@@ -243,6 +243,61 @@ export function BookingCalendar() {
                       ))}
                     </div>
                   </div>
+
+                  <Button
+                    type="button"
+                    onClick={addItem}
+                    disabled={!selectedTime}
+                    className="w-full bg-ocean text-primary-foreground hover:bg-ocean-light"
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add to booking
+                  </Button>
+                  <p className="text-center text-xs text-muted-foreground">
+                    Add as many walks or visits as you like, then continue once.
+                  </p>
+                </div>
+              )}
+
+              {items.length > 0 && (
+                <div className="mt-6 rounded-lg border border-teal/30 bg-teal/5 p-4">
+                  <p className="mb-3 text-sm font-semibold text-foreground">
+                    Your booking ({items.length} {items.length === 1 ? "service" : "services"})
+                  </p>
+                  <ul className="space-y-2">
+                    {items.map((i) => (
+                      <li key={itemKey(i)} className="flex items-center justify-between gap-2 text-sm">
+                        <span className="text-foreground">
+                          {i.serviceType === "walk" ? "Dog walk" : "Home visit"} ·{" "}
+                          {format(i.date, "EEE d MMM")} at {i.time} · {i.duration} min
+                        </span>
+                        <span className="flex items-center gap-2 shrink-0">
+                          <span className="font-medium">€{getBookingPrice(i.serviceType, i.duration)}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeItem(itemKey(i))}
+                            aria-label="Remove"
+                            className="rounded p-1 text-muted-foreground hover:bg-background hover:text-destructive"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex items-center justify-between border-t border-teal/20 pt-3 text-sm font-semibold">
+                    <span>Total</span>
+                    <span>€{total}</span>
+                  </div>
+                  {!showForm && (
+                    <Button
+                      type="button"
+                      onClick={() => setShowForm(true)}
+                      className="mt-4 w-full bg-ocean text-primary-foreground hover:bg-ocean-light"
+                    >
+                      Continue to details
+                    </Button>
+                  )}
                 </div>
               )}
             </CardContent>
