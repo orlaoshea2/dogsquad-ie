@@ -139,7 +139,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           <CheckCircle2 className="h-16 w-16 text-teal" />
           <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Booking confirmed!</h3>
           <p className="mt-2 max-w-md text-muted-foreground">
-            Your booking for {format(date, "EEEE, MMMM do")} at {time} is confirmed. Pay cash or bank transfer when we see you — nothing to pay now.
+            Your booking for {format(date, "EEEE, MMMM do")} at {time} is confirmed. We'll be in touch to confirm the details.
           </p>
           <Button onClick={() => setSuccess(false)} className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
             Book another walk
