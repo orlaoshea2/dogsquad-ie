@@ -24,6 +24,7 @@ function AuthPage() {
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup" | "forgot">("signin");
   const [email, setEmail] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,6 +44,11 @@ function AuthPage() {
   };
 
   useEffect(() => {
+    const saved = localStorage.getItem("ds_remember_email");
+    if (saved) {
+      setEmail(saved);
+      setRememberMe(true);
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) void goAfterAuth();
     });
@@ -79,6 +85,8 @@ function AuthPage() {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        if (rememberMe) localStorage.setItem("ds_remember_email", email);
+        else localStorage.removeItem("ds_remember_email");
         await goAfterAuth();
       }
     } catch (err: any) {
@@ -157,15 +165,26 @@ function AuthPage() {
                 <div className="space-y-1.5">
                   <Label htmlFor="password">Password</Label>
                   <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-                  {mode === "signin" && (
-                    <button
-                      type="button"
-                      onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
-                      className="text-xs font-medium text-ocean hover:underline"
-                    >
-                      Forgot your password?
-                    </button>
-                  )}
+                </div>
+              )}
+              {mode === "signin" && (
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <input
+                      type="checkbox"
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                      className="h-4 w-4 rounded border-border accent-ocean"
+                    />
+                    Remember me
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
+                    className="text-xs font-medium text-ocean hover:underline"
+                  >
+                    Forgot your password?
+                  </button>
                 </div>
               )}
 
