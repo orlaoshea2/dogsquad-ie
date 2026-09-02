@@ -15,7 +15,7 @@ import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn, CreditCard, Banknot
 import { createBooking } from "@/lib/bookings.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { getRevolutPaymentLink, getBookingPrice, type PaymentMethod } from "@/config/payments";
+import { getRevolutPaymentLink, getBookingPrice, REVOLUT_PAYMENT_LINKS, type PaymentMethod } from "@/config/payments";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -29,15 +29,21 @@ const bookingFormSchema = z.object({
 
 type BookingFormValues = z.input<typeof bookingFormSchema>;
 
-interface BookingFormProps {
-  serviceType?: "walk" | "visit";
+export interface BookingItem {
+  serviceType: "walk" | "visit";
   date: Date;
+  dateStr: string;
   time: string;
   duration: number;
-  onBack?: () => void;
 }
 
-export function BookingForm({ serviceType = "walk", date, time, duration, onBack }: BookingFormProps) {
+interface BookingFormProps {
+  items: BookingItem[];
+  onBack?: () => void;
+  onSuccess?: () => void;
+}
+
+export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("pay_later");
@@ -66,27 +72,34 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
     }
   }, [user, profile, form]);
 
-  const price = getBookingPrice(serviceType, duration);
-  const revolutLink = getRevolutPaymentLink(serviceType, duration);
+  const price = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
+  const revolutLink =
+    items.length === 1
+      ? getRevolutPaymentLink(items[0].serviceType, items[0].duration)
+      : REVOLUT_PAYMENT_LINKS.default;
+  const first = items[0];
 
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
     try {
-      const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
-      const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
       const method: PaymentMethod = values.paymentMethod ?? "pay_later";
-      await submitBooking({
-        data: {
-          ...values,
-          notes: mergedNotes,
-          walkDate: format(date, "yyyy-MM-dd"),
-          walkTime: time,
-          durationMinutes: duration,
-          paymentMethod: method,
-          serviceType,
-          userId: user?.id,
-        },
-      });
+      for (const item of items) {
+        const servicePrefix = `[${item.serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
+        const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
+        await submitBooking({
+          data: {
+            ...values,
+            notes: mergedNotes,
+            walkDate: item.dateStr,
+            walkTime: item.time,
+            durationMinutes: item.duration,
+            paymentMethod: method,
+            serviceType: item.serviceType,
+            userId: user?.id,
+          },
+        });
+      }
+
 
       // Save/update profile details for signed-in customers
       if (user) {
@@ -122,7 +135,10 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
             <Loader2 className="h-12 w-12 animate-spin text-teal" />
             <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Redirecting to Revolut…</h3>
             <p className="mt-2 max-w-md text-muted-foreground">
-              Your booking for {format(date, "EEEE, MMMM do")} at {time} is saved. If you are not redirected, click the button below.
+              {items.length === 1
+                ? `Your booking for ${format(first.date, "EEEE, MMMM do")} at ${first.time} is saved.`
+                : `Your ${items.length} bookings are saved.`}{" "}
+              If you are not redirected, click the button below.
             </p>
             <Button asChild className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
               <a href={revolutLink} target="_blank" rel="noreferrer">
@@ -140,9 +156,27 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           <CheckCircle2 className="h-16 w-16 text-teal" />
           <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Booking confirmed!</h3>
           <p className="mt-2 max-w-md text-muted-foreground">
-            Your booking for {format(date, "EEEE, MMMM do")} at {time} is confirmed. We'll be in touch to confirm the details.
+            {items.length === 1
+              ? `Your booking for ${format(first.date, "EEEE, MMMM do")} at ${first.time} is confirmed.`
+              : `All ${items.length} bookings are confirmed.`}{" "}
+            We'll be in touch to confirm the details.
           </p>
-          <Button onClick={() => setSuccess(false)} className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
+          {items.length > 1 && (
+            <ul className="mt-4 space-y-1 text-sm text-muted-foreground">
+              {items.map((i) => (
+                <li key={`${i.dateStr}-${i.time}`}>
+                  {i.serviceType === "walk" ? "Dog walk" : "Home visit"} · {format(i.date, "EEE d MMM")} at {i.time}
+                </li>
+              ))}
+            </ul>
+          )}
+          <Button
+            onClick={() => {
+              setSuccess(false);
+              onSuccess?.();
+            }}
+            className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light"
+          >
             Book another walk
           </Button>
         </CardContent>
@@ -161,9 +195,15 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
           )}
           <div>
             <h3 className="font-display text-xl font-semibold text-foreground">Complete your booking</h3>
-            <p className="text-sm text-muted-foreground">
-              {serviceType === "visit" ? `Home visit — €${duration === 30 ? "20" : "30"}` : `Dog walk — €20 · 75 min door to door`} · {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes total
-            </p>
+            <ul className="mt-1 space-y-0.5 text-sm text-muted-foreground">
+              {items.map((i) => (
+                <li key={`${i.dateStr}-${i.time}`}>
+                  {i.serviceType === "visit" ? "Home visit" : "Dog walk"} · {format(i.date, "EEEE, MMMM do")} at {i.time} ·{" "}
+                  {i.duration} min · €{getBookingPrice(i.serviceType, i.duration)}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-1 text-sm font-semibold text-foreground">Total: €{price}</p>
           </div>
         </div>
       </CardHeader>

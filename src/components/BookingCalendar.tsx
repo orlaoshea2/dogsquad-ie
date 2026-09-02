@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle, Plus, X } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
-import { BookingForm } from "./BookingForm";
+import { BookingForm, type BookingItem } from "./BookingForm";
 import { FreeConsult } from "./FreeConsult";
 import { cn } from "@/lib/utils";
 import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
+import { getBookingPrice } from "@/config/payments";
 
 type BookableService = "walk" | "visit";
 type TabId = BookableService | "consult";
@@ -39,6 +41,34 @@ export function BookingCalendar() {
   const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [items, setItems] = useState<BookingItem[]>([]);
+
+  const itemKey = (i: BookingItem) => `${i.dateStr}-${i.time}`;
+  const isAdded = (dateStr: string, time: string) =>
+    items.some((i) => i.dateStr === dateStr && i.time === time);
+
+  const addItem = () => {
+    if (!date || !selectedTime || serviceType === "consult") return;
+    const dateStr = format(date, "yyyy-MM-dd");
+    if (isAdded(dateStr, selectedTime)) return;
+    setItems((prev) => [
+      ...prev,
+      {
+        serviceType: serviceType as BookableService,
+        date,
+        dateStr,
+        time: selectedTime,
+        duration: selectedDuration,
+      },
+    ].sort((a, b) => (a.dateStr + a.time).localeCompare(b.dateStr + b.time)));
+    setSelectedTime(null);
+  };
+
+  const removeItem = (key: string) => {
+    setItems((prev) => prev.filter((i) => itemKey(i) !== key));
+  };
+
+  const total = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
 
   const fetchSlots = useServerFn(getAvailableSlots);
 
@@ -166,26 +196,30 @@ export function BookingCalendar() {
               {date && !loading && slots.length > 0 && (
                 <div className="space-y-4">
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-                    {slots.map((slot) => (
-                      <button
-                        key={slot.time}
-                        disabled={!slot.available}
-                        onClick={() => {
-                          setSelectedTime(slot.time);
-                          setShowForm(true);
-                        }}
-                        className={cn(
-                          "rounded-md border px-2 py-2 text-sm font-medium transition-colors",
-                          selectedTime === slot.time
-                            ? "border-ocean bg-ocean text-primary-foreground"
-                            : slot.available
-                              ? "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5"
-                              : "border-border bg-muted text-muted-foreground cursor-not-allowed",
-                        )}
-                      >
-                        {slot.time}
-                      </button>
-                    ))}
+                    {slots.map((slot) => {
+                      const dateStr = date ? format(date, "yyyy-MM-dd") : "";
+                      const added = isAdded(dateStr, slot.time);
+                      const disabled = !slot.available || added;
+                      return (
+                        <button
+                          key={slot.time}
+                          disabled={disabled}
+                          onClick={() => setSelectedTime(slot.time)}
+                          className={cn(
+                            "rounded-md border px-2 py-2 text-sm font-medium transition-colors",
+                            selectedTime === slot.time
+                              ? "border-ocean bg-ocean text-primary-foreground"
+                              : added
+                                ? "border-teal/40 bg-teal/10 text-teal cursor-not-allowed"
+                                : slot.available
+                                  ? "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5"
+                                  : "border-border bg-muted text-muted-foreground cursor-not-allowed",
+                          )}
+                        >
+                          {slot.time}
+                        </button>
+                      );
+                    })}
                   </div>
 
                   <div className="pt-4">
@@ -209,6 +243,61 @@ export function BookingCalendar() {
                       ))}
                     </div>
                   </div>
+
+                  <Button
+                    type="button"
+                    onClick={addItem}
+                    disabled={!selectedTime}
+                    className="w-full bg-ocean text-primary-foreground hover:bg-ocean-light"
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add to booking
+                  </Button>
+                  <p className="text-center text-xs text-muted-foreground">
+                    Add as many walks or visits as you like, then continue once.
+                  </p>
+                </div>
+              )}
+
+              {items.length > 0 && (
+                <div className="mt-6 rounded-lg border border-teal/30 bg-teal/5 p-4">
+                  <p className="mb-3 text-sm font-semibold text-foreground">
+                    Your booking ({items.length} {items.length === 1 ? "service" : "services"})
+                  </p>
+                  <ul className="space-y-2">
+                    {items.map((i) => (
+                      <li key={itemKey(i)} className="flex items-center justify-between gap-2 text-sm">
+                        <span className="text-foreground">
+                          {i.serviceType === "walk" ? "Dog walk" : "Home visit"} ·{" "}
+                          {format(i.date, "EEE d MMM")} at {i.time} · {i.duration} min
+                        </span>
+                        <span className="flex items-center gap-2 shrink-0">
+                          <span className="font-medium">€{getBookingPrice(i.serviceType, i.duration)}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeItem(itemKey(i))}
+                            aria-label="Remove"
+                            className="rounded p-1 text-muted-foreground hover:bg-background hover:text-destructive"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex items-center justify-between border-t border-teal/20 pt-3 text-sm font-semibold">
+                    <span>Total</span>
+                    <span>€{total}</span>
+                  </div>
+                  {!showForm && (
+                    <Button
+                      type="button"
+                      onClick={() => setShowForm(true)}
+                      className="mt-4 w-full bg-ocean text-primary-foreground hover:bg-ocean-light"
+                    >
+                      Continue to details
+                    </Button>
+                  )}
                 </div>
               )}
             </CardContent>
@@ -216,14 +305,12 @@ export function BookingCalendar() {
         </div>
         )}
 
-        {showForm && date && selectedTime && (
+        {showForm && items.length > 0 && (
           <div className="mt-8">
             <BookingForm
-              serviceType={serviceType as BookableService}
-              date={date}
-              time={selectedTime}
-              duration={selectedDuration}
+              items={items}
               onBack={() => setShowForm(false)}
+              onSuccess={() => setItems([])}
             />
           </div>
         )}
