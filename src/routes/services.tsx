@@ -2,9 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
+import { FreeConsult } from "@/components/FreeConsult";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Clock, MapPin, Shield, Camera, Mail, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
