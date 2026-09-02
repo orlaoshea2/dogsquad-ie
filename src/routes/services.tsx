@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Baby, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
@@ -24,13 +24,6 @@ const serviceDetails = [
     features: ["Max 6 dogs per group", "Matching by temperament", "75 minutes door to door"],
   },
   {
-    icon: Baby,
-    title: "Puppy Visits",
-    description: "Young puppies need frequent breaks. We feed, play, clean up, and give plenty of cuddles.",
-    price: "€20 / 20 min",
-    features: ["Toilet training help", "Feeding & play", "Flexible timing"],
-  },
-  {
     icon: Clock,
     title: "Home Visits",
     description: "Drop-in visits to feed, play and check on your dog in their own home while you're out.",
@@ -45,9 +38,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Dog Walking Services | Dog Squad" },
-      { name: "description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and home visits in Greystones, Delgany & Kilcoole." },
+      { name: "description", content: "Explore our dog walking services: solo walks, group adventures and home visits in Greystones, Delgany & Kilcoole." },
       { property: "og:title", content: "Dog Walking Services | Dog Squad" },
-      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures, puppy visits and home visits in Greystones, Delgany & Kilcoole." },
+      { property: "og:description", content: "Explore our dog walking services: solo walks, group adventures and home visits in Greystones, Delgany & Kilcoole." },
     ],
   }),
   component: ServicesPage,
@@ -121,26 +114,6 @@ function ServicesPage() {
               </div>
 
               <div className="grid divide-y border-t border-border/60 md:grid-cols-2 md:divide-x md:divide-y-0">
-                <div className="p-6 sm:p-8">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
-                      <Baby className="h-5 w-5 text-teal" />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold text-card-foreground">Puppy Visits</h3>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">Feeding, play, toilet breaks and cuddles for young puppies.</p>
-                  <ul className="mt-4 space-y-3">
-                    <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 20 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€20</span>
-                    </li>
-                    <li className="flex items-center justify-between text-foreground">
-                      <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-teal" /> 45 minutes</span>
-                      <span className="font-display font-semibold text-ocean">€30</span>
-                    </li>
-                  </ul>
-                </div>
-
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
