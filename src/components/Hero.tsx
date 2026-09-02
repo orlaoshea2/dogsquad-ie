@@ -54,9 +54,9 @@ export function Hero() {
         <Link
           to="/services"
           hash="free-consult"
-          className="mt-6 font-display text-sm font-semibold text-primary-foreground underline underline-offset-4 decoration-primary-foreground/50 [text-shadow:0_2px_8px_rgba(0,0,0,0.4)] hover:decoration-primary-foreground"
+          className="mt-5 text-xs font-medium text-primary-foreground/70 [text-shadow:0_1px_4px_rgba(0,0,0,0.35)] hover:text-primary-foreground"
         >
-          Or book a free consult — meet us and your dog first
+          Or book a free consult
         </Link>
       </div>
     </section>
