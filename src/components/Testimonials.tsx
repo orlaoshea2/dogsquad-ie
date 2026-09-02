@@ -58,7 +58,13 @@ export function Testimonials() {
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-3">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
+            <Link to="/consult">
+              Book a free consult
+              <CalendarHeart className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
             <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer">
               Read our Google reviews
               <ExternalLink className="ml-2 h-4 w-4" />
