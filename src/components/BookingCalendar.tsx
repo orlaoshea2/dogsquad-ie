@@ -196,26 +196,30 @@ export function BookingCalendar() {
               {date && !loading && slots.length > 0 && (
                 <div className="space-y-4">
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-                    {slots.map((slot) => (
-                      <button
-                        key={slot.time}
-                        disabled={!slot.available}
-                        onClick={() => {
-                          setSelectedTime(slot.time);
-                          setShowForm(true);
-                        }}
-                        className={cn(
-                          "rounded-md border px-2 py-2 text-sm font-medium transition-colors",
-                          selectedTime === slot.time
-                            ? "border-ocean bg-ocean text-primary-foreground"
-                            : slot.available
-                              ? "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5"
-                              : "border-border bg-muted text-muted-foreground cursor-not-allowed",
-                        )}
-                      >
-                        {slot.time}
-                      </button>
-                    ))}
+                    {slots.map((slot) => {
+                      const dateStr = date ? format(date, "yyyy-MM-dd") : "";
+                      const added = isAdded(dateStr, slot.time);
+                      const disabled = !slot.available || added;
+                      return (
+                        <button
+                          key={slot.time}
+                          disabled={disabled}
+                          onClick={() => setSelectedTime(slot.time)}
+                          className={cn(
+                            "rounded-md border px-2 py-2 text-sm font-medium transition-colors",
+                            selectedTime === slot.time
+                              ? "border-ocean bg-ocean text-primary-foreground"
+                              : added
+                                ? "border-teal/40 bg-teal/10 text-teal cursor-not-allowed"
+                                : slot.available
+                                  ? "border-border bg-background text-foreground hover:border-ocean hover:bg-ocean/5"
+                                  : "border-border bg-muted text-muted-foreground cursor-not-allowed",
+                          )}
+                        >
+                          {slot.time}
+                        </button>
+                      );
+                    })}
                   </div>
 
                   <div className="pt-4">
