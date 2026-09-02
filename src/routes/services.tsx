@@ -169,26 +169,21 @@ function ServicesPage() {
           </div>
         </section>
 
-        <section id="free-consult" className="py-16 sm:py-24 bg-muted/30 scroll-mt-24">
+        <section id="free-consult" className="py-12 sm:py-16 bg-muted/30 scroll-mt-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-teal/30 bg-card p-8 text-center shadow-sm sm:p-10">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10">
-                <Mail className="h-6 w-6 text-teal" />
-              </div>
-              <h2 className="mt-4 font-display text-2xl font-bold text-foreground sm:text-3xl">
-                Free consult
+            <div className="text-center">
+              <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Free consult</p>
+              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Meet before the first walk
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
                 A free consult involves meeting you and your dog(s) in person — figuring out their
                 specific needs, temperament and routine, sorting out access and keys, and making
                 sure everyone is happy before the first walk or visit.
               </p>
-              <a href="mailto:hello@dogsquad.ie?subject=Free%20consult" className="mt-6 inline-block">
-                <Button size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
-                  <Mail className="mr-2 h-4 w-4" /> Email to book a free consult
-                </Button>
-              </a>
-              <p className="mt-3 text-sm text-muted-foreground">hello@dogsquad.ie</p>
+            </div>
+            <div className="mt-8">
+              <FreeConsult embedded />
             </div>
           </div>
         </section>
