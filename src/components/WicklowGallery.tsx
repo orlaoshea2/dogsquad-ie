@@ -3,12 +3,10 @@ import ds2 from "@/assets/ds-2.jpg.asset.json";
 import ds4 from "@/assets/ds-4.jpg.asset.json";
 import ds5 from "@/assets/ds-5.jpg.asset.json";
 import ds6 from "@/assets/ds-6.jpg.asset.json";
-import harbourDogs from "@/assets/greystones-harbour-dogs.jpg";
 import cliffPack from "@/assets/cliff-walk-pack.jpg";
 
 const photos = [
   { src: ds1.url, alt: "Dog Squad pack on a Wicklow adventure", caption: "Out on the trails" },
-  { src: harbourDogs, alt: "Two happy golden retrievers at Greystones harbour marina", caption: "Greystones harbour" },
   { src: ds2.url, alt: "Happy dogs on a group walk in Wicklow", caption: "Group walks" },
   { src: cliffPack, alt: "Three happy dogs on the Greystones to Bray cliff walk", caption: "Cliff walk to Bray Head" },
   { src: ds4.url, alt: "Dog Squad walker with the pack", caption: "With the squad" },
