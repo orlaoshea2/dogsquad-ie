@@ -51,13 +51,17 @@ export function Hero() {
             </Button>
           </Link>
         </div>
-        <Link
-          to="/services"
-          hash="free-consult"
-          className="mt-5 text-xs font-medium text-primary-foreground/70 [text-shadow:0_1px_4px_rgba(0,0,0,0.35)] hover:text-primary-foreground"
-        >
-          Or book a free consult
-        </Link>
+        <div className="mt-4">
+          <Link to="/services" hash="free-consult">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground/60 bg-primary-foreground/15 text-primary-foreground shadow-lg shadow-black/20 backdrop-blur-sm hover:bg-primary-foreground/25"
+            >
+              Book a free consult
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
