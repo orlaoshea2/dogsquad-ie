@@ -47,31 +47,33 @@ export const createBooking = createServerFn({ method: "POST" })
       global: { fetch: createSupabaseFetch(key) },
     });
 
-    const { data: booking, error } = await supabase
-      .from("bookings")
-      .insert({
-        name: data.name,
-        email: data.email,
-        phone: data.phone || null,
-        dog_name: data.dogName,
-        dog_breed: data.dogBreed || null,
-        walk_date: data.walkDate,
-        walk_time: data.walkTime,
-        duration_minutes: data.durationMinutes,
-        notes: data.notes || null,
-        payment_method: data.paymentMethod,
-        payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",
-        user_id: data.userId || null,
-      })
-      .select("id")
-      .single();
+    // Guests cannot read rows back (SELECT is restricted), so generate the id
+    // here and insert without asking for a representation.
+    const id = crypto.randomUUID();
 
-    if (error || !booking) {
+    const { error } = await supabase.from("bookings").insert({
+      id,
+      name: data.name,
+      email: data.email,
+      phone: data.phone || null,
+      dog_name: data.dogName,
+      dog_breed: data.dogBreed || null,
+      walk_date: data.walkDate,
+      walk_time: data.walkTime,
+      duration_minutes: data.durationMinutes,
+      service_type: data.serviceType,
+      notes: data.notes || null,
+      payment_method: data.paymentMethod,
+      payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",
+      user_id: data.userId || null,
+    });
+
+    if (error) {
       console.error("Booking insert error:", error);
-      throw new Error(error?.message || "Failed to create booking");
+      throw new Error(error.message || "Failed to create booking");
     }
 
-    return { id: booking.id };
+    return { id };
   });
 
 const slotSchema = z.object({
