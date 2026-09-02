@@ -7,10 +7,11 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, ShieldAlert } from "lucide-react";
+import { MessageCircle, ShieldAlert, Loader2 } from "lucide-react";
 import {
   listAllBookings,
   updateBookingPaymentStatus,
+  listConsultMessages,
   type PaymentStatus,
 } from "@/lib/admin.functions";
 
