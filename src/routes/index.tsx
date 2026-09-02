@@ -8,7 +8,6 @@ import { BookingCalendar } from "@/components/BookingCalendar";
 import { InstagramReels } from "@/components/InstagramReels";
 import { WicklowGallery } from "@/components/WicklowGallery";
 import { FAQ } from "@/components/FAQ";
-import { DogTaxiRequest } from "@/components/DogTaxiRequest";
 import { FreeConsult } from "@/components/FreeConsult";
 import { ReviewsLink } from "@/components/ReviewsLink";
 
@@ -34,7 +33,6 @@ function HomePage() {
         <FreeConsult />
         <BookingCalendar />
         <Services />
-        <DogTaxiRequest />
         <WicklowGallery />
         <FAQ />
         <Testimonials />
