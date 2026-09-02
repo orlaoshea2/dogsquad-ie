@@ -69,7 +69,7 @@ export const createBooking = createServerFn({ method: "POST" })
     });
 
     if (error) {
-      console.error("Booking insert error:", error, "PAYLOAD", JSON.stringify({ ...data, keyPrefix: key.slice(0, 12) }));
+      console.error("Booking insert error:", error);
       throw new Error(error.message || "Failed to create booking");
     }
 
