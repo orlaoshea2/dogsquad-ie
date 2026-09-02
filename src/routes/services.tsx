@@ -33,6 +33,10 @@ const serviceDetails = [
   },
 ];
 
+const WHATSAPP_NUMBER = "353866063416";
+
+
+
 
 
 export const Route = createFileRoute("/services")({
@@ -187,7 +191,16 @@ function ServicesPage() {
               <FreeConsult embedded />
             </div>
             <p className="mt-6 text-center text-sm text-muted-foreground">
-              Or email us directly at{" "}
+              Or message us on{" "}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Orla, I'd like to book a free consult for my dog.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display font-semibold text-teal underline underline-offset-4 hover:opacity-80"
+              >
+                WhatsApp
+              </a>{" "}
+              or email{" "}
               <a
                 href="mailto:hello@dogsquad.ie?subject=Free%20consult"
                 className="font-display font-semibold text-teal underline underline-offset-4 hover:opacity-80"
