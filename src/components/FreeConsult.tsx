@@ -148,8 +148,16 @@ export function FreeConsult({ embedded = false }: { embedded?: boolean }) {
                 </form>
               </div>
             )}
-          </CardContent>
-        </Card>
+      </CardContent>
+    </Card>
+  );
+
+  if (embedded) return form;
+
+  return (
+    <section id="free-consult" className="bg-secondary/40 py-16">
+      <div className="container mx-auto px-4">
+        {form}
       </div>
     </section>
   );
