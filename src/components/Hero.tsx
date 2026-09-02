@@ -11,7 +11,7 @@ export function Hero() {
         <img
           src={heroImage}
           alt="Happy dogs on a group walk across the Wicklow hills"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-left"
           width={2040}
           height={1148}
         />
