@@ -46,7 +46,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-16 sm:py-24 bg-ocean/5" id="faq">
+    <section className="py-12 sm:py-16 bg-ocean/5" id="faq">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">FAQ</p>
@@ -58,7 +58,7 @@ export function FAQ() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="mt-12 rounded-2xl bg-card p-2 sm:p-4 shadow-sm border border-border/60">
+        <Accordion type="single" collapsible className="mt-8 rounded-2xl bg-card p-2 sm:p-4 shadow-sm border border-border/60">
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`} className="px-4">
               <AccordionTrigger className="font-display text-base font-semibold text-card-foreground">

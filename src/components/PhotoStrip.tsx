@@ -10,12 +10,12 @@ const strip = [
 
 export function PhotoStrip() {
   return (
-    <section className="bg-muted/40 py-12">
+    <section className="bg-muted/40 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center font-display text-sm font-semibold uppercase tracking-wider text-teal">
           A day in the life
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {strip.map((photo) => (
             <div key={photo.alt} className="overflow-hidden rounded-2xl shadow-sm">
               <img

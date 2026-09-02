@@ -26,7 +26,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="reviews" className="scroll-mt-24 bg-sky/50 py-16 sm:py-24">
+    <section id="reviews" className="scroll-mt-24 bg-sky/50 py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Happy hounds</p>
@@ -38,7 +38,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
             <Card key={t.name} className="border-border/60 bg-card">
               <CardContent className="pt-6">
@@ -57,7 +57,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-3">
+        <div className="mt-8 flex flex-col items-center gap-3">
           <Button asChild size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
             <Link to="/consult">
               Book a free consult
