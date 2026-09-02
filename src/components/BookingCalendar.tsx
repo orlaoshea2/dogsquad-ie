@@ -49,7 +49,7 @@ export function BookingCalendar() {
     items.some((i) => i.dateStr === dateStr && i.time === time);
 
   const addItem = () => {
-    if (!date || selectedTime || serviceType === "consult" || serviceType === "taxi") return;
+    if (!date || !selectedTime || serviceType === "consult" || serviceType === "taxi") return;
     const dateStr = format(date, "yyyy-MM-dd");
     if (isAdded(dateStr, selectedTime)) return;
     setItems((prev) => [
