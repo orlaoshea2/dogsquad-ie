@@ -2,21 +2,23 @@ import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, Clock, CalendarDays, PawPrint, Home } from "lucide-react";
+import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm } from "./BookingForm";
+import { FreeConsult } from "./FreeConsult";
 import { cn } from "@/lib/utils";
 import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
 
-type ServiceType = "walk" | "visit";
+type BookableService = "walk" | "visit";
+type TabId = BookableService | "consult";
 
-const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
+const DURATIONS_BY_SERVICE: Record<BookableService, number[]> = {
   walk: [WALK_DURATION_MINUTES],
   visit: [30, 60],
 };
 
-const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
+const PRICE_LABEL: Record<BookableService, Record<number, string>> = {
   walk: { [WALK_DURATION_MINUTES]: "€20" },
   visit: { 30: "€20", 60: "€30" },
 };
