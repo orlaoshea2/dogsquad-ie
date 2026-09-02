@@ -137,9 +137,9 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
       <Card className="border-teal/30 bg-card">
         <CardContent className="flex flex-col items-center py-12 text-center">
           <CheckCircle2 className="h-16 w-16 text-teal" />
-          <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Booking request sent!</h3>
+          <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Booking confirmed!</h3>
           <p className="mt-2 max-w-md text-muted-foreground">
-            We've received your booking for {format(date, "EEEE, MMMM do")} at {time}. We'll confirm via email shortly.
+            Your booking for {format(date, "EEEE, MMMM do")} at {time} is confirmed. Pay cash or bank transfer when we see you — nothing to pay now.
           </p>
           <Button onClick={() => setSuccess(false)} className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
             Book another walk
@@ -249,9 +249,9 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                 <div className="flex-1">
                   <div className="flex items-center gap-2 font-medium text-foreground">
                     <Banknote className="h-4 w-4 text-teal" />
-                    Pay cash on the day
+                    Confirm now — pay cash later
                   </div>
-                  <p className="text-sm text-muted-foreground">Cash or bank transfer — nothing to pay now.</p>
+                  <p className="text-sm text-muted-foreground">Cash or bank transfer — nothing to pay today.</p>
                 </div>
               </label>
 
@@ -290,7 +290,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
                 </>
               ) : (
-                `Confirm booking — ${form.watch("paymentMethod") === "revolut" ? `Pay €${price} with Revolut` : "Pay cash on the day"}`
+                `Confirm booking — ${form.watch("paymentMethod") === "revolut" ? `Pay €${price} with Revolut` : "Pay cash later"}`
               )}
             </Button>
           </div>
