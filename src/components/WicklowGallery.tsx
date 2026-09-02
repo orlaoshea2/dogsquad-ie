@@ -9,7 +9,7 @@ const photos = [
   { src: r1.url, alt: "Two golden retrievers playing in the surf on a Wicklow beach", caption: "Beach mornings" },
   { src: r2.url, alt: "Two dogs exploring a green Wicklow hillside", caption: "Up the hills" },
   { src: r3.url, alt: "Golden retriever standing on the shore with the Wicklow coastline behind", caption: "Coast and countryside" },
-  { src: r4.url, alt: "Muddy, grinning spaniel after a walk", caption: "Happily filthy" },
+  { src: r4.url, alt: "Muddy, grinning spaniel after a walk", caption: "Happily filthy", position: "object-top" },
   { src: r5.url, alt: "Two dogs splashing into the sea", caption: "Straight into the sea" },
   { src: r7.url, alt: "Dog sniffing along the shingle at Kilcoole strand", caption: "Kilcoole strand" },
 ];
@@ -41,7 +41,7 @@ export function WicklowGallery() {
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${"position" in photo ? (photo as { position?: string }).position : ""}`}
                 />
               </div>
               <figcaption className="bg-card p-4 text-center font-display text-sm font-semibold text-card-foreground">
