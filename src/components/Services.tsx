@@ -59,15 +59,10 @@ export function Services() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-12 flex justify-center">
           <Link to="/services">
             <Button variant="outline" className="border-ocean text-ocean hover:bg-ocean/5">
               View all services <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-          <Link to="/consult">
-            <Button className="bg-teal text-white hover:bg-teal/90">
-              Book a free consult <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
