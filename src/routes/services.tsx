@@ -186,6 +186,15 @@ function ServicesPage() {
             <div className="mt-8">
               <FreeConsult embedded />
             </div>
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Or email us directly at{" "}
+              <a
+                href="mailto:hello@dogsquad.ie?subject=Free%20consult"
+                className="font-display font-semibold text-teal underline underline-offset-4 hover:opacity-80"
+              >
+                hello@dogsquad.ie
+              </a>
+            </p>
           </div>
         </section>
 
