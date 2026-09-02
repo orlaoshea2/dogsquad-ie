@@ -101,20 +101,11 @@ function AdminPage() {
                         <div className="font-display text-lg font-semibold text-foreground">
                           {b.name} · {b.dog_name}
                           {b.dog_breed ? <span className="text-muted-foreground"> ({b.dog_breed})</span> : null}
-                          {b.service_type === "dog_taxi" ? (
-                            <span className="ml-2 rounded bg-teal/10 px-2 py-0.5 text-xs font-medium text-teal">Dog taxi</span>
-                          ) : null}
                         </div>
                         <div className="text-sm text-muted-foreground">
                           {format(parseISO(b.walk_date), "EEE, MMM d yyyy")} · {b.walk_time} · {b.duration_minutes} min
                         </div>
-                        {b.service_type === "dog_taxi" ? (
-                          <div className="text-sm text-foreground/80">
-                            {b.pickup_address} → {b.dropoff_address}
-                            {b.distance_km != null ? ` · ${b.distance_km} km` : ""}
-                            {b.price_eur != null ? ` · €${b.price_eur}` : ""}
-                          </div>
-                        ) : null}
+
                         <div className="text-sm text-muted-foreground">
                           {b.email}
                           {b.phone ? ` · ${b.phone}` : ""}
