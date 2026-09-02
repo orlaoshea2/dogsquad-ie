@@ -10,6 +10,7 @@ import { WicklowGallery } from "@/components/WicklowGallery";
 import { FAQ } from "@/components/FAQ";
 import { FreeConsult } from "@/components/FreeConsult";
 import { ReviewsLink } from "@/components/ReviewsLink";
+import { PhotoStrip } from "@/components/PhotoStrip";
 
 export const Route = createFileRoute("/")({
   head: () => ({
