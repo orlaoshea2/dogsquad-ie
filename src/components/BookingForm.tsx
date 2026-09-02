@@ -195,9 +195,15 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           )}
           <div>
             <h3 className="font-display text-xl font-semibold text-foreground">Complete your booking</h3>
-            <p className="text-sm text-muted-foreground">
-              {serviceType === "visit" ? `Home visit — €${duration === 30 ? "20" : "30"}` : `Dog walk — €20 · 75 min door to door`} · {format(date, "EEEE, MMMM do")} at {time} · {duration} minutes total
-            </p>
+            <ul className="mt-1 space-y-0.5 text-sm text-muted-foreground">
+              {items.map((i) => (
+                <li key={`${i.dateStr}-${i.time}`}>
+                  {i.serviceType === "visit" ? "Home visit" : "Dog walk"} · {format(i.date, "EEEE, MMMM do")} at {i.time} ·{" "}
+                  {i.duration} min · €{getBookingPrice(i.serviceType, i.duration)}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-1 text-sm font-semibold text-foreground">Total: €{price}</p>
           </div>
         </div>
       </CardHeader>
