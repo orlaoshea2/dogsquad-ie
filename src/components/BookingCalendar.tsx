@@ -114,6 +114,11 @@ export function BookingCalendar() {
           ))}
         </div>
 
+        {serviceType === "consult" ? (
+          <div className="mt-8">
+            <FreeConsult embedded />
+          </div>
+        ) : (
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <Card className="border-border/60 bg-card">
             <CardContent className="p-6">
