@@ -38,11 +38,6 @@ const faqs = [
       "Your dog will get a structured, fun outing with plenty of sniffing, exercise, and social time if suitable. I send updates and photos, and every walk ends with paws wiped and water refreshed.",
   },
   {
-    question: "Do you walk puppies?",
-    answer:
-      "Yes — puppy visits are designed for young dogs who aren’t ready for full walks yet. They include play, feeding, toilet breaks, and gentle socialisation.",
-  },
-  {
     question: "How do I pay?",
     answer:
       "Payment is due weekly or monthly by bank transfer. I’ll share details when your booking is confirmed.",

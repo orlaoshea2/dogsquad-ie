@@ -15,9 +15,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
-      { name: "description", content: "Book a dog walk online in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and home visits." },
+      { name: "description", content: "Book a dog walk online in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures and home visits." },
       { property: "og:title", content: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
-      { property: "og:description", content: "Book a dog walk online in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures, puppy visits and home visits." },
+      { property: "og:description", content: "Book a dog walk online in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures and home visits." },
     ],
   }),
   component: HomePage,
@@ -31,7 +31,7 @@ function HomePage() {
         <Hero />
         <ReviewsLink />
         <BookingCalendar />
-        <Services showPuppyVisits={false} />
+        <Services />
         <WicklowGallery />
         <PhotoStrip />
         <FAQ />
