@@ -89,6 +89,8 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
     setSubmitting(true);
     try {
       const method: PaymentMethod = values.paymentMethod ?? "pay_later";
+      const pickup = values.pickupAddress.trim();
+      const dropoff = values.sameDropoff ? pickup : (values.dropoffAddress ?? "").trim() || pickup;
       for (const item of items) {
         const servicePrefix = `[${item.serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
         const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
