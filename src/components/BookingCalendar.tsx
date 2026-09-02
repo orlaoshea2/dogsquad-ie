@@ -3,17 +3,18 @@ import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle, Plus, X } from "lucide-react";
+import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle, Car, Plus, X } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm, type BookingItem } from "./BookingForm";
 import { FreeConsult } from "./FreeConsult";
+import { TaxiRequest } from "./TaxiRequest";
 import { cn } from "@/lib/utils";
 import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
 import { getBookingPrice } from "@/config/payments";
 
 type BookableService = "walk" | "visit";
-type TabId = BookableService | "consult";
+type TabId = BookableService | "consult" | "taxi";
 
 const DURATIONS_BY_SERVICE: Record<BookableService, number[]> = {
   walk: [WALK_DURATION_MINUTES],
@@ -48,7 +49,7 @@ export function BookingCalendar() {
     items.some((i) => i.dateStr === dateStr && i.time === time);
 
   const addItem = () => {
-    if (!date || !selectedTime || serviceType === "consult") return;
+    if (!date || !selectedTime || serviceType === "consult" || serviceType === "taxi") return;
     const dateStr = format(date, "yyyy-MM-dd");
     if (isAdded(dateStr, selectedTime)) return;
     setItems((prev) => [
@@ -73,7 +74,7 @@ export function BookingCalendar() {
   const fetchSlots = useServerFn(getAvailableSlots);
 
   useEffect(() => {
-    if (!date || serviceType === "consult") {
+    if (!date || serviceType === "consult" || serviceType === "taxi") {
       setSlots([]);
       return;
     }
@@ -118,22 +119,23 @@ export function BookingCalendar() {
         </div>
 
 
-        <div className="mx-auto mt-8 flex max-w-xl gap-2 rounded-lg border border-border/60 bg-card p-1">
+        <div className="mx-auto mt-8 flex max-w-xl flex-wrap gap-2 rounded-lg border border-border/60 bg-card p-1">
           {([
             { id: "walk", label: "Dog walk", Icon: PawPrint },
             { id: "visit", label: "Home visit", Icon: Home },
             { id: "consult", label: "Free consult", Icon: MessageCircle },
+            { id: "taxi", label: "Dog taxi", Icon: Car },
           ] as const).map(({ id, label, Icon }) => (
             <button
               key={id}
               onClick={() => {
                 setServiceType(id);
-                if (id === "consult") return;
+                if (id === "consult" || id === "taxi") return;
                 const durations = DURATIONS_BY_SERVICE[id];
                 if (!durations.includes(selectedDuration)) setSelectedDuration(durations[0]);
               }}
               className={cn(
-                "flex flex-1 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                "flex min-w-[45%] flex-1 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors sm:min-w-0",
                 serviceType === id
                   ? "bg-ocean text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground",
@@ -148,6 +150,10 @@ export function BookingCalendar() {
         {serviceType === "consult" ? (
           <div className="mt-8">
             <FreeConsult embedded />
+          </div>
+        ) : serviceType === "taxi" ? (
+          <div className="mt-8">
+            <TaxiRequest />
           </div>
         ) : (
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
