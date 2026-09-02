@@ -16,6 +16,8 @@ const bookingSchema = z.object({
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
   serviceType: z.enum(["walk", "visit"]).default("walk"),
+  pickupAddress: z.string().max(300).optional(),
+  dropoffAddress: z.string().max(300).optional(),
   userId: z.string().uuid().optional(),
 });
 
@@ -62,6 +64,8 @@ export const createBooking = createServerFn({ method: "POST" })
       walk_time: data.walkTime,
       duration_minutes: data.durationMinutes,
       service_type: data.serviceType,
+      pickup_address: data.pickupAddress?.trim() || null,
+      dropoff_address: data.dropoffAddress?.trim() || null,
       notes: data.notes || null,
       payment_method: data.paymentMethod,
       payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",

@@ -23,6 +23,9 @@ const bookingFormSchema = z.object({
   phone: z.string().optional(),
   dogName: z.string().min(1, "Dog name is required"),
   dogBreed: z.string().optional(),
+  pickupAddress: z.string().trim().min(5, "Pick-up address is required").max(300),
+  dropoffAddress: z.string().trim().max(300).optional(),
+  sameDropoff: z.boolean().default(true),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
 });
@@ -58,6 +61,9 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
       phone: "",
       dogName: "",
       dogBreed: "",
+      pickupAddress: "",
+      dropoffAddress: "",
+      sameDropoff: true,
       notes: "",
       paymentMethod: "pay_later",
     },
@@ -83,6 +89,8 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
     setSubmitting(true);
     try {
       const method: PaymentMethod = values.paymentMethod ?? "pay_later";
+      const pickup = values.pickupAddress.trim();
+      const dropoff = values.sameDropoff ? pickup : (values.dropoffAddress ?? "").trim() || pickup;
       for (const item of items) {
         const servicePrefix = `[${item.serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
         const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
@@ -95,6 +103,8 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
             durationMinutes: item.duration,
             paymentMethod: method,
             serviceType: item.serviceType,
+            pickupAddress: pickup,
+            dropoffAddress: dropoff,
             userId: user?.id,
           },
         });
@@ -258,6 +268,46 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           <div className="space-y-2">
             <Label htmlFor="dogBreed">Dog's breed</Label>
             <Input id="dogBreed" placeholder="Golden Retriever" {...form.register("dogBreed")} />
+          </div>
+
+          <div className="space-y-2 sm:col-span-2">
+            <Label htmlFor="pickupAddress">Pick-up address</Label>
+            <Input
+              id="pickupAddress"
+              placeholder="12 Church Road, Greystones, Co. Wicklow"
+              {...form.register("pickupAddress")}
+            />
+            <p className="text-xs text-muted-foreground">
+              Walks are 75 minutes door to door — we collect and drop your dog home.
+            </p>
+            {form.formState.errors.pickupAddress && (
+              <p className="text-sm text-destructive">{form.formState.errors.pickupAddress.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2 sm:col-span-2">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-foreground">
+              <input
+                type="checkbox"
+                className="h-4 w-4 accent-current text-ocean"
+                checked={form.watch("sameDropoff")}
+                onChange={(e) => form.setValue("sameDropoff", e.target.checked)}
+              />
+              Drop off at the same address
+            </label>
+            {!form.watch("sameDropoff") && (
+              <div className="space-y-2 pt-2">
+                <Label htmlFor="dropoffAddress">Drop-off address</Label>
+                <Input
+                  id="dropoffAddress"
+                  placeholder="5 Delgany Wood, Delgany, Co. Wicklow"
+                  {...form.register("dropoffAddress")}
+                />
+                {form.formState.errors.dropoffAddress && (
+                  <p className="text-sm text-destructive">{form.formState.errors.dropoffAddress.message}</p>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="space-y-2 sm:col-span-2">
