@@ -169,7 +169,7 @@ function ServicesPage() {
           </div>
         </section>
 
-        <section className="py-16 sm:py-24 bg-muted/30">
+        <section id="free-consult" className="py-16 sm:py-24 bg-muted/30 scroll-mt-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-teal/30 bg-card p-8 text-center shadow-sm sm:p-10">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10">

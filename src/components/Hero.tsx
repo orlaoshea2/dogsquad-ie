@@ -51,6 +51,13 @@ export function Hero() {
             </Button>
           </Link>
         </div>
+        <Link
+          to="/services"
+          hash="free-consult"
+          className="mt-6 font-display text-sm font-semibold text-primary-foreground underline underline-offset-4 decoration-primary-foreground/50 [text-shadow:0_2px_8px_rgba(0,0,0,0.4)] hover:decoration-primary-foreground"
+        >
+          Or book a free consult — meet us and your dog first
+        </Link>
       </div>
     </section>
   );
