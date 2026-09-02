@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Footprints, Users, Baby, Clock, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -18,12 +18,6 @@ const services = [
     price: "€20 / 75 min door to door",
   },
   {
-    icon: Baby,
-    title: "Puppy Visits",
-    description: "Short visits for young pups including feeding, play, and toilet breaks.",
-    price: "€20 / 20 min",
-  },
-  {
     icon: Clock,
     title: "Home Visits",
     description: "Drop-in visits for feeding, play, toilet breaks and company while you're out.",
@@ -33,7 +27,7 @@ const services = [
 
 
 
-export function Services({ showPuppyVisits = true }: { showPuppyVisits?: boolean }) {
+export function Services() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -49,7 +43,6 @@ export function Services({ showPuppyVisits = true }: { showPuppyVisits?: boolean
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services
-            .filter((service) => showPuppyVisits || service.title !== "Puppy Visits")
             .map((service) => (
             <Card key={service.title} className="group border-border/60 bg-card transition-shadow hover:shadow-lg">
               <CardHeader>
