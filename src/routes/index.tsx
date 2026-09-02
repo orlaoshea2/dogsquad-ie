@@ -8,7 +8,6 @@ import { BookingCalendar } from "@/components/BookingCalendar";
 import { InstagramReels } from "@/components/InstagramReels";
 import { WicklowGallery } from "@/components/WicklowGallery";
 import { FAQ } from "@/components/FAQ";
-import { FreeConsult } from "@/components/FreeConsult";
 import { ReviewsLink } from "@/components/ReviewsLink";
 import { PhotoStrip } from "@/components/PhotoStrip";
 
@@ -31,7 +30,6 @@ function HomePage() {
       <main className="flex-1">
         <Hero />
         <ReviewsLink />
-        <FreeConsult />
         <BookingCalendar />
         <Services />
         <WicklowGallery />
