@@ -114,7 +114,6 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
       setPaymentMethod(method);
       setSuccess(true);
       form.reset();
-      onSuccess?.();
 
       // Redirect to Revolut payment link if selected
       if (method === "revolut" && revolutLink) {
