@@ -153,10 +153,21 @@ function AuthPage() {
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-              </div>
+              {mode !== "forgot" && (
+                <div className="space-y-1.5">
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+                  {mode === "signin" && (
+                    <button
+                      type="button"
+                      onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
+                      className="text-xs font-medium text-ocean hover:underline"
+                    >
+                      Forgot your password?
+                    </button>
+                  )}
+                </div>
+              )}
 
               {error && <p className="text-sm text-destructive">{error}</p>}
               {info && <p className="text-sm text-teal">{info}</p>}
