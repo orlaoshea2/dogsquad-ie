@@ -22,7 +22,7 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [mode, setMode] = useState<"signin" | "signup" | "forgot">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -55,7 +55,15 @@ function AuthPage() {
     setInfo(null);
     setLoading(true);
     try {
-      if (mode === "signup") {
+      if (mode === "forgot") {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/reset-password`,
+        });
+        if (error) throw error;
+        setInfo(
+          "Check your email for a password reset link. It may take a minute to arrive.",
+        );
+      } else if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
           email,
           password,
@@ -95,12 +103,18 @@ function AuthPage() {
         <Card className="w-full border-border/60">
           <CardHeader>
             <h1 className="font-display text-2xl font-bold text-foreground">
-              {mode === "signin" ? "Welcome back" : "Create your account"}
+              {mode === "signin"
+                ? "Welcome back"
+                : mode === "signup"
+                  ? "Create your account"
+                  : "Reset your password"}
             </h1>
             <p className="text-sm text-muted-foreground">
               {mode === "signin"
                 ? "Sign in to book faster — we'll remember your details."
-                : "Save your contact details once, book in seconds."}
+                : mode === "signup"
+                  ? "Save your contact details once, book in seconds."
+                  : "Enter your email and we'll send you a reset link."}
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -139,16 +153,29 @@ function AuthPage() {
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-              </div>
+              {mode !== "forgot" && (
+                <div className="space-y-1.5">
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+                  {mode === "signin" && (
+                    <button
+                      type="button"
+                      onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
+                      className="text-xs font-medium text-ocean hover:underline"
+                    >
+                      Forgot your password?
+                    </button>
+                  )}
+                </div>
+              )}
 
               {error && <p className="text-sm text-destructive">{error}</p>}
               {info && <p className="text-sm text-teal">{info}</p>}
 
               <Button type="submit" disabled={loading} className="w-full bg-ocean text-primary-foreground hover:bg-ocean-light">
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : mode === "signin" ? "Sign in" : "Create account"}
+                {loading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : mode === "signin" ? "Sign in" : mode === "signup" ? "Create account" : "Send reset link"}
               </Button>
             </form>
 
