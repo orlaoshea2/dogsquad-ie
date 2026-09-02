@@ -17,6 +17,11 @@ const testimonials = [
     text: "Reliable, friendly, and easy to book. The online calendar saves me so much back-and-forth.",
   },
   {
+    name: "Olivia Furlong",
+    dog: "Alfie",
+    text: "Highly recommend! They took such great care of Alfie—he was so happy being able to stay in his own environment. They even went the extra mile by watering our plants and putting the bins out for us. Super reliable and thoughtful service!",
+  },
+  {
     name: "Derek N.",
     dog: "Charlie, rescue mix",
     text: "Orla is so patient with Charlie's nervousness. He actually wags his tail when she arrives now.",
@@ -37,7 +42,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t) => (
             <Card key={t.name} className="border-border/60 bg-card">
               <CardContent className="pt-6">
