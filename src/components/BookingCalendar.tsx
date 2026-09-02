@@ -98,6 +98,7 @@ export function BookingCalendar() {
               key={id}
               onClick={() => {
                 setServiceType(id);
+                if (id === "consult") return;
                 const durations = DURATIONS_BY_SERVICE[id];
                 if (!durations.includes(selectedDuration)) setSelectedDuration(durations[0]);
               }}
@@ -218,7 +219,7 @@ export function BookingCalendar() {
         {showForm && date && selectedTime && (
           <div className="mt-8">
             <BookingForm
-              serviceType={serviceType}
+              serviceType={serviceType as BookableService}
               date={date}
               time={selectedTime}
               duration={selectedDuration}
