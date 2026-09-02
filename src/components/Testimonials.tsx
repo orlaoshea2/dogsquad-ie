@@ -17,6 +17,11 @@ const testimonials = [
     text: "Reliable, friendly, and easy to book. The online calendar saves me so much back-and-forth.",
   },
   {
+    name: "Suzanne Goodwin",
+    dog: "Boxer",
+    text: "Couldn't be happier with the care my energetic boxer gets - he absolutely adores Orla and gets incredibly excited every time she arrives, which says everything. She takes him on long beach and mountain walks that really suit his energy levels and he always comes home happy, tired, and well cared for. Orla is reliable, kind, and clearly has a genuine love for dogs. It gives great peace of mind knowing he's in such good hands. Highly recommended!",
+  },
+  {
     name: "James Burke",
     dog: "Gigi",
     text: "If there was a 6 star option, I would give it that and more. Orla is incredible. Our Gigi loves going to Orla's house and Orla takes care of her so well. Orla has a massive garden and Gigi loves going there and seeing all of her regular friends. Orla's own dog Bailey is a beauty and is so relaxed and chilled. Orla is so good to us, is so flexible and understanding of our busy schedules. I couldn't speak more highly of Orla and her services.",
