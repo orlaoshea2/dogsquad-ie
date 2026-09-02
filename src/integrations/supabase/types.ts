@@ -113,6 +113,33 @@ export type Database = {
         }
         Relationships: []
       }
+      dogs: {
+        Row: {
+          breed: string | null
+          created_at: string
+          id: string
+          name: string
+          notes: string | null
+          user_id: string
+        }
+        Insert: {
+          breed?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          notes?: string | null
+          user_id: string
+        }
+        Update: {
+          breed?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
