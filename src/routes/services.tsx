@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight, Car } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
