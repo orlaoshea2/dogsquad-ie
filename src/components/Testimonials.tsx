@@ -1,11 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/search?q=Dogsquad.ie+Greystones+Co.+Wicklow+reviews";
 
 const testimonials = [
   {
     name: "Sarah K.",
     dog: "Buddy, Golden Retriever",
-    text: "Dog Squad has been amazing. Buddy comes home tired and happy every single day. I love the GPS updates.",
+    text: "Dog Squad has been amazing. Buddy comes home tired and happy every single day. I love the photo updates.",
   },
   {
     name: "Mark & Amy",
@@ -15,19 +19,22 @@ const testimonials = [
   {
     name: "Derek N.",
     dog: "Charlie, rescue mix",
-    text: "Our walker is patient with Charlie's nervousness. He actually wags his tail when she arrives now.",
+    text: "Orla is so patient with Charlie's nervousness. He actually wags his tail when she arrives now.",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="bg-sky/50 py-16 sm:py-24">
+    <section id="reviews" className="scroll-mt-24 bg-sky/50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Happy hounds</p>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            What owners say
+            Customer reviews
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+            What owners across Greystones, Delgany and Kilcoole say about Dog Squad.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -47,6 +54,16 @@ export function Testimonials() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <Button asChild size="lg">
+            <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer">
+              Read our Google reviews
+              <ExternalLink className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+          <p className="text-sm text-muted-foreground">Opens Google in a new tab</p>
         </div>
       </div>
     </section>
