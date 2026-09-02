@@ -83,7 +83,7 @@ function AboutPage() {
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
                 <img
-                  src={coastImage}
+                  src={coastImage.url}
                   alt="The Dog Squad pack out walking with the Great Sugar Loaf behind"
                   className="h-full w-full object-cover"
                   loading="lazy"
