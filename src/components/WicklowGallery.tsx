@@ -1,17 +1,17 @@
-import ds1 from "@/assets/ds-1.jpg.asset.json";
-import ds2 from "@/assets/ds-2.jpg.asset.json";
-import ds4 from "@/assets/ds-4.jpg.asset.json";
-import ds5 from "@/assets/ds-5.jpg.asset.json";
-import ds6 from "@/assets/ds-6.jpg.asset.json";
-import cliffPack from "@/assets/cliff-walk-pack.jpg";
+import r1 from "@/assets/real-1.png.asset.json";
+import r2 from "@/assets/real-2.png.asset.json";
+import r3 from "@/assets/real-3.png.asset.json";
+import r4 from "@/assets/real-4.png.asset.json";
+import r5 from "@/assets/real-5.png.asset.json";
+import r7 from "@/assets/real-7.png.asset.json";
 
 const photos = [
-  { src: ds1.url, alt: "Dog Squad pack on a Wicklow adventure", caption: "Out on the trails" },
-  { src: ds2.url, alt: "Happy dogs on a group walk in Wicklow", caption: "Group walks" },
-  { src: cliffPack, alt: "Three happy dogs on the Greystones to Bray cliff walk", caption: "Cliff walk to Bray Head" },
-  { src: ds4.url, alt: "Dog Squad walker with the pack", caption: "With the squad" },
-  { src: ds5.url, alt: "Happy dog on a Wicklow walk", caption: "Tails wagging" },
-  { src: ds6.url, alt: "Dogs exploring the Wicklow countryside", caption: "Wicklow countryside" },
+  { src: r1.url, alt: "Two golden retrievers playing in the surf on a Wicklow beach", caption: "Beach mornings" },
+  { src: r2.url, alt: "Two dogs exploring a green Wicklow hillside", caption: "Up the hills" },
+  { src: r3.url, alt: "Golden retriever standing on the shore with the Wicklow coastline behind", caption: "Coast and countryside" },
+  { src: r4.url, alt: "Muddy, grinning spaniel after a walk", caption: "Happily filthy" },
+  { src: r5.url, alt: "Two dogs splashing into the sea", caption: "Straight into the sea" },
+  { src: r7.url, alt: "Dog sniffing along the shingle at Kilcoole strand", caption: "Kilcoole strand" },
 ];
 
 export function WicklowGallery() {
@@ -40,6 +40,7 @@ export function WicklowGallery() {
                 <img
                   src={photo.src}
                   alt={photo.alt}
+                  loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
