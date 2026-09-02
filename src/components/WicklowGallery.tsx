@@ -41,7 +41,7 @@ export function WicklowGallery() {
                   src={photo.src}
                   alt={photo.alt}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${"position" in photo ? (photo as { position?: string }).position : ""}`}
                 />
               </div>
               <figcaption className="bg-card p-4 text-center font-display text-sm font-semibold text-card-foreground">
