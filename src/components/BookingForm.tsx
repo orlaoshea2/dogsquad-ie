@@ -249,9 +249,9 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                 <div className="flex-1">
                   <div className="flex items-center gap-2 font-medium text-foreground">
                     <Banknote className="h-4 w-4 text-teal" />
-                    Pay later
+                    Pay cash on the day
                   </div>
-                  <p className="text-sm text-muted-foreground">Pay cash or bank transfer on the day.</p>
+                  <p className="text-sm text-muted-foreground">Cash or bank transfer — nothing to pay now.</p>
                 </div>
               </label>
 
@@ -267,9 +267,9 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                 <div className="flex-1">
                   <div className="flex items-center gap-2 font-medium text-foreground">
                     <CreditCard className="h-4 w-4 text-teal" />
-                    Pay with Revolut
+                    Pay now with Revolut
                   </div>
-                  <p className="text-sm text-muted-foreground">Pay €{price} now via Revolut.</p>
+                  <p className="text-sm text-muted-foreground">Prefer to pay online? Pay €{price} via Revolut.</p>
                 </div>
               </label>
             </RadioGroup>
@@ -290,7 +290,7 @@ export function BookingForm({ serviceType = "walk", date, time, duration, onBack
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
                 </>
               ) : (
-                `Confirm booking — ${form.watch("paymentMethod") === "revolut" ? `Pay €${price} with Revolut` : "Pay later"}`
+                `Confirm booking — ${form.watch("paymentMethod") === "revolut" ? `Pay €${price} with Revolut` : "Pay cash on the day"}`
               )}
             </Button>
           </div>
