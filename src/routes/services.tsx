@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, MapPin, Shield, Camera, Mail, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
@@ -165,6 +165,30 @@ function ServicesPage() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-24 bg-muted/30">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-teal/30 bg-card p-8 text-center shadow-sm sm:p-10">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10">
+                <Mail className="h-6 w-6 text-teal" />
+              </div>
+              <h2 className="mt-4 font-display text-2xl font-bold text-foreground sm:text-3xl">
+                Free consult
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+                A free consult involves meeting you and your dog(s) in person — figuring out their
+                specific needs, temperament and routine, sorting out access and keys, and making
+                sure everyone is happy before the first walk or visit.
+              </p>
+              <a href="mailto:hello@dogsquad.ie?subject=Free%20consult" className="mt-6 inline-block">
+                <Button size="lg" className="bg-ocean text-primary-foreground hover:bg-ocean-light">
+                  <Mail className="mr-2 h-4 w-4" /> Email to book a free consult
+                </Button>
+              </a>
+              <p className="mt-3 text-sm text-muted-foreground">hello@dogsquad.ie</p>
             </div>
           </div>
         </section>
