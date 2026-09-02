@@ -271,6 +271,46 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           </div>
 
           <div className="space-y-2 sm:col-span-2">
+            <Label htmlFor="pickupAddress">Pick-up address</Label>
+            <Input
+              id="pickupAddress"
+              placeholder="12 Church Road, Greystones, Co. Wicklow"
+              {...form.register("pickupAddress")}
+            />
+            <p className="text-xs text-muted-foreground">
+              Walks are 75 minutes door to door — we collect and drop your dog home.
+            </p>
+            {form.formState.errors.pickupAddress && (
+              <p className="text-sm text-destructive">{form.formState.errors.pickupAddress.message}</p>
+            )}
+          </div>
+
+          <div className="space-y-2 sm:col-span-2">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-foreground">
+              <input
+                type="checkbox"
+                className="h-4 w-4 accent-current text-ocean"
+                checked={form.watch("sameDropoff")}
+                onChange={(e) => form.setValue("sameDropoff", e.target.checked)}
+              />
+              Drop off at the same address
+            </label>
+            {!form.watch("sameDropoff") && (
+              <div className="space-y-2 pt-2">
+                <Label htmlFor="dropoffAddress">Drop-off address</Label>
+                <Input
+                  id="dropoffAddress"
+                  placeholder="5 Delgany Wood, Delgany, Co. Wicklow"
+                  {...form.register("dropoffAddress")}
+                />
+                {form.formState.errors.dropoffAddress && (
+                  <p className="text-sm text-destructive">{form.formState.errors.dropoffAddress.message}</p>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-2 sm:col-span-2">
             <Label htmlFor="notes">Notes (optional)</Label>
             <Textarea
               id="notes"
