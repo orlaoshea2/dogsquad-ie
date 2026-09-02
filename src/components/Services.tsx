@@ -33,7 +33,7 @@ const services = [
 
 
 
-export function Services() {
+export function Services({ showPuppyVisits = true }: { showPuppyVisits?: boolean }) {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -48,7 +48,9 @@ export function Services() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {services
+            .filter((service) => showPuppyVisits || service.title !== "Puppy Visits")
+            .map((service) => (
             <Card key={service.title} className="group border-border/60 bg-card transition-shadow hover:shadow-lg">
               <CardHeader>
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-teal/10">
