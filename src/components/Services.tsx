@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Footprints, Users, Baby, Clock, Car, ArrowRight } from "lucide-react";
+import { Footprints, Users, Baby, Clock, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -28,12 +28,6 @@ const services = [
     title: "Home Visits",
     description: "Drop-in visits for feeding, play, toilet breaks and company while you're out.",
     price: "€20 / 30 min · €30 / 60 min",
-  },
-  {
-    icon: Car,
-    title: "Dog Taxi",
-    description: "Lifts to the vet, groomer, day care or the beach. Price is based on the driving distance.",
-    price: "€15 under 5 km · €20 to 10 km · €25 to 20 km",
   },
 ];
 

@@ -25,7 +25,7 @@ export function Hero() {
           Every Walk an Adventure
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg font-semibold text-primary-foreground [text-shadow:0_2px_8px_rgba(0,0,0,0.4)] sm:text-xl">
-          Trusted dog walking, house visits and dog taxi services in Greystones & Co. Wicklow.
+          Trusted dog walking and house visits in Greystones & Co. Wicklow.
           Local, experienced, and completely dog-focused — because every tail wag matters.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
