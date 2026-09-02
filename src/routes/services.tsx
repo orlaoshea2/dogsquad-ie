@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight } from "lucide-react";
+import { Footprints, Users, Clock, MapPin, Shield, Camera, ArrowRight, Car } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const serviceDetails = [
@@ -29,6 +29,13 @@ const serviceDetails = [
     description: "Drop-in visits to feed, play and check on your dog in their own home while you're out.",
     price: "€20 / 30 min · €30 / 60 min",
     features: ["Feeding & play", "Toilet breaks", "Medication support"],
+  },
+  {
+    icon: Car,
+    title: "Dog Taxi",
+    description: "Lifts to the vet, groomer or daycare around Greystones, Delgany and Kilcoole. Tell us where from, where to and the times that suit.",
+    price: "0–10 km €20 · 10–20 km €30",
+    features: ["Over 20 km — contact us directly", "Door to door", "Secure travel crate/harness"],
   },
 ];
 
