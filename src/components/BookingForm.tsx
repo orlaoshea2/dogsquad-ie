@@ -156,9 +156,27 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           <CheckCircle2 className="h-16 w-16 text-teal" />
           <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Booking confirmed!</h3>
           <p className="mt-2 max-w-md text-muted-foreground">
-            Your booking for {format(date, "EEEE, MMMM do")} at {time} is confirmed. We'll be in touch to confirm the details.
+            {items.length === 1
+              ? `Your booking for ${format(first.date, "EEEE, MMMM do")} at ${first.time} is confirmed.`
+              : `All ${items.length} bookings are confirmed.`}{" "}
+            We'll be in touch to confirm the details.
           </p>
-          <Button onClick={() => setSuccess(false)} className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
+          {items.length > 1 && (
+            <ul className="mt-4 space-y-1 text-sm text-muted-foreground">
+              {items.map((i) => (
+                <li key={`${i.dateStr}-${i.time}`}>
+                  {i.serviceType === "walk" ? "Dog walk" : "Home visit"} · {format(i.date, "EEE d MMM")} at {i.time}
+                </li>
+              ))}
+            </ul>
+          )}
+          <Button
+            onClick={() => {
+              setSuccess(false);
+              onSuccess?.();
+            }}
+            className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light"
+          >
             Book another walk
           </Button>
         </CardContent>
