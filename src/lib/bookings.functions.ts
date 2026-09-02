@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeader } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
@@ -44,10 +45,26 @@ export const createBooking = createServerFn({ method: "POST" })
     const key = process.env.SUPABASE_PUBLISHABLE_KEY;
     if (!url || !key) throw new Error("Backend configuration missing");
 
+    // Signed-in customers send a bearer token; act as that user so the row can
+    // carry their user_id. Guests insert with user_id NULL.
+    const authHeader = getRequestHeader("authorization");
+    const token = authHeader?.toLowerCase().startsWith("bearer ")
+      ? authHeader.slice(7).trim()
+      : undefined;
+
     const supabase = createClient<Database>(url, key, {
       auth: { persistSession: false },
-      global: { fetch: createSupabaseFetch(key) },
+      global: {
+        fetch: createSupabaseFetch(key),
+        ...(token ? { headers: { Authorization: `Bearer ${token}` } } : {}),
+      },
     });
+
+    let ownerId: string | null = null;
+    if (token) {
+      const { data: userData } = await supabase.auth.getUser(token);
+      ownerId = userData.user?.id ?? null;
+    }
 
     // Guests cannot read rows back (SELECT is restricted), so generate the id
     // here and insert without asking for a representation.
@@ -69,8 +86,9 @@ export const createBooking = createServerFn({ method: "POST" })
       notes: data.notes || null,
       payment_method: data.paymentMethod,
       payment_status: data.paymentMethod === "revolut" ? "pending" : "not_required",
-      user_id: data.userId || null,
+      user_id: ownerId,
     });
+
 
     if (error) {
       console.error("Booking insert error:", error);
