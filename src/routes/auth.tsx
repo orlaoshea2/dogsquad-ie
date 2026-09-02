@@ -173,7 +173,9 @@ function AuthPage() {
               {info && <p className="text-sm text-teal">{info}</p>}
 
               <Button type="submit" disabled={loading} className="w-full bg-ocean text-primary-foreground hover:bg-ocean-light">
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : mode === "signin" ? "Sign in" : "Create account"}
+                {loading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : mode === "signin" ? "Sign in" : mode === "signup" ? "Create account" : "Send reset link"}
               </Button>
             </form>
 
