@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "How do I schedule a dog walk?",
     answer:
-      "Fill out the booking enquiry form on this page with your preferred dates, times, and walk length. I’ll confirm availability and arrange a meet-and-greet before the first walk.",
+      "Book a free consult and then book online, or contact me with your request.",
   },
   {
     question: "What areas do you cover?",
