@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2, MessageCircle, PawPrint, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-export function FreeConsult() {
+export function FreeConsult({ embedded = false }: { embedded?: boolean }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -41,10 +41,8 @@ export function FreeConsult() {
     }
   };
 
-  return (
-    <section id="free-consult" className="bg-secondary/40 py-16">
-      <div className="container mx-auto px-4">
-        <Card className="mx-auto max-w-3xl border-primary/20 shadow-lg">
+  const form = (
+    <Card className="mx-auto max-w-3xl border-primary/20 shadow-lg">
           <CardContent className="p-8">
             {sent ? (
               <div className="flex flex-col items-center gap-4 py-8 text-center">
