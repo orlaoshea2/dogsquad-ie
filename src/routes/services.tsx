@@ -33,6 +33,10 @@ const serviceDetails = [
   },
 ];
 
+const WHATSAPP_NUMBER = "353866063416";
+
+
+
 
 
 export const Route = createFileRoute("/services")({
