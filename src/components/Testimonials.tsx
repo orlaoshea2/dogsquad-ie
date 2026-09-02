@@ -21,11 +21,6 @@ const testimonials = [
     dog: "Alfie",
     text: "Highly recommend! They took such great care of Alfie—he was so happy being able to stay in his own environment. They even went the extra mile by watering our plants and putting the bins out for us. Super reliable and thoughtful service!",
   },
-  {
-    name: "Derek N.",
-    dog: "Charlie, rescue mix",
-    text: "Orla is so patient with Charlie's nervousness. He actually wags his tail when she arrives now.",
-  },
 ];
 
 export function Testimonials() {
