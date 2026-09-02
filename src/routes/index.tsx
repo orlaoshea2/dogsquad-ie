@@ -9,6 +9,7 @@ import { InstagramReels } from "@/components/InstagramReels";
 import { WicklowGallery } from "@/components/WicklowGallery";
 import { FAQ } from "@/components/FAQ";
 import { DogTaxiRequest } from "@/components/DogTaxiRequest";
+import { FreeConsult } from "@/components/FreeConsult";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,6 +29,7 @@ function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <FreeConsult />
         <BookingCalendar />
         <Services />
         <DogTaxiRequest />
