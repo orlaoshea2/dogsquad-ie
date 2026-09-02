@@ -135,7 +135,10 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
             <Loader2 className="h-12 w-12 animate-spin text-teal" />
             <h3 className="mt-4 font-display text-2xl font-bold text-foreground">Redirecting to Revolut…</h3>
             <p className="mt-2 max-w-md text-muted-foreground">
-              Your booking for {format(date, "EEEE, MMMM do")} at {time} is saved. If you are not redirected, click the button below.
+              {items.length === 1
+                ? `Your booking for ${format(first.date, "EEEE, MMMM do")} at ${first.time} is saved.`
+                : `Your ${items.length} bookings are saved.`}{" "}
+              If you are not redirected, click the button below.
             </p>
             <Button asChild className="mt-6 bg-ocean text-primary-foreground hover:bg-ocean-light">
               <a href={revolutLink} target="_blank" rel="noreferrer">
