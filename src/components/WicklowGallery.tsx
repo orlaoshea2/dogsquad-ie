@@ -16,7 +16,7 @@ const photos = [
 
 export function WicklowGallery() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">
@@ -30,7 +30,7 @@ export function WicklowGallery() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {photos.map((photo) => (
             <figure
               key={photo.caption}

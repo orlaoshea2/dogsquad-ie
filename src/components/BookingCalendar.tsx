@@ -105,7 +105,7 @@ export function BookingCalendar() {
   const disabledDays = (day: Date) => isBefore(day, today) || !isBookableDate(day);
 
   return (
-    <section id="book" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="book" className="scroll-mt-24 py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">Book online in 60 seconds</p>
@@ -156,7 +156,7 @@ export function BookingCalendar() {
             <TaxiRequest />
           </div>
         ) : (
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <Card className="border-border/60 bg-card">
             <CardContent className="p-6">
               <div className="flex items-center gap-2 pb-4">
