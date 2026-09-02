@@ -213,6 +213,7 @@ export function BookingCalendar() {
             </CardContent>
           </Card>
         </div>
+        )}
 
         {showForm && date && selectedTime && (
           <div className="mt-8">
