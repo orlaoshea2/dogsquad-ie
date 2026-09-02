@@ -162,6 +162,12 @@ function AuthPage() {
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               {mode !== "forgot" && (
+                <div className="space-y-1.5">
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+                </div>
+              )}
+              {mode === "signin" && (
                 <div className="flex items-center justify-between">
                   <label className="flex items-center gap-2 text-sm text-muted-foreground">
                     <input
