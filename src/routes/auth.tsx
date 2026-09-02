@@ -44,6 +44,11 @@ function AuthPage() {
   };
 
   useEffect(() => {
+    const saved = localStorage.getItem("ds_remember_email");
+    if (saved) {
+      setEmail(saved);
+      setRememberMe(true);
+    }
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) void goAfterAuth();
     });
