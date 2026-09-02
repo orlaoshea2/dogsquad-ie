@@ -29,15 +29,21 @@ const bookingFormSchema = z.object({
 
 type BookingFormValues = z.input<typeof bookingFormSchema>;
 
-interface BookingFormProps {
-  serviceType?: "walk" | "visit";
+export interface BookingItem {
+  serviceType: "walk" | "visit";
   date: Date;
+  dateStr: string;
   time: string;
   duration: number;
-  onBack?: () => void;
 }
 
-export function BookingForm({ serviceType = "walk", date, time, duration, onBack }: BookingFormProps) {
+interface BookingFormProps {
+  items: BookingItem[];
+  onBack?: () => void;
+  onSuccess?: () => void;
+}
+
+export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("pay_later");
