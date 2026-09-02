@@ -7,16 +7,6 @@ export const GOOGLE_REVIEWS_URL =
 
 const testimonials = [
   {
-    name: "Sarah K.",
-    dog: "Buddy, Golden Retriever",
-    text: "Dog Squad has been amazing. Buddy comes home tired and happy every single day. I love the photo updates.",
-  },
-  {
-    name: "Mark & Amy",
-    dog: "Luna, French Bulldog",
-    text: "Reliable, friendly, and easy to book. The online calendar saves me so much back-and-forth.",
-  },
-  {
     name: "Suzanne Goodwin",
     dog: "Boxer",
     text: "Couldn't be happier with the care my energetic boxer gets - he absolutely adores Orla and gets incredibly excited every time she arrives, which says everything. She takes him on long beach and mountain walks that really suit his energy levels and he always comes home happy, tired, and well cared for. Orla is reliable, kind, and clearly has a genuine love for dogs. It gives great peace of mind knowing he's in such good hands. Highly recommended!",
