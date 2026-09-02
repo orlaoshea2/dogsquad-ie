@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TaxiRouteImport } from './routes/taxi'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -22,11 +21,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedWelcomeRouteImport } from './routes/_authenticated/welcome'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
-const TaxiRoute = TaxiRouteImport.update({
-  id: '/taxi',
-  path: '/taxi',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -91,7 +85,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/taxi': typeof TaxiRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/welcome': typeof AuthenticatedWelcomeRoute
 }
@@ -104,7 +97,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/taxi': typeof TaxiRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/welcome': typeof AuthenticatedWelcomeRoute
 }
@@ -119,7 +111,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/taxi': typeof TaxiRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/welcome': typeof AuthenticatedWelcomeRoute
 }
@@ -134,7 +125,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/sitemap.xml'
-    | '/taxi'
     | '/admin'
     | '/welcome'
   fileRoutesByTo: FileRoutesByTo
@@ -147,7 +137,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/sitemap.xml'
-    | '/taxi'
     | '/admin'
     | '/welcome'
   id:
@@ -161,7 +150,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/sitemap.xml'
-    | '/taxi'
     | '/_authenticated/admin'
     | '/_authenticated/welcome'
   fileRoutesById: FileRoutesById
@@ -176,18 +164,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  TaxiRoute: typeof TaxiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/taxi': {
-      id: '/taxi'
-      path: '/taxi'
-      fullPath: '/taxi'
-      preLoaderRoute: typeof TaxiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -291,7 +271,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  TaxiRoute: TaxiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
