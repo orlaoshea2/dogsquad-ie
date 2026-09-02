@@ -85,6 +85,8 @@ function AuthPage() {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        if (rememberMe) localStorage.setItem("ds_remember_email", email);
+        else localStorage.removeItem("ds_remember_email");
         await goAfterAuth();
       }
     } catch (err: any) {
