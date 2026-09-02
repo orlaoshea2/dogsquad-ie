@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle, Plus, X } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
-import { BookingForm } from "./BookingForm";
+import { BookingForm, type BookingItem } from "./BookingForm";
 import { FreeConsult } from "./FreeConsult";
 import { cn } from "@/lib/utils";
 import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
+import { getBookingPrice } from "@/config/payments";
 
 type BookableService = "walk" | "visit";
 type TabId = BookableService | "consult";
