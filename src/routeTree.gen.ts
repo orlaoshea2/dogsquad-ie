@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConsultRouteImport } from './routes/consult'
 import { Route as BookingRouteImport } from './routes/booking'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -33,6 +34,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultRoute = ConsultRouteImport.update({
+  id: '/consult',
+  path: '/consult',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookingRoute = BookingRouteImport.update({
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/booking'
+    | '/consult'
     | '/contact'
     | '/services'
     | '/sitemap.xml'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/booking'
+    | '/consult'
     | '/contact'
     | '/services'
     | '/sitemap.xml'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/booking'
+    | '/consult'
     | '/contact'
     | '/services'
     | '/sitemap.xml'
@@ -148,6 +160,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BookingRoute: typeof BookingRoute
+  ConsultRoute: typeof ConsultRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consult': {
+      id: '/consult'
+      path: '/consult'
+      fullPath: '/consult'
+      preLoaderRoute: typeof ConsultRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/booking': {
@@ -247,6 +267,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BookingRoute: BookingRoute,
+  ConsultRoute: ConsultRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
