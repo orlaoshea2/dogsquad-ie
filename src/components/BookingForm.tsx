@@ -15,7 +15,7 @@ import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn, CreditCard, Banknot
 import { createBooking } from "@/lib/bookings.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { getRevolutPaymentLink, getBookingPrice, type PaymentMethod } from "@/config/payments";
+import { getRevolutPaymentLink, getBookingPrice, REVOLUT_PAYMENT_LINKS, type PaymentMethod } from "@/config/payments";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
