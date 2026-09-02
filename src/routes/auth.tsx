@@ -103,12 +103,18 @@ function AuthPage() {
         <Card className="w-full border-border/60">
           <CardHeader>
             <h1 className="font-display text-2xl font-bold text-foreground">
-              {mode === "signin" ? "Welcome back" : "Create your account"}
+              {mode === "signin"
+                ? "Welcome back"
+                : mode === "signup"
+                  ? "Create your account"
+                  : "Reset your password"}
             </h1>
             <p className="text-sm text-muted-foreground">
               {mode === "signin"
                 ? "Sign in to book faster — we'll remember your details."
-                : "Save your contact details once, book in seconds."}
+                : mode === "signup"
+                  ? "Save your contact details once, book in seconds."
+                  : "Enter your email and we'll send you a reset link."}
             </p>
           </CardHeader>
           <CardContent className="space-y-4">
