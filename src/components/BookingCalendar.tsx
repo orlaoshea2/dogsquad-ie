@@ -305,14 +305,12 @@ export function BookingCalendar() {
         </div>
         )}
 
-        {showForm && date && selectedTime && (
+        {showForm && items.length > 0 && (
           <div className="mt-8">
             <BookingForm
-              serviceType={serviceType as BookableService}
-              date={date}
-              time={selectedTime}
-              duration={selectedDuration}
+              items={items}
               onBack={() => setShowForm(false)}
+              onSuccess={() => setItems([])}
             />
           </div>
         )}
