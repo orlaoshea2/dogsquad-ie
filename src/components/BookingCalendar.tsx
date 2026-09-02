@@ -41,6 +41,34 @@ export function BookingCalendar() {
   const [slots, setSlots] = useState<{ time: string; available: boolean }[]>([]);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [items, setItems] = useState<BookingItem[]>([]);
+
+  const itemKey = (i: BookingItem) => `${i.dateStr}-${i.time}`;
+  const isAdded = (dateStr: string, time: string) =>
+    items.some((i) => i.dateStr === dateStr && i.time === time);
+
+  const addItem = () => {
+    if (!date || !selectedTime || serviceType === "consult") return;
+    const dateStr = format(date, "yyyy-MM-dd");
+    if (isAdded(dateStr, selectedTime)) return;
+    setItems((prev) => [
+      ...prev,
+      {
+        serviceType: serviceType as BookableService,
+        date,
+        dateStr,
+        time: selectedTime,
+        duration: selectedDuration,
+      },
+    ].sort((a, b) => (a.dateStr + a.time).localeCompare(b.dateStr + b.time)));
+    setSelectedTime(null);
+  };
+
+  const removeItem = (key: string) => {
+    setItems((prev) => prev.filter((i) => itemKey(i) !== key));
+  };
+
+  const total = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
 
   const fetchSlots = useServerFn(getAvailableSlots);
 
