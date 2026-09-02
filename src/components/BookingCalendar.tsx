@@ -2,21 +2,23 @@ import { useState, useEffect } from "react";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, Clock, CalendarDays, PawPrint, Home } from "lucide-react";
+import { Loader2, Clock, CalendarDays, PawPrint, Home, MessageCircle } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { getAvailableSlots } from "@/lib/bookings.functions";
 import { BookingForm } from "./BookingForm";
+import { FreeConsult } from "./FreeConsult";
 import { cn } from "@/lib/utils";
 import { WALK_DURATION_MINUTES, isBookableDate } from "@/config/schedule";
 
-type ServiceType = "walk" | "visit";
+type BookableService = "walk" | "visit";
+type TabId = BookableService | "consult";
 
-const DURATIONS_BY_SERVICE: Record<ServiceType, number[]> = {
+const DURATIONS_BY_SERVICE: Record<BookableService, number[]> = {
   walk: [WALK_DURATION_MINUTES],
   visit: [30, 60],
 };
 
-const PRICE_LABEL: Record<ServiceType, Record<number, string>> = {
+const PRICE_LABEL: Record<BookableService, Record<number, string>> = {
   walk: { [WALK_DURATION_MINUTES]: "€20" },
   visit: { 30: "€20", 60: "€30" },
 };
@@ -28,7 +30,7 @@ function nextBookableDay(from: Date): Date {
 }
 
 export function BookingCalendar() {
-  const [serviceType, setServiceType] = useState<ServiceType>("walk");
+  const [serviceType, setServiceType] = useState<TabId>("walk");
   const [date, setDate] = useState<Date | undefined>(() => nextBookableDay(new Date()));
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<number>(WALK_DURATION_MINUTES);
@@ -41,7 +43,7 @@ export function BookingCalendar() {
   const fetchSlots = useServerFn(getAvailableSlots);
 
   useEffect(() => {
-    if (!date) {
+    if (!date || serviceType === "consult") {
       setSlots([]);
       return;
     }
@@ -50,7 +52,7 @@ export function BookingCalendar() {
       setLoading(true);
       try {
         const dateStr = format(date, "yyyy-MM-dd");
-        const result = await fetchSlots({ data: { date: dateStr, serviceType } });
+        const result = await fetchSlots({ data: { date: dateStr, serviceType: serviceType as BookableService } });
         if (!cancelled) setSlots(result);
       } catch (err) {
         console.error("Failed to fetch slots:", err);
@@ -86,15 +88,17 @@ export function BookingCalendar() {
         </div>
 
 
-        <div className="mx-auto mt-8 flex max-w-md gap-2 rounded-lg border border-border/60 bg-card p-1">
+        <div className="mx-auto mt-8 flex max-w-xl gap-2 rounded-lg border border-border/60 bg-card p-1">
           {([
             { id: "walk", label: "Dog walk", Icon: PawPrint },
             { id: "visit", label: "Home visit", Icon: Home },
+            { id: "consult", label: "Free consult", Icon: MessageCircle },
           ] as const).map(({ id, label, Icon }) => (
             <button
               key={id}
               onClick={() => {
                 setServiceType(id);
+                if (id === "consult") return;
                 const durations = DURATIONS_BY_SERVICE[id];
                 if (!durations.includes(selectedDuration)) setSelectedDuration(durations[0]);
               }}
@@ -111,6 +115,11 @@ export function BookingCalendar() {
           ))}
         </div>
 
+        {serviceType === "consult" ? (
+          <div className="mt-8">
+            <FreeConsult embedded />
+          </div>
+        ) : (
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <Card className="border-border/60 bg-card">
             <CardContent className="p-6">
@@ -205,11 +214,12 @@ export function BookingCalendar() {
             </CardContent>
           </Card>
         </div>
+        )}
 
         {showForm && date && selectedTime && (
           <div className="mt-8">
             <BookingForm
-              serviceType={serviceType}
+              serviceType={serviceType as BookableService}
               date={date}
               time={selectedTime}
               duration={selectedDuration}
