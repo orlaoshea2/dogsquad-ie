@@ -23,12 +23,8 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup" | "forgot">("signin");
-  const [email, setEmail] = useState(
-    () => (typeof window !== "undefined" && localStorage.getItem("ds_remember_email")) || "",
-  );
-  const [rememberMe, setRememberMe] = useState(
-    () => (typeof window !== "undefined" && localStorage.getItem("ds_remember_email") !== null),
-  );
+  const [email, setEmail] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
