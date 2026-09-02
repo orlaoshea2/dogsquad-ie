@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "What happens if I need to cancel?",
     answer:
-      "Please give at least 24 hours’ notice for cancellations. Cancellations within 24 hours may be charged at the full rate, as that slot is usually reserved specifically for your dog.",
+      "Just let me know as soon as you can if you need to cancel or reschedule, so I can offer the slot to another dog.",
   },
   {
     question: "Will my dog be off-lead?",
