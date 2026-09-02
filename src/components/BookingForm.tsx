@@ -23,6 +23,9 @@ const bookingFormSchema = z.object({
   phone: z.string().optional(),
   dogName: z.string().min(1, "Dog name is required"),
   dogBreed: z.string().optional(),
+  pickupAddress: z.string().trim().min(5, "Pick-up address is required").max(300),
+  dropoffAddress: z.string().trim().max(300).optional(),
+  sameDropoff: z.boolean().default(true),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
 });
