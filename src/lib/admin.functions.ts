@@ -44,6 +44,18 @@ export const updateBookingPaymentStatus = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
+export const listConsultMessages = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await ensureAdmin(context.supabase, context.userId);
+    const { data, error } = await context.supabase
+      .from("consult_messages")
+      .select("id, name, email, phone, message, created_at")
+      .order("created_at", { ascending: false });
+    if (error) throw new Error(error.message);
+    return data ?? [];
+  });
+
 export const checkIsAdmin = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {

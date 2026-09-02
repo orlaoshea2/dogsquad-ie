@@ -7,10 +7,11 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, ShieldAlert } from "lucide-react";
+import { MessageCircle, ShieldAlert, Loader2 } from "lucide-react";
 import {
   listAllBookings,
   updateBookingPaymentStatus,
+  listConsultMessages,
   type PaymentStatus,
 } from "@/lib/admin.functions";
 
@@ -165,9 +166,76 @@ function AdminPage() {
               );
             })}
           </div>
+
+          <ConsultMessagesSection />
         </div>
       </main>
       <Footer />
+    </div>
+  );
+}
+
+type ConsultMessage = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  message: string;
+  created_at: string;
+};
+
+function ConsultMessagesSection() {
+  const fetchMessages = useServerFn(listConsultMessages);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["admin", "consult-messages"],
+    queryFn: () => fetchMessages(),
+  });
+
+  return (
+    <div className="mt-12">
+      <div className="mb-4">
+        <h2 className="font-display text-2xl font-bold text-foreground">Free consult messages</h2>
+        <p className="text-sm text-muted-foreground">
+          Messages sent through the homepage "Book a free consult" form.
+        </p>
+      </div>
+
+      {isLoading && (
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" /> Loading messages…
+        </div>
+      )}
+      {isError && <p className="text-destructive">Failed to load consult messages.</p>}
+      {data && data.length === 0 && <p className="text-muted-foreground">No messages yet.</p>}
+
+      <div className="grid gap-3">
+        {data?.map((m: ConsultMessage) => (
+          <Card key={m.id} className="border-border/60">
+            <CardHeader className="pb-2">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <div className="font-display text-lg font-semibold text-foreground">
+                    <MessageCircle className="mr-2 inline h-4 w-4 text-teal" />
+                    {m.name}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {m.email}
+                    {m.phone ? ` · ${m.phone}` : ""} ·{" "}
+                    {format(parseISO(m.created_at), "EEE, MMM d yyyy, HH:mm")}
+                  </div>
+                  <div className="mt-1 text-sm text-foreground/80">{m.message}</div>
+                </div>
+                <a
+                  href={`mailto:${m.email}?subject=Re:%20your%20free%20consult%20request`}
+                  className="text-sm font-medium text-ocean hover:underline"
+                >
+                  Reply by email
+                </a>
+              </div>
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
