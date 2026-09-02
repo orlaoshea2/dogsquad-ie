@@ -31,7 +31,7 @@ function HomePage() {
         <Hero />
         <ReviewsLink />
         <BookingCalendar />
-        <Services />
+        <Services showPuppyVisits={false} />
         <WicklowGallery />
         <PhotoStrip />
         <FAQ />
