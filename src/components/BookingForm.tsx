@@ -72,27 +72,34 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
     }
   }, [user, profile, form]);
 
-  const price = getBookingPrice(serviceType, duration);
-  const revolutLink = getRevolutPaymentLink(serviceType, duration);
+  const price = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
+  const revolutLink =
+    items.length === 1
+      ? getRevolutPaymentLink(items[0].serviceType, items[0].duration)
+      : REVOLUT_PAYMENT_LINKS.default;
+  const first = items[0];
 
   const onSubmit = async (values: BookingFormValues) => {
     setSubmitting(true);
     try {
-      const servicePrefix = `[${serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
-      const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
       const method: PaymentMethod = values.paymentMethod ?? "pay_later";
-      await submitBooking({
-        data: {
-          ...values,
-          notes: mergedNotes,
-          walkDate: format(date, "yyyy-MM-dd"),
-          walkTime: time,
-          durationMinutes: duration,
-          paymentMethod: method,
-          serviceType,
-          userId: user?.id,
-        },
-      });
+      for (const item of items) {
+        const servicePrefix = `[${item.serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
+        const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
+        await submitBooking({
+          data: {
+            ...values,
+            notes: mergedNotes,
+            walkDate: item.dateStr,
+            walkTime: item.time,
+            durationMinutes: item.duration,
+            paymentMethod: method,
+            serviceType: item.serviceType,
+            userId: user?.id,
+          },
+        });
+      }
+
 
       // Save/update profile details for signed-in customers
       if (user) {
