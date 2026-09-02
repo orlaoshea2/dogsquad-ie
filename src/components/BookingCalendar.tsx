@@ -30,7 +30,7 @@ function nextBookableDay(from: Date): Date {
 }
 
 export function BookingCalendar() {
-  const [serviceType, setServiceType] = useState<ServiceType>("walk");
+  const [serviceType, setServiceType] = useState<TabId>("walk");
   const [date, setDate] = useState<Date | undefined>(() => nextBookableDay(new Date()));
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<number>(WALK_DURATION_MINUTES);
@@ -43,7 +43,7 @@ export function BookingCalendar() {
   const fetchSlots = useServerFn(getAvailableSlots);
 
   useEffect(() => {
-    if (!date) {
+    if (!date || serviceType === "consult") {
       setSlots([]);
       return;
     }
