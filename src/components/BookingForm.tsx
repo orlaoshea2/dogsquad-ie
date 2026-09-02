@@ -103,6 +103,8 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
             durationMinutes: item.duration,
             paymentMethod: method,
             serviceType: item.serviceType,
+            pickupAddress: pickup,
+            dropoffAddress: dropoff,
             userId: user?.id,
           },
         });
