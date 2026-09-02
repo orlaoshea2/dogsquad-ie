@@ -35,6 +35,7 @@ function HomePage() {
         <BookingCalendar />
         <Services />
         <WicklowGallery />
+        <PhotoStrip />
         <FAQ />
         <Testimonials />
       </main>
