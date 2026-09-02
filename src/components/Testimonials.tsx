@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, ExternalLink, CalendarHeart } from "lucide-react";
+import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 
