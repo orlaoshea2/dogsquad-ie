@@ -17,6 +17,11 @@ const testimonials = [
     text: "Reliable, friendly, and easy to book. The online calendar saves me so much back-and-forth.",
   },
   {
+    name: "James Burke",
+    dog: "Gigi",
+    text: "If there was a 6 star option, I would give it that and more. Orla is incredible. Our Gigi loves going to Orla's house and Orla takes care of her so well. Orla has a massive garden and Gigi loves going there and seeing all of her regular friends. Orla's own dog Bailey is a beauty and is so relaxed and chilled. Orla is so good to us, is so flexible and understanding of our busy schedules. I couldn't speak more highly of Orla and her services.",
+  },
+  {
     name: "Olivia Furlong",
     dog: "Alfie",
     text: "Highly recommend! They took such great care of Alfie—he was so happy being able to stay in his own environment. They even went the extra mile by watering our plants and putting the bins out for us. Super reliable and thoughtful service!",
