@@ -162,18 +162,23 @@ function AuthPage() {
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               {mode !== "forgot" && (
-                <div className="space-y-1.5">
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-                  {mode === "signin" && (
-                    <button
-                      type="button"
-                      onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
-                      className="text-xs font-medium text-ocean hover:underline"
-                    >
-                      Forgot your password?
-                    </button>
-                  )}
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <input
+                      type="checkbox"
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                      className="h-4 w-4 rounded border-border accent-ocean"
+                    />
+                    Remember me
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => { setMode("forgot"); setError(null); setInfo(null); }}
+                    className="text-xs font-medium text-ocean hover:underline"
+                  >
+                    Forgot your password?
+                  </button>
                 </div>
               )}
 
