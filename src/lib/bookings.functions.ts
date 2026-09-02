@@ -15,6 +15,7 @@ const bookingSchema = z.object({
   durationMinutes: z.number().int().min(20).max(180).default(75),
   notes: z.string().optional(),
   paymentMethod: z.enum(["revolut", "pay_later"]).default("pay_later"),
+  serviceType: z.enum(["walk", "visit"]).default("walk"),
   userId: z.string().uuid().optional(),
 });
 
