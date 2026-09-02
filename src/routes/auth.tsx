@@ -31,11 +31,23 @@ function AuthPage() {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
 
+  const goAfterAuth = async () => {
+    const { data } = await supabase.auth.getUser();
+    const user = data.user;
+    if (!user) return;
+    const { count } = await supabase
+      .from("dogs")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", user.id);
+    navigate({ to: (count ?? 0) > 0 ? "/booking" : "/welcome" });
+  };
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/booking" });
+      if (data.session) void goAfterAuth();
     });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,11 +65,13 @@ function AuthPage() {
           },
         });
         if (error) throw error;
-        setInfo("Check your email to confirm your account, then sign in.");
+        setInfo(
+          "Check your email to confirm your account, then sign in — you can add your dogs and request a free consult next.",
+        );
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/booking" });
+        await goAfterAuth();
       }
     } catch (err: any) {
       setError(err?.message ?? "Something went wrong");
