@@ -52,7 +52,7 @@ export function BookingCalendar() {
       setLoading(true);
       try {
         const dateStr = format(date, "yyyy-MM-dd");
-        const result = await fetchSlots({ data: { date: dateStr, serviceType } });
+        const result = await fetchSlots({ data: { date: dateStr, serviceType: serviceType as BookableService } });
         if (!cancelled) setSlots(result);
       } catch (err) {
         console.error("Failed to fetch slots:", err);
@@ -88,10 +88,11 @@ export function BookingCalendar() {
         </div>
 
 
-        <div className="mx-auto mt-8 flex max-w-md gap-2 rounded-lg border border-border/60 bg-card p-1">
+        <div className="mx-auto mt-8 flex max-w-xl gap-2 rounded-lg border border-border/60 bg-card p-1">
           {([
             { id: "walk", label: "Dog walk", Icon: PawPrint },
             { id: "visit", label: "Home visit", Icon: Home },
+            { id: "consult", label: "Free consult", Icon: MessageCircle },
           ] as const).map(({ id, label, Icon }) => (
             <button
               key={id}
