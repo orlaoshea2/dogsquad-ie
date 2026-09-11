@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X, LogIn, LogOut, User as UserIcon, ShieldCheck, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import logoAsset from "@/assets/dogsquad-logo.png.asset.json";
+import logoAsset from "@/assets/dogsquad-logo.png";
 
 
 const navLinks = [
@@ -30,7 +30,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Dog Squad"
             className="h-10 w-auto object-contain"
           />

@@ -1,17 +1,17 @@
-import r1 from "@/assets/real-1.png.asset.json";
-import r2 from "@/assets/real-2.png.asset.json";
-import r3 from "@/assets/real-3.png.asset.json";
-import r4 from "@/assets/real-4.png.asset.json";
-import r5 from "@/assets/real-5.png.asset.json";
-import r7 from "@/assets/real-7.png.asset.json";
+import r1 from "@/assets/real-1.png";
+import r2 from "@/assets/real-2.png";
+import r3 from "@/assets/real-3.png";
+import r4 from "@/assets/real-4.png";
+import r5 from "@/assets/real-5.png";
+import r7 from "@/assets/real-7.png";
 
 const photos = [
-  { src: r1.url, alt: "Two golden retrievers playing in the surf on a Wicklow beach", caption: "Beach mornings" },
-  { src: r2.url, alt: "Two dogs exploring a green Wicklow hillside", caption: "Up the hills" },
-  { src: r3.url, alt: "Golden retriever standing on the shore with the Wicklow coastline behind", caption: "Coast and countryside" },
-  { src: r4.url, alt: "Muddy, grinning spaniel after a walk", caption: "Happily filthy", position: "object-top" },
-  { src: r5.url, alt: "Two dogs splashing into the sea", caption: "Straight into the sea" },
-  { src: r7.url, alt: "Dog sniffing along the shingle at Greystones South Beach", caption: "South Beach" },
+  { src: r1, alt: "Two golden retrievers playing in the surf on a Wicklow beach", caption: "Beach mornings" },
+  { src: r2, alt: "Two dogs exploring a green Wicklow hillside", caption: "Up the hills" },
+  { src: r3, alt: "Golden retriever standing on the shore with the Wicklow coastline behind", caption: "Coast and countryside" },
+  { src: r4, alt: "Muddy, grinning spaniel after a walk", caption: "Happily filthy", position: "object-top" },
+  { src: r5, alt: "Two dogs splashing into the sea", caption: "Straight into the sea" },
+  { src: r7, alt: "Dog sniffing along the shingle at Greystones South Beach", caption: "South Beach" },
 ];
 
 export function WicklowGallery() {

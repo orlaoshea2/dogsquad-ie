@@ -4,8 +4,8 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { Heart, Award, Users, ArrowRight } from "lucide-react";
-import aboutImage from "@/assets/about-walker.png.asset.json";
-import coastImage from "@/assets/ds-1.jpg.asset.json";
+import aboutImage from "@/assets/about-walker.png";
+import coastImage from "@/assets/ds-1.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -41,7 +41,7 @@ function AboutPage() {
               </div>
               <div className="mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
-                  src={aboutImage.url}
+                  src={aboutImage}
                   alt="Dog Squad walker with two happy dogs on a grassy lawn"
                   className="h-full w-full object-cover"
                 />
@@ -83,7 +83,7 @@ function AboutPage() {
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl bg-muted shadow-xl order-2 lg:order-1">
                 <img
-                  src={coastImage.url}
+                  src={coastImage}
                   alt="The Dog Squad pack out walking with the Great Sugar Loaf behind"
                   className="h-full w-full object-cover"
                   loading="lazy"
