@@ -222,6 +222,12 @@ function AuthPage() {
               )}
             </p>
             <p className="text-center text-xs text-muted-foreground">
+              By using account features, you acknowledge our{" "}
+              <Link to="/privacy-policy" className="font-medium text-ocean hover:underline">Privacy Policy</Link>{" "}
+              and agree to our{" "}
+              <Link to="/terms" className="font-medium text-ocean hover:underline">Terms &amp; Conditions</Link>.
+            </p>
+            <p className="text-center text-xs text-muted-foreground">
               <Link to="/booking" className="hover:underline">Continue as guest →</Link>
             </p>
           </CardContent>

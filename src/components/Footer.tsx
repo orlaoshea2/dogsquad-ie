@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="w-full border-t border-border/40 bg-ocean text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2 font-display text-xl font-bold">
               <PawPrint className="h-7 w-7 text-teal" />
@@ -23,6 +23,14 @@ export function Footer() {
               <li><Link to="/about" className="text-primary-foreground/80 hover:text-primary-foreground">About</Link></li>
               <li><Link to="/booking" className="text-primary-foreground/80 hover:text-primary-foreground">Book a walk</Link></li>
               <li><Link to="/contact" className="text-primary-foreground/80 hover:text-primary-foreground">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-display text-lg font-semibold">Legal</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li><Link to="/privacy-policy" className="text-primary-foreground/80 hover:text-primary-foreground">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-primary-foreground/80 hover:text-primary-foreground">Terms &amp; Conditions</Link></li>
             </ul>
           </div>
 
