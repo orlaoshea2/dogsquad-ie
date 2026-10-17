@@ -14,6 +14,10 @@ export function Footer() {
             <p className="mt-3 max-w-xs text-sm text-primary-foreground/80">
               Professional, reliable dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow.
             </p>
+            <p className="mt-2 text-sm font-semibold text-primary-foreground">
+              Run by Orla O'Shea
+            </p>
+
           </div>
 
           <div>
