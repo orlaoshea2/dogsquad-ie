@@ -7,6 +7,8 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Contact | Dog Squad Wicklow" },
       { name: "description", content: "Get in touch with Dog Squad — dog walking in Greystones, Delgany and Kilcoole, Co. Wicklow." },
       { property: "og:title", content: "Contact | Dog Squad Wicklow" },

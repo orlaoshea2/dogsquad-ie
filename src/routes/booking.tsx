@@ -6,6 +6,8 @@ import { BookingCalendar } from "@/components/BookingCalendar";
 export const Route = createFileRoute("/booking")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Book a Dog Walk | Dog Squad" },
       { name: "description", content: "Choose a date and time and book your dog's walk with Dog Squad in minutes." },
       { property: "og:title", content: "Book a Dog Walk | Dog Squad" },

@@ -12,6 +12,10 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
+      { property: "og:title", content: "Sign in | Dog Squad Wicklow" },
+      { property: "og:description", content: "Sign in or create an account to book walks faster." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Sign in | Dog Squad Wicklow" },
       { name: "description", content: "Sign in or create an account to book walks faster." },
     ],

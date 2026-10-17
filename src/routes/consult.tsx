@@ -6,6 +6,8 @@ import { FreeConsult } from "@/components/FreeConsult";
 export const Route = createFileRoute("/consult")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Book a Free Consult | Dog Squad Wicklow" },
       { name: "description", content: "Message Dog Squad to organise a free consult for dog walks and home visits in Greystones, Delgany and Kilcoole, Co. Wicklow." },
       { property: "og:title", content: "Book a Free Consult | Dog Squad Wicklow" },

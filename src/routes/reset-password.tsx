@@ -12,6 +12,10 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
     meta: [
+      { property: "og:title", content: "Set a new password | Dog Squad Wicklow" },
+      { property: "og:description", content: "Choose a new password for your Dog Squad account." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Set a new password | Dog Squad Wicklow" },
       { name: "description", content: "Choose a new password for your Dog Squad account." },
     ],

@@ -16,7 +16,7 @@ import {
 } from "@/lib/admin.functions";
 
 export const Route = createFileRoute("/_authenticated/admin")({
-  head: () => ({ meta: [{ title: "Admin — Bookings | Dog Squad" }] }),
+  head: () => ({ meta: [{ title: "Admin — Bookings | Dog Squad" }, { name: "description", content: "Manage Dog Squad bookings and customer payments." }, { property: "og:title", content: "Admin — Bookings | Dog Squad" }, { property: "og:description", content: "Manage Dog Squad bookings and customer payments." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
   component: AdminPage,
 });
 

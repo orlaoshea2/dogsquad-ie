@@ -10,6 +10,8 @@ import coastImage from "@/assets/ds-1.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "About | Dog Squad Wicklow" },
       { name: "description", content: "Meet Orla O'Shea, the qualified Wicklow dog walker behind Dog Squad — BSc in Animal Science, IMDT accredited and Dog First Aid trained. Serving Greystones, Delgany and Kilcoole." },
       { property: "og:title", content: "About Orla O'Shea | Dog Squad Wicklow" },

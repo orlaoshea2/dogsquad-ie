@@ -5,6 +5,10 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
+      { property: "og:title", content: "Privacy Policy | Dog Squad Wicklow" },
+      { property: "og:description", content: "Privacy Policy for Dog Squad, covering accounts, bookings, Google sign-in, communications and website data." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Privacy Policy | Dog Squad Wicklow" },
       {
         name: "description",
