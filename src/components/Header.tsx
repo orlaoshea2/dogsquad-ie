@@ -36,7 +36,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -49,7 +49,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="https://www.instagram.com/dogsquad_wicklow/"
             target="_blank"
@@ -69,10 +69,10 @@ export function Header() {
                   <ShieldCheck className="h-4 w-4" /> Admin
                 </Link>
               )}
-              <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <Link to="/account" className="flex items-center gap-1.5 text-sm font-medium text-ocean hover:text-ocean-light">
                 <UserIcon className="h-4 w-4" />
-                {user.email}
-              </span>
+                My account
+              </Link>
               <Button variant="outline" size="sm" onClick={handleSignOut}>
                 <LogOut className="h-4 w-4" /> Log out
               </Button>
@@ -94,7 +94,7 @@ export function Header() {
         </div>
 
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <a
             href="https://www.instagram.com/dogsquad_wicklow/"
             target="_blank"
@@ -114,7 +114,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-border/40 bg-background px-4 py-4 md:hidden">
+        <div className="border-t border-border/40 bg-background px-4 py-4 lg:hidden">
           <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <Link
@@ -128,6 +128,7 @@ export function Header() {
             ))}
             {user ? (
               <>
+                <Link to="/account" onClick={() => setMobileOpen(false)} className="inline-flex items-center gap-1 text-base font-medium text-ocean"><UserIcon className="h-4 w-4" />My account</Link>
                 {isAdmin && (
                   <Link
                     to="/admin"

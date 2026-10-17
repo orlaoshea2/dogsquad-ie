@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import { useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn, CreditCard, Banknote } from "lucide-react";
-import { createBooking } from "@/lib/bookings.functions";
+import { createBookings } from "@/lib/bookings.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getRevolutPaymentLink, getBookingPrice, REVOLUT_PAYMENT_LINKS, type PaymentMethod } from "@/config/payments";
@@ -50,7 +51,8 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("pay_later");
-  const submitBooking = useServerFn(createBooking);
+  const submitBooking = useServerFn(createBookings);
+  const queryClient = useQueryClient();
   const { user, profile } = useAuth();
 
   const form = useForm<BookingFormValues>({
@@ -91,24 +93,21 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
       const method: PaymentMethod = values.paymentMethod ?? "pay_later";
       const pickup = values.pickupAddress.trim();
       const dropoff = values.sameDropoff ? pickup : (values.dropoffAddress ?? "").trim() || pickup;
-      for (const item of items) {
-        const servicePrefix = `[${item.serviceType === "visit" ? "Home visit" : "Dog walk"}]`;
-        const mergedNotes = values.notes ? `${servicePrefix} ${values.notes}` : servicePrefix;
-        await submitBooking({
-          data: {
-            ...values,
-            notes: mergedNotes,
+      await submitBooking({
+        data: {
+          ...values,
+          paymentMethod: method,
+          pickupAddress: pickup,
+          dropoffAddress: dropoff,
+          items: items.map((item) => ({
             walkDate: item.dateStr,
             walkTime: item.time,
             durationMinutes: item.duration,
-            paymentMethod: method,
             serviceType: item.serviceType,
-            pickupAddress: pickup,
-            dropoffAddress: dropoff,
-            userId: user?.id,
-          },
-        });
-      }
+          })),
+        },
+      });
+      await queryClient.invalidateQueries({ queryKey: ["account", "bookings"] });
 
 
       // Save/update profile details for signed-in customers
@@ -189,6 +188,7 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           >
             Book another walk
           </Button>
+          {user && <Button asChild variant="outline" className="mt-3"><Link to="/account">View my bookings & balance</Link></Button>}
         </CardContent>
       </Card>
     );
@@ -225,7 +225,7 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           </div>
         ) : (
           <div className="mb-4 flex items-center justify-between gap-2 rounded-md border border-border bg-muted/40 px-3 py-2 text-sm">
-            <span className="text-muted-foreground">Have an account? Sign in to skip filling in your details.</span>
+            <span className="text-muted-foreground">Sign in to keep these bookings and your balance in your account.</span>
             <Link
               to="/auth"
               className="inline-flex shrink-0 items-center gap-1 font-semibold text-ocean hover:underline"
