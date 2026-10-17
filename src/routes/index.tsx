@@ -14,6 +14,8 @@ import { ReviewsLink } from "@/components/ReviewsLink";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },
       { name: "description", content: "Book a dog walk online in Greystones, Delgany and Kilcoole, Co. Wicklow. Solo walks, group cliff-walk adventures and home visits." },
       { property: "og:title", content: "Dog Squad Wicklow | Dog Walking in Greystones, Delgany & Kilcoole" },

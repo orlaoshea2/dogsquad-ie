@@ -42,6 +42,8 @@ const WHATSAPP_NUMBER = "353866063416";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Dog Walking Services | Dog Squad" },
       { name: "description", content: "Explore our dog walking services: solo walks, group adventures and home visits in Greystones, Delgany & Kilcoole." },
       { property: "og:title", content: "Dog Walking Services | Dog Squad" },

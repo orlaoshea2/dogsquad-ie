@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, CheckCircle2, PawPrint } from "lucide-react";
-import { createBooking } from "@/lib/bookings.functions";
+import { createBookings } from "@/lib/bookings.functions";
 
 const enquirySchema = z.object({
   name: z.string().min(2, "Your name is required"),
@@ -19,7 +19,7 @@ const enquirySchema = z.object({
   dogBreed: z.string().optional(),
   preferredDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a preferred date"),
   preferredTime: z.enum(["morning", "afternoon", "evening"]),
-  duration: z.enum(["30", "60", "90"]),
+  duration: z.literal("75"),
   notes: z.string().optional(),
 });
 
@@ -27,14 +27,14 @@ type EnquiryValues = z.infer<typeof enquirySchema>;
 
 const TIME_MAP: Record<EnquiryValues["preferredTime"], string> = {
   morning: "09:00",
-  afternoon: "13:00",
-  evening: "17:00",
+  afternoon: "12:00",
+  evening: "15:00",
 };
 
 export function BookingEnquiry() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const submit = useServerFn(createBooking);
+  const submit = useServerFn(createBookings);
 
   const form = useForm<EnquiryValues>({
     resolver: zodResolver(enquirySchema),
@@ -46,7 +46,7 @@ export function BookingEnquiry() {
       dogBreed: "",
       preferredDate: "",
       preferredTime: "morning",
-      duration: "90",
+      duration: "75",
       notes: "",
     },
   });
@@ -61,9 +61,7 @@ export function BookingEnquiry() {
           phone: v.phone,
           dogName: v.dogName,
           dogBreed: v.dogBreed,
-          walkDate: v.preferredDate,
-          walkTime: TIME_MAP[v.preferredTime],
-          durationMinutes: parseInt(v.duration, 10),
+          items: [{ walkDate: v.preferredDate, walkTime: TIME_MAP[v.preferredTime], durationMinutes: 75, serviceType: "walk" }],
           notes: v.notes,
         },
       });

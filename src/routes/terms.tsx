@@ -5,6 +5,10 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
+      { property: "og:title", content: "Terms & Conditions | Dog Squad Wicklow" },
+      { property: "og:description", content: "Terms and Conditions for using the Dog Squad website, accounts, bookings and dog-care services." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Terms & Conditions | Dog Squad Wicklow" },
       {
         name: "description",
