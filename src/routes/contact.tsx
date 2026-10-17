@@ -76,13 +76,17 @@ function ContactPage() {
             </div>
 
             <div className="mt-16 text-center">
-              <p className="text-muted-foreground">
+              <p className="font-display text-lg font-semibold text-foreground">
+                Dog Squad is owned and run by Orla O'Shea
+              </p>
+              <p className="mt-4 text-muted-foreground">
                 Prefer to book directly? Use our{" "}
                 <a href="/booking" className="font-semibold text-ocean hover:underline">
                   online booking calendar
                 </a>.
               </p>
             </div>
+
           </div>
         </section>
       </main>

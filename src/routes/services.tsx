@@ -182,9 +182,10 @@ function ServicesPage() {
                 Meet before the first walk
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                A free consult involves meeting you and your dog(s) in person — figuring out their
-                specific needs, temperament and routine, sorting out access and keys, and making
-                sure everyone is happy before the first walk or visit.
+                A free consult involves Orla O'Shea meeting you and your dog(s) in person — figuring
+                out their specific needs, temperament and routine, sorting out access and keys, and
+                making sure everyone is happy before the first walk or visit.
+
               </p>
             </div>
             <div className="mt-8">

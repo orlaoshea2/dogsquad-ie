@@ -11,9 +11,10 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About | Dog Squad Wicklow" },
-      { name: "description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
-      { property: "og:title", content: "About | Dog Squad Wicklow" },
-      { property: "og:description", content: "Qualified Wicklow dog walker with a BSc in Animal Science, IMDT accreditation and Dog First Aid training. Serving Greystones, Delgany and Kilcoole." },
+      { name: "description", content: "Meet Orla O'Shea, the qualified Wicklow dog walker behind Dog Squad — BSc in Animal Science, IMDT accredited and Dog First Aid trained. Serving Greystones, Delgany and Kilcoole." },
+      { property: "og:title", content: "About Orla O'Shea | Dog Squad Wicklow" },
+      { property: "og:description", content: "Meet Orla O'Shea, the qualified Wicklow dog walker behind Dog Squad — BSc in Animal Science, IMDT accredited and Dog First Aid trained. Serving Greystones, Delgany and Kilcoole." },
+
     ],
   }),
   component: AboutPage,
@@ -33,11 +34,18 @@ function AboutPage() {
                   A lifetime with animals, dedicated to your dog
                 </h1>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  I'm a Wicklow-based dog walker with a BSc in Animal Science and a lifelong passion for animals and dog care. I gained valuable hands-on experience working on Sheikh Mohammed bin Rashid Al Maktoum's thoroughbred stud, where I developed a deep understanding of animal welfare, care, and handling.
+                  I'm Orla O'Shea, a Wicklow-based dog walker with a BSc in Animal Science and a lifelong passion for animals and dog care. I gained valuable hands-on experience working on Sheikh Mohammed bin Rashid Al Maktoum's thoroughbred stud, where I developed a deep understanding of animal welfare, care, and handling.
                 </p>
                 <p className="mt-4 text-lg text-muted-foreground">
                   I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
+                <div className="mt-8 border-l-4 border-teal pl-4">
+                  <p className="font-display text-2xl font-bold text-ocean">Orla O'Shea</p>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-teal">
+                    Founder of Dog Squad
+                  </p>
+                </div>
+
               </div>
               <div className="mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl bg-muted shadow-xl">
                 <img
