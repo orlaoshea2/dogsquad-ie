@@ -33,8 +33,11 @@ function AboutPage() {
               <div>
                 <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About me</p>
                 <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                  A lifetime with animals, dedicated to your dog
+                  Hi, I'm Orla O'Shea
                 </h1>
+                <p className="mt-3 font-display text-xl font-semibold text-teal sm:text-2xl">
+                  A lifetime with animals, dedicated to your dog
+                </p>
                 <p className="mt-6 text-lg text-muted-foreground">
                   I'm Orla O'Shea, a Wicklow-based dog walker with a BSc in Animal Science and a lifelong passion for animals and dog care. I gained valuable hands-on experience working on Sheikh Mohammed bin Rashid Al Maktoum's thoroughbred stud, where I developed a deep understanding of animal welfare, care, and handling.
                 </p>
