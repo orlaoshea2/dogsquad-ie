@@ -31,9 +31,9 @@ function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About me</p>
+                <p className="font-display text-sm font-semibold uppercase tracking-wider text-teal">About us</p>
                 <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                  Hi, I'm Orla O'Shea
+                  Orla O'Shea and team
                 </h1>
                 <p className="mt-3 font-display text-xl font-semibold text-teal sm:text-2xl">
                   A lifetime with animals, dedicated to your dog
@@ -45,9 +45,9 @@ function AboutPage() {
                   I hold a Dog First Aid certificate and have completed the IMDT Professional Accredited Training Course, specialising in modern, positive, reward-based dog training methods. With a lifetime of experience owning and caring for dogs, I bring together knowledge, practical skill, and genuine love for animals to provide trusted, personalised care and training for every dog I work with.
                 </p>
                 <div className="mt-8 border-l-4 border-teal pl-4">
-                  <p className="font-display text-2xl font-bold text-ocean">Orla O'Shea</p>
+                  <p className="font-display text-2xl font-bold text-ocean">Orla O'Shea and team</p>
                   <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-teal">
-                    Founder of Dog Squad
+                    Greystones · Delgany · Kilcoole
                   </p>
                 </div>
 
