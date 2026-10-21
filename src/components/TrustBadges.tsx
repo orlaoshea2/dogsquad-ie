@@ -1,20 +1,10 @@
-import { GraduationCap, Award, HeartPulse, ShieldCheck, Users } from "lucide-react";
+import { GraduationCap, ShieldCheck, Users } from "lucide-react";
 
 const credentials = [
   {
     icon: GraduationCap,
     title: "BSc Animal Science",
     description: "Degree-level knowledge of animal welfare and care.",
-  },
-  {
-    icon: Award,
-    title: "IMDT accredited",
-    description: "Professional, reward-based dog training course completed.",
-  },
-  {
-    icon: HeartPulse,
-    title: "Dog First Aid",
-    description: "Certified to handle emergencies on every walk.",
   },
   {
     icon: ShieldCheck,
@@ -35,7 +25,7 @@ export function TrustBadges() {
         <p className="text-center font-display text-sm font-semibold uppercase tracking-wider text-teal">
           Why dog owners trust Dog Squad
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {credentials.map((item) => (
             <div
               key={item.title}
