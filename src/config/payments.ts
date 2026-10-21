@@ -17,7 +17,7 @@ export type PaymentMethod = "revolut" | "pay_later";
 
 // Revolut.me username (the part after revolut.me/). When set, customers are
 // sent to Revolut with the exact booking total already filled in.
-export const REVOLUT_ME_USERNAME = "orla9gi1";
+export const REVOLUT_ME_USERNAME = "orlau9gi1";
 
 /** Revolut link with the total due prefilled (amount in euro). */
 export function getRevolutAmountLink(totalEur: number): string | null {
