@@ -15,12 +15,13 @@ export function Hero() {
           width={1378}
           height={904}
         />
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-ocean/80 via-ocean/40 to-transparent sm:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-ocean/90 via-ocean/60 via-45% to-transparent sm:block" />
         <div className="hero-text-scrim-left absolute inset-0 hidden sm:block" />
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-7 text-center sm:min-h-[620px] sm:items-start sm:px-6 sm:py-24 sm:text-left lg:min-h-[720px] lg:px-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-7 text-center sm:min-h-[620px] sm:items-start sm:justify-start sm:px-6 sm:pb-24 sm:pt-16 sm:text-left lg:min-h-[720px] lg:px-8 lg:pt-24">
+        <div className="sm:max-w-md lg:max-w-lg">
         <h1 className="font-display text-3xl font-extrabold text-primary-foreground sm:text-5xl sm:[text-shadow:0_3px_12px_rgba(0,0,0,0.45)] lg:text-6xl">
           Every Walk an Adventure
         </h1>
