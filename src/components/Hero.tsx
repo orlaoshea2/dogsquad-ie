@@ -11,12 +11,12 @@ export function Hero() {
         <img
           src={heroImage}
           alt="Happy dogs on a group walk across the Wicklow hills"
-          className="h-full w-full object-cover object-left"
+          className="h-full w-full object-cover object-left brightness-[1.18] saturate-[1.08]"
           width={2040}
           height={1148}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ocean/60 via-ocean/35 to-ocean/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ocean/45 via-transparent to-ocean/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ocean/45 via-ocean/10 to-ocean/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ocean/30 via-transparent to-ocean/20" />
       </div>
 
       {/* Content */}
