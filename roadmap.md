@@ -1,6 +1,7 @@
 # Customer bookings
 - [x] Advise on ways to get more clients beyond Google (saved plan: /mnt/documents/marketing/plan.md)
 - [x] Use Orla's photo as the homepage banner and move the pack photo lower down the page.
+- [x] Swap the uploaded photo into the homepage banner and revisit the About page image ("Perhaps put this in place of about us").
 - [x] Show the full homepage photo on mobile without cropping the dogs.
 - [ ] Get the brighter hero photo, 3-item trust strip and shortened hero line showing on dogsquad.ie (publish requested; custom domain was still serving the older build).
 - [x] Remove the line after "dog-focused" in the homepage hero.
