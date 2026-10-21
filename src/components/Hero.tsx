@@ -1,19 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroAsset from "@/assets/woodland-walk.jpg.asset.json";
+import heroImage from "@/assets/about-walker.png";
 
 export function Hero() {
   return (
     <section className="relative bg-ocean sm:min-h-[620px] lg:min-h-[720px]">
-      {/* Background photo: two Dog Squad walkers with dogs on a woodland trail */}
+      {/* Background photo: Orla with two dogs on the lawn */}
       <div className="relative sm:absolute sm:inset-0">
         <img
-          src={heroAsset.url}
-          alt="Dog Squad walkers out with two dogs on a sunlit woodland trail in Wicklow"
-          className="aspect-[1920/1080] h-auto w-full object-cover brightness-[1.04] saturate-[1.05] sm:aspect-auto sm:h-full sm:object-center"
-          width={1920}
-          height={1080}
+          src={heroImage}
+          alt="Orla O'Shea crouched with two dogs on a lawn"
+          className="aspect-[1378/904] h-auto w-full object-cover brightness-[1.06] saturate-[1.05] sm:aspect-auto sm:h-full sm:object-center"
+          width={1378}
+          height={904}
         />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-ocean/90 via-ocean/60 via-45% to-transparent sm:block" />
         <div className="hero-text-scrim-left absolute inset-0 hidden sm:block" />
