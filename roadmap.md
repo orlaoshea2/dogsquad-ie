@@ -1,4 +1,5 @@
 # Customer bookings
+- [ ] Advise on ways to get more clients beyond Google (saved plan: /mnt/documents/marketing/plan.md)
 - [ ] Get the brighter hero photo, 3-item trust strip and shortened hero line showing on dogsquad.ie (publish requested; custom domain was still serving the older build).
 - [x] Remove the line after "dog-focused" in the homepage hero.
 - [x] Remove IMDT accredited and Dog First Aid from the homepage trust strip.
