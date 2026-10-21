@@ -16,7 +16,7 @@ import { Loader2, CheckCircle2, ArrowLeft, UserCheck, LogIn, CreditCard, Banknot
 import { createBookings } from "@/lib/bookings.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { getRevolutPaymentLink, getBookingPrice, REVOLUT_PAYMENT_LINKS, type PaymentMethod } from "@/config/payments";
+import { getRevolutPaymentLink, getRevolutAmountLink, getBookingPrice, REVOLUT_PAYMENT_LINKS, type PaymentMethod } from "@/config/payments";
 
 const bookingFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -130,9 +130,10 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
 
   const price = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
   const revolutLink =
-    items.length === 1
+    getRevolutAmountLink(price) ??
+    (items.length === 1
       ? getRevolutPaymentLink(items[0].serviceType, items[0].duration)
-      : REVOLUT_PAYMENT_LINKS.default;
+      : REVOLUT_PAYMENT_LINKS.default);
   const first = items[0];
 
   const onSubmit = async (values: BookingFormValues) => {
