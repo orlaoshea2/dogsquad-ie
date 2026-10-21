@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
+import { TrustBadges } from "@/components/TrustBadges";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
