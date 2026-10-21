@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -14,6 +15,14 @@ import {
   listConsultMessages,
   type PaymentStatus,
 } from "@/lib/admin.functions";
+import {
+  bookingAmountOwed,
+  owedByCustomer,
+  totalAmountOwed,
+  totalOwedInMonth,
+  type CustomerOwed,
+  type StatementBooking,
+} from "@/lib/booking-balance";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ meta: [{ title: "Admin — Bookings | Dog Squad" }, { name: "description", content: "Manage Dog Squad bookings and customer payments." }, { property: "og:title", content: "Admin — Bookings | Dog Squad" }, { property: "og:description", content: "Manage Dog Squad bookings and customer payments." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }] }),
