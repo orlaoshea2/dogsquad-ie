@@ -10,6 +10,7 @@ import { InstagramReels } from "@/components/InstagramReels";
 import { WicklowGallery } from "@/components/WicklowGallery";
 import { FAQ } from "@/components/FAQ";
 import { ReviewsLink } from "@/components/ReviewsLink";
+import { PackBanner } from "@/components/PackBanner";
 
 
 export const Route = createFileRoute("/")({
@@ -36,6 +37,7 @@ function HomePage() {
         <ReviewsLink />
         <BookingCalendar />
         <Services />
+        <PackBanner />
         <WicklowGallery />
         <FAQ />
         <Testimonials />
