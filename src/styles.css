@@ -260,3 +260,12 @@
 @utility gradient-hero {
   background: linear-gradient(180deg, var(--color-background) 0%, var(--color-sky) 100%);
 }
+
+@utility hero-text-scrim {
+  background: radial-gradient(
+    ellipse 58% 40% at 50% 48%,
+    color-mix(in oklab, var(--color-ocean) 55%, transparent) 0%,
+    color-mix(in oklab, var(--color-ocean) 22%, transparent) 55%,
+    transparent 75%
+  );
+}

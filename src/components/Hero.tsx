@@ -17,6 +17,7 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ocean/45 via-ocean/10 to-ocean/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-ocean/30 via-transparent to-ocean/20" />
+        <div className="hero-text-scrim absolute inset-0" />
       </div>
 
       {/* Content */}
