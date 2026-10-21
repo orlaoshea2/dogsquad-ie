@@ -8,6 +8,13 @@
       "when": 1792592664189,
       "tag": "0000_grant_admin_to_orla_account",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792599133431,
+      "tag": "0001_tighten_consult_messages_insert",
+      "breakpoints": true
     }
   ]
 }
