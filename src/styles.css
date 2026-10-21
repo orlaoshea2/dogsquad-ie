@@ -269,3 +269,12 @@
     transparent 75%
   );
 }
+
+@utility hero-text-scrim-left {
+  background: radial-gradient(
+    ellipse 48% 58% at 20% 46%,
+    color-mix(in oklab, var(--color-ocean) 62%, transparent) 0%,
+    color-mix(in oklab, var(--color-ocean) 30%, transparent) 55%,
+    transparent 78%
+  );
+}
