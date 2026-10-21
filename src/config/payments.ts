@@ -15,6 +15,18 @@ export const REVOLUT_PAYMENT_LINKS = {
 
 export type PaymentMethod = "revolut" | "pay_later";
 
+// Revolut.me username (the part after revolut.me/). When set, customers are
+// sent to Revolut with the exact booking total already filled in.
+export const REVOLUT_ME_USERNAME = "";
+
+/** Revolut link with the total due prefilled (amount in euro). */
+export function getRevolutAmountLink(totalEur: number): string | null {
+  if (!REVOLUT_ME_USERNAME || totalEur <= 0) return null;
+  const cents = Math.round(totalEur * 100);
+  return `https://revolut.me/${encodeURIComponent(REVOLUT_ME_USERNAME)}?amount=${cents}&currency=EUR`;
+}
+
+
 export function getRevolutPaymentLink(serviceType: "walk" | "visit", durationMinutes: number): string {
   if (serviceType === "walk") return REVOLUT_PAYMENT_LINKS.walk;
   if (durationMinutes === 30) return REVOLUT_PAYMENT_LINKS.visit30;
