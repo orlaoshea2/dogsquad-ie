@@ -52,6 +52,7 @@ export function Hero() {
             </Button>
           </Link>
         </div>
+        </div>
       </div>
     </section>
   );
