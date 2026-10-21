@@ -77,8 +77,56 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
       form.setValue("email", profile?.email ?? user.email ?? "");
       if (profile?.full_name) form.setValue("name", profile.full_name);
       if (profile?.phone) form.setValue("phone", profile.phone);
+      try {
+        const raw = localStorage.getItem(`dogsquad:address:${user.id}`);
+        if (raw) {
+          const a = JSON.parse(raw);
+          if (a.pickup) form.setValue("pickupAddress", a.pickup);
+          if (typeof a.same === "boolean") form.setValue("sameDropoff", a.same);
+          if (!a.same && a.dropoff) form.setValue("dropoffAddress", a.dropoff);
+        }
+      } catch {
+        /* ignore */
+      }
     }
   }, [user, profile, form]);
+
+  // Saved dogs for signed-in customers
+  const [savedDogs, setSavedDogs] = useState<{ id: string; name: string; breed: string | null }[]>([]);
+  const [selectedDogId, setSelectedDogId] = useState("");
+  const pickDog = (id: string, list = savedDogs) => {
+    setSelectedDogId(id);
+    if (id === "__new") {
+      form.setValue("dogName", "");
+      form.setValue("dogBreed", "");
+    } else if (id === "__all") {
+      form.setValue("dogName", list.map((d) => d.name).join(" & "));
+      form.setValue("dogBreed", list.map((d) => d.breed).filter(Boolean).join(" & "));
+    } else {
+      const d = list.find((x) => x.id === id);
+      if (d) {
+        form.setValue("dogName", d.name, { shouldValidate: true });
+        form.setValue("dogBreed", d.breed ?? "");
+      }
+    }
+  };
+  useEffect(() => {
+    if (!user) {
+      setSavedDogs([]);
+      return;
+    }
+    supabase
+      .from("dogs")
+      .select("id, name, breed")
+      .eq("user_id", user.id)
+      .order("created_at")
+      .then(({ data }) => {
+        const list = data ?? [];
+        setSavedDogs(list);
+        if (list.length > 0) pickDog(list[0].id, list);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const price = items.reduce((sum, i) => sum + getBookingPrice(i.serviceType, i.duration), 0);
   const revolutLink =
@@ -118,6 +166,26 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
           phone: values.phone ?? "",
           email: values.email,
         });
+        // Remember a new dog so it appears in the dropdown next time
+        const typedName = values.dogName.trim();
+        const known = savedDogs.some(
+          (d) => d.name.toLowerCase() === typedName.toLowerCase(),
+        );
+        if (selectedDogId !== "__all" && typedName && !known) {
+          await supabase.from("dogs").insert({
+            user_id: user.id,
+            name: typedName,
+            breed: values.dogBreed?.trim() || null,
+          });
+        }
+        try {
+          localStorage.setItem(
+            `dogsquad:address:${user.id}`,
+            JSON.stringify({ pickup, dropoff, same: values.sameDropoff }),
+          );
+        } catch {
+          /* ignore */
+        }
       }
 
       setPaymentMethod(method);
@@ -256,6 +324,26 @@ export function BookingForm({ items, onBack, onSuccess }: BookingFormProps) {
             <Label htmlFor="phone">Phone</Label>
             <Input id="phone" placeholder="+353 87 123 4567" {...form.register("phone")} />
           </div>
+
+          {user && savedDogs.length > 0 && (
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="savedDog">Which dog?</Label>
+              <select
+                id="savedDog"
+                value={selectedDogId}
+                onChange={(e) => pickDog(e.target.value)}
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {savedDogs.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.name}{d.breed ? ` (${d.breed})` : ""}
+                  </option>
+                ))}
+                {savedDogs.length > 1 && <option value="__all">All my dogs</option>}
+                <option value="__new">+ Add a new dog</option>
+              </select>
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label htmlFor="dogName">Dog's name</Label>
