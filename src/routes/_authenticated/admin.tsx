@@ -75,6 +75,8 @@ function AdminPage() {
             </div>
           </div>
 
+          {data && <MonthOwedSection bookings={data} />}
+
           {isLoading && (
             <div className="flex items-center gap-2 text-muted-foreground">
               <Loader2 className="h-4 w-4 animate-spin" /> Loading bookings…
@@ -172,6 +174,117 @@ function AdminPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function statementLabel(booking: StatementBooking) {
+  const service = booking.service_type === "visit" ? "Home visit" : "Dog walk";
+  return `${service} · ${booking.dog_name} · ${format(parseISO(booking.walk_date), "EEE d MMM")} at ${booking.walk_time} — €${bookingAmountOwed(booking).toFixed(2)}`;
+}
+
+function statementLink(customer: CustomerOwed, monthLabel: string) {
+  const body = [
+    `Hi ${customer.name},`,
+    "",
+    `Here is what is outstanding for ${monthLabel}:`,
+    "",
+    ...customer.items.map(statementLabel),
+    "",
+    `Total owed: €${customer.owed.toFixed(2)}`,
+    "",
+    "You can pay in cash or by bank transfer.",
+    "",
+    "Thanks,",
+    "Orla O'Shea",
+    "Dog Squad",
+  ].join("\n");
+  return `mailto:${customer.email}?subject=${encodeURIComponent(
+    `Dog Squad statement — ${monthLabel}`,
+  )}&body=${encodeURIComponent(body)}`;
+}
+
+function MonthOwedSection({ bookings }: { bookings: StatementBooking[] }) {
+  const [month, setMonth] = useState(() => new Date().toISOString().slice(0, 7));
+  const customers = owedByCustomer(bookings, month);
+  const monthTotal = totalOwedInMonth(bookings, month);
+  const allOutstanding = totalAmountOwed(bookings);
+  const monthLabel = format(parseISO(`${month}-01`), "MMMM yyyy");
+
+  return (
+    <Card className="mb-8 border-ocean/30 bg-ocean/5">
+      <CardHeader className="pb-3">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-foreground">Who owes what</h2>
+            <p className="text-sm text-muted-foreground">
+              Cash and bank transfer still outstanding, grouped by customer for the month you pick.
+            </p>
+          </div>
+          <label className="text-sm text-muted-foreground">
+            <span className="sr-only">Month</span>
+            <input
+              type="month"
+              value={month}
+              onChange={(e) => e.target.value && setMonth(e.target.value)}
+              className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
+            />
+          </label>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <span className="font-display text-4xl font-bold text-ocean">€{monthTotal.toFixed(2)}</span>
+          <span className="text-sm text-muted-foreground">
+            owed for {monthLabel} · €{allOutstanding.toFixed(2)} outstanding all together
+          </span>
+        </div>
+
+        {customers.length === 0 ? (
+          <p className="mt-5 text-sm text-muted-foreground">
+            Nothing outstanding for {monthLabel}.
+          </p>
+        ) : (
+          <div className="mt-5 grid gap-3">
+            {customers.map((customer) => (
+              <div
+                key={customer.email.toLowerCase()}
+                className="rounded-lg border border-border bg-card p-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <div className="font-display text-lg font-semibold text-foreground">
+                      {customer.name}
+                      <span className="ml-2 text-sm font-normal text-muted-foreground">
+                        {customer.email}
+                        {customer.phone ? ` · ${customer.phone}` : ""}
+                      </span>
+                    </div>
+                    <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                      {customer.items.map((item) => (
+                        <li key={`${item.walk_date}-${item.walk_time}-${item.dog_name}`}>
+                          {statementLabel(item)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-display text-2xl font-bold text-foreground">
+                      €{customer.owed.toFixed(2)}
+                    </div>
+                    <a
+                      href={statementLink(customer, monthLabel)}
+                      className="mt-1 inline-block text-sm font-medium text-ocean hover:underline"
+                    >
+                      Email statement
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }
 
