@@ -11,3 +11,4 @@
 
 - Submit multiple services in one atomic booking insert, deriving ownership only from validated bearer credentials; prevents partial carts and cross-account ownership.
 - Customer account reads use authenticated server functions scoped to the current user; stored prices and shared balance helpers keep historical amounts and unpaid totals consistent.
+- Admin rights come only from rows in public.user_roles (granted by migration or the signup trigger for hello@dogsquad.ie); never decide admin from email or metadata in application code.
